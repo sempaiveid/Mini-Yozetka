@@ -1,0 +1,27 @@
+.header {
+    background-color: var(--color-black);
+    width: 100%;
+}
+
+.header>.layout {
+    padding: 0 32px 0 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.inside-layout {
+    height: 64px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.txt {
+    font-family: "DM Serif Text", serif;
+}
+
+.search{
+    flex-grow: 1;
+}
