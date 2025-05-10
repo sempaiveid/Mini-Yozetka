@@ -28,7 +28,8 @@ export class ProductService {
   localUpdate(){
     localStorage.setItem("items", JSON.stringify(this.items));
   }
-  // стартовые продукты
+  
+  // Cтартовые продукты
 
 
   get (){
