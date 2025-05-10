@@ -17,12 +17,12 @@ export class CartService {
         this.cart.push(productToCart);
         this.updateCart();
       } else{
-       this.productCart.some(item =>{ if(item.name === productToCart.name){
-        productToCart.quantity + 1;
-        return true;
-       } else{
-        return false;
-        })
+      //  this.productCart.some(item =>{ if(item.name === productToCart.name){
+      //   productToCart.quantity + 1;
+      //   return true;
+      //  } else{
+      //   return false;
+      //   })
       }
     } else{
       console.log(`Полученны некоректные данные. Сет ждёт Объект, а не ${product}`); 
