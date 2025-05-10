@@ -4,6 +4,65 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProductService {
+    items = [
+    {
+      name: "Coffe",
+      picture: "https://content2.rozetka.com.ua/goods/images/big/461208002.jpg",
+      price: 24,
+      category: "food",
+    },
+    {
+      name: "Cola",
+      picture: "https://content2.rozetka.com.ua/goods/images/big/292154526.jpg",
+      price: 25,
+      category: "car",
+    },
+    {
+      name: `Монитор 27" Samsung Odyssey G50D (LS27DG502EIXCI) -- QHD 2K / IPS / 180Hz / 1 мс (GTG) / HDR10 / FreeSync Premium / G-Sync Compatible / Pivot / Black Equalizer`,
+      picture: "https://content1.rozetka.com.ua/goods/images/big/440994724.jpg",
+      price: 243,
+      category: "food",
+    },
+  ];
 
-  constructor() { }
+  localUpdate(){
+    localStorage.setItem("items", JSON.stringify(this.items));
+  }
+
+  set addProduct (product: any){
+    if(typeof product === "object" && Object.values(product).every((v)=> v !== undefined && v !== null)){
+      this.items.push(product);
+      this.localUpdate();
+    }
+  }
+
+
+  get(){
+    const arrayObj = localStorage.getItem("items");
+    return arrayObj ? [...JSON.parse(arrayObj)] : [];
+  }
+
+  get_category(name_category:string){
+    const array_category = this.get().filter((obj)=> obj.category === name_category);
+    return array_category;
+  }
+
+  get_small_name(name:string){
+    const name_arr = name.split(" ")
+    if (name_arr.length > 10){
+      return name_arr.slice(0, 5).join(" ") + "..."
+    } 
+    return name_arr.join();
+  }
+
+  objto = {
+    name: "Видеокарта ASUS PCI-Ex GeForce RTX 4060 Dual EVO OC Edition 8GB GDDR6 (128bit) (2535/17000) (1 x HDMI, 3 x DisplayPort) (DUAL-RTX4060-O8G-EVO)",
+    picture: "https://content1.rozetka.com.ua/goods/images/big/400259575.jpg",
+    price: 2423,
+    category: "food",
+  }
+
+  constructor() {
+    this.localUpdate();
+  }
 }
