@@ -28,16 +28,10 @@ export class ProductService {
   localUpdate(){
     localStorage.setItem("items", JSON.stringify(this.items));
   }
-
-  set addProduct (product: any){
-    if(typeof product === "object" && Object.values(product).every((v)=> v !== undefined && v !== null)){
-      this.items.push(product);
-      this.localUpdate();
-    }
-  }
+  // стартовые продукты
 
 
-  get(){
+  get (){
     const arrayObj = localStorage.getItem("items");
     return arrayObj ? [...JSON.parse(arrayObj)] : [];
   }
@@ -55,11 +49,11 @@ export class ProductService {
     return name_arr.join();
   }
 
-  objto = {
-    name: "Видеокарта ASUS PCI-Ex GeForce RTX 4060 Dual EVO OC Edition 8GB GDDR6 (128bit) (2535/17000) (1 x HDMI, 3 x DisplayPort) (DUAL-RTX4060-O8G-EVO)",
-    picture: "https://content1.rozetka.com.ua/goods/images/big/400259575.jpg",
-    price: 2423,
-    category: "food",
+  set addProduct (product: any){
+    if(typeof product === "object" && Object.values(product).every((v)=> v !== undefined && v !== null)){
+      this.items.push(product);
+      this.localUpdate();
+    }
   }
 
   constructor() {
