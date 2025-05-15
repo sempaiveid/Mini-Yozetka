@@ -10,14 +10,5 @@ import { CartService } from './services/cart.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  cart: CartService = inject(CartService);
   
-   setNewProd(){
-    this.cart.productCart = {name : "gamePad", price: 24};
-   } 
-  
-   constructor(){
-
-  }
- 
 }

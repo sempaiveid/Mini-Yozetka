@@ -6,22 +6,70 @@ import { Injectable } from '@angular/core';
 export class ProductService {
     items = [
     {
-      name: "Coffe",
-      picture: "https://content2.rozetka.com.ua/goods/images/big/461208002.jpg",
-      price: 24,
-      category: "food",
+      name: `Бігова доріжка Xiaomi KingSmith Walkingpad&Treadmill R2 Black (6970492718674)`,
+      picture: "https://content.rozetka.com.ua/goods/images/big/235053111.jpg",
+      price: 28999,
+      category: "home",
     },
     {
-      name: "Cola",
-      picture: "https://content2.rozetka.com.ua/goods/images/big/292154526.jpg",
-      price: 25,
-      category: "car",
+      name: `Тачка будівельна Budmonster 1-колісна 85 л вантажопідйомність 200 кг колесо лите 4 х 8" (01-011/2)`,
+      picture: "https://content2.rozetka.com.ua/goods/images/big/309965559.jpg",
+      price: 2075,
+      category: "home",
     },
     {
-      name: `Монитор 27" Samsung Odyssey G50D (LS27DG502EIXCI) -- QHD 2K / IPS / 180Hz / 1 мс (GTG) / HDR10 / FreeSync Premium / G-Sync Compatible / Pivot / Black Equalizer`,
-      picture: "https://content1.rozetka.com.ua/goods/images/big/440994724.jpg",
-      price: 243,
-      category: "food",
+      name: `Тумба підвісна RJ Atlas RJFU005-11GR сіра 60 см з умивальником Jenor RZJ610`,
+      picture: "https://content2.rozetka.com.ua/goods/images/big/293164376.jpg",
+      price: 7917,
+      category: "home",
+    },
+    {
+      name: `Відеореєстратор Xiaomi 70mai Dash Cam A200 (1040052)`,
+      picture: "https://content1.rozetka.com.ua/goods/images/big/429877097.jpg",
+      price: 2999,
+      category: "device",
+    },
+    {
+      name: `Сумка крос-боді через плече жіноча з натуральної шкіри маленька Michael Kors 30S3SIMM8L-001 Чорна (196163826585)`,
+      picture: "https://content2.rozetka.com.ua/goods/images/big/293164376.jpg",
+      price: 16200,
+      category: "cloth",
+    },
+    {
+      name: `Калькулятор Brilliant (BS-8888PK)`,
+      picture: "https://content.rozetka.com.ua/goods/images/big/246182272.jpg",
+      price: 524,
+      category: "device",
+    },
+    {
+      name: `Настільна гра Rozum Вибухові кошенята: Добро і зло (EKIEK12UA) (810083047133)`,
+      picture: "https://content1.rozetka.com.ua/goods/images/big/456904280.jpg",
+      price: 815,
+      category: "home",
+    },
+    {
+      name: `Холодильник EDLER ED-400IN`,
+      picture: "https://content2.rozetka.com.ua/goods/images/big/534301454.jpg",
+      price: 20773,
+      category: "home",
+    },
+    {
+      name: `Рюкзак ABYstyle Diablo Lilith (3665361121282)`,
+      picture: "https://content.rozetka.com.ua/goods/images/big/417092745.jpg",
+      price: 1464,
+      category: "cloth",
+    },
+    {
+      name: `Сухий корм для дорослих котів Purina Cat Chow Adult з качкою 1.5 кг (7613035394117)`,
+      picture: "https://content1.rozetka.com.ua/goods/images/big/421075373.jpg",
+      price: 224,
+      category: "home",
+    },
+    {
+      name: `Мобільний телефон Apple iPhone 16 Pro 256GB Black Titanium (MYNH3SX/A)`,
+      picture: "https://content2.rozetka.com.ua/goods/images/big/468886490.jpg",
+      price: 56699,
+      category: "device",
     },
   ];
 
