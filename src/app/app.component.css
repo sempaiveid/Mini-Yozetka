@@ -1,0 +1,14 @@
+.main_container {
+    display: flex;
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0px 32px;
+} 
+.sidebar_menu {
+    width: 300px;
+    flex-shrink: 0;
+} 
+.content_container {
+    flex-grow: 1;
+}
