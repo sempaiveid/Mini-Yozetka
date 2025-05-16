@@ -38,7 +38,7 @@ export class CartService {
   }
 
   setQuantity(product : any, quantity: number){
-    const findProd = this.cart.find((item:any)=> item.name === product.name);
+    const findProd = this.cart.find((item:any)=> item.id === product.id);
     if(findProd){
       findProd.quantity = quantity;
       this.updateCart()
@@ -47,8 +47,8 @@ export class CartService {
     }
   }
 
-  deleteItem(name: string){
-    const item_to_remove : number = this.cart.findIndex((item:any)=> item.name === name);
+  deleteItem(id: string){
+    const item_to_remove : number = this.cart.findIndex((item:any)=> item.id === id);
     this.cart.splice(item_to_remove, 1);
     this.updateCart();
   }
