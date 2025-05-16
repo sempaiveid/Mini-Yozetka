@@ -24,13 +24,13 @@
 
 .search {
     flex-grow: 1;
+    margin-right: 10px;
 }
 
 .navigation {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 300px;
 }
 
 .burger {
@@ -40,5 +40,27 @@
 }
 
 .burger:hover {
+    background-color: #fff3;
+}
+
+.button-comparisons,
+.button-admin,
+.button-cart {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+    transition: 200ms;
+    border-radius: 4px;
+    position: relative;
+}
+
+
+
+.button-comparisons:hover,
+.button-admin:hover,
+.button-cart:hover {
     background-color: #fff3;
 }
