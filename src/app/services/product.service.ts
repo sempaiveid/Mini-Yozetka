@@ -31,7 +31,7 @@ export class ProductService {
     },
     {
       name: `Сумка крос-боді через плече жіноча з натуральної шкіри маленька Michael Kors 30S3SIMM8L-001 Чорна (196163826585)`,
-      picture: "https://content2.rozetka.com.ua/goods/images/big/293164376.jpg",
+      picture: "https://content2.rozetka.com.ua/goods/images/big/443858403.jpg",
       price: 16200,
       category: "cloth",
     },
