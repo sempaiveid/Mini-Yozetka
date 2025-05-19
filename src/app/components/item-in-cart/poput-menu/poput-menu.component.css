@@ -1,0 +1,15 @@
+button {
+    cursor: pointer;
+    fill: #3e77aa;
+    transform: 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+button:hover {
+    fill: #f84147;
+}
