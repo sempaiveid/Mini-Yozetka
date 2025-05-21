@@ -1,7 +1,6 @@
-
 <div class="titleTxt">Найкращі пропозиції для вас</div>
 <div class="tileBox">
-    <div class="productCard flex alingCentr" *ngFor="let item of products">
+    <div class="productCard flex alingCentr" id="{{item.id}}" *ngFor="let item of products">
         <div class="imgBox flex alingCentr">
             <img [src]="item.picture" alt="">
         </div>
@@ -141,4 +140,3 @@
         </div>
     </div>
 </div>
-

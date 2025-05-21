@@ -4,65 +4,66 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cart:any = [];
+  cart: any = [];
 
-  updateCart(){
+  updateCart() {
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
-  
-  set productCart (product: any){
-    if (typeof product !== 'object' || product === null){
+
+  set productCart(product: any) {
+    if (typeof product !== 'object' || product === null) {
       console.log(`Полученны некоректные данные. Сет ждёт Объект, а не ${typeof product}`);
       return;
     }
 
-    const existingProduct = this.cart.find((item: any)=> item.name === product.name);
+    const existingProduct = this.cart.find((item: any) => item.name === product.name);
 
-    if (existingProduct){
+    if (existingProduct) {
       existingProduct.quantity += 1;
     } else {
-      const newProduct = {...product, quantity: 1};
+      const newProduct = { ...product, quantity: 1 };
       this.cart.push(newProduct);
     }
 
     this.updateCart();
   }
 
-  get productCart(){
+  get productCart() {
     return [...this.cart];
   }
 
-  resetCart(){
+  resetCart() {
     this.cart = [];
     this.updateCart();
   }
 
-  setQuantity(product : any, quantity: number){
-    const findProd = this.cart.find((item:any)=> item.id === product.id);
-    if(findProd){
+  setQuantity(product: any, quantity: number) {
+    const findProd = this.cart.find((item: any) => item.id === product.id);
+    if (findProd) {
+      console.log("count update")
       findProd.quantity = quantity;
       this.updateCart()
-    } else{
+    } else {
       console.log(`Товар ${product.name} не найден в корзине`);
     }
   }
 
-  deleteItem(id: string){
-    const item_to_remove : number = this.cart.findIndex((item:any)=> item.id === id);
+  deleteItem(id: string) {
+    const item_to_remove: number = this.cart.findIndex((item: any) => item.id === id);
     this.cart.splice(item_to_remove, 1);
     this.updateCart();
   }
 
-  getTotalPrice(){
+  getTotalPrice() {
     let total = 0;
-    for(let product of this.cart){
+    for (let product of this.cart) {
       total += product.price * product.quantity;
     }
     return total;
   }
 
-  getCountOfCart(){
-    return this.cart.reduce((sum: number, item:any)=> sum + item.quantity, 0)
+  getCountOfCart() {
+    return this.cart.reduce((sum: number, item: any) => sum + item.quantity, 0)
   }
 
   constructor() {

@@ -1,8 +1,8 @@
 <div class="name-card">
     <h2>Кошик</h2>
 </div>
-<div *ngFor="let item of productCard" class="main-cart">
-    <div class="item-card">
+<div *ngFor="let item of productCard"   class="main-cart">
+    <div id="{{item.id}}" class="item-card">
         <a href="" class="container-img-card">
             <img [src]="item.picture" alt="Картинка">
         </a>
