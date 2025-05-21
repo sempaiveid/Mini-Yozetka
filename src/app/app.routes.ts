@@ -4,6 +4,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/admin-page/profile/profile.component';
 import { Routes } from '@angular/router';
+import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [
     {
@@ -32,5 +33,10 @@ export const routes: Routes = [
         path: "login",
         component: LoginPageComponent,
         title: "Login"
+    },
+    {
+        path: "product",
+        component:  ProductComponent,
+        title: "Product"
     }
 ];
