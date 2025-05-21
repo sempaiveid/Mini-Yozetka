@@ -1,10 +1,8 @@
 <div class="name-card">
     <h2>Кошик</h2>
 </div>
-
-<!-- Только товары: -->
-<div *ngFor="let item of productCard" class="main-cart">
-    <div class="item-card">
+<div *ngFor="let item of productCard"   class="main-cart">
+    <div id="{{item.id}}" class="item-card">
         <a href="" class="container-img-card">
             <img [src]="item.picture" alt="Картинка">
         </a>
@@ -14,20 +12,18 @@
             </a>
             <span style="font-size: 14px;">Продавець: Mini-YozetkaSan</span>
         </div>
-        <app-counter-product></app-counter-product>
+        <app-counter-product [inputCount]="item.quantity"></app-counter-product>
         <div class="container-price">
-            <p class="item-cost">{{ item.price }} ₴</p>
+            <p class="item-cost">{{ product.getTotalPrice() }} ₴</p>
         </div>
         <app-poput-menu></app-poput-menu>
     </div>
 </div>
-
-<!-- Футер (только один раз): -->
 <div class="cart-footer">
-    <button class="continue-to-buy" routerLink="" >Продовжити покупки</button>
+    <button class="continue-to-buy" routerLink="">Продовжити покупки</button>
     <div class="cart-footer-cost">
         <div class="cost">
-            <span>1799<span style="font-size: 34px;margin-left: 3px;">₴</span></span>
+            <span>{{product.getTotalPrice()}}<span style="font-size: 34px;margin-left: 3px;">₴</span></span>
         </div>
         <a class="btn-buy" href=""><span>Оформити замовлення</span></a>
     </div>

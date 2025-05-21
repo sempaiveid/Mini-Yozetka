@@ -1,10 +1,12 @@
 <div class="couter-conrainer">
-    <button class="minuse"><svg width="24" height="24" viewBox="0 0 32 51" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+    <button (click)="countMinuse($event)" class="minuse"><svg width="24" height="24" viewBox="0 0 32 51"
+            xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
             <path d="M5 25.5 H27" />
         </svg>
     </button>
-    <input value="1" type="number">
-    <button class="plus"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+    <input [value]="inputCount" (input)="inputQuantity($event)"  type="number">
+    <button (click)="countPlus($event)" class="plus"><svg width="24" height="24" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
             <path d="M12 4 V20" />
             <path d="M4 12 H20" />
         </svg>
