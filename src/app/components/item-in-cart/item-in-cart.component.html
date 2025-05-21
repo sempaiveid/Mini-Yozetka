@@ -1,10 +1,34 @@
-<div class="item-card">
-    <div>
-        <img src="" alt="Картинка">
+<div class="name-card">
+    <h2>Кошик</h2>
+</div>
+
+<!-- Только товары: -->
+<div *ngFor="let item of productCard" class="main-cart">
+    <div class="item-card">
+        <a href="" class="container-img-card">
+            <img [src]="item.picture" alt="Картинка">
+        </a>
+        <div style="width: 40%;" class="conteiner-title">
+            <a class="cart-title" href="">
+                <span>{{ item.name }}</span>
+            </a>
+            <span style="font-size: 14px;">Продавець: Mini-YozetkaSan</span>
+        </div>
+        <app-counter-product></app-counter-product>
+        <div class="container-price">
+            <p class="item-cost">{{ item.price }} ₴</p>
+        </div>
+        <app-poput-menu></app-poput-menu>
     </div>
-    <p> Імя товару </p>
-    <button>-</button>
-    <input type="text">
-    <button>+</button>
-    <p class="item-price">100₴</p>
+</div>
+
+<!-- Футер (только один раз): -->
+<div class="cart-footer">
+    <button class="continue-to-buy" routerLink="" >Продовжити покупки</button>
+    <div class="cart-footer-cost">
+        <div class="cost">
+            <span>1799<span style="font-size: 34px;margin-left: 3px;">₴</span></span>
+        </div>
+        <a class="btn-buy" href=""><span>Оформити замовлення</span></a>
+    </div>
 </div>

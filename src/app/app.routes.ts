@@ -22,15 +22,15 @@ export const routes: Routes = [
         title: "Admin",
         children: [
             {
-                path: "login",
-                component: LoginPageComponent,
-                title: "Login"
-            },
-            {
                 path: "profile",
                 component: ProfileComponent,
                 title: "Profile"
             }
         ]
+    },
+    {
+        path: "login",
+        component: LoginPageComponent,
+        title: "Login"
     }
 ];
