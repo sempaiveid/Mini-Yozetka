@@ -16,12 +16,14 @@ export class CartService {
       return;
     }
 
-    const existingProduct = this.cart.find((item: any) => item.name === product.name);
+    const existingProduct = this.cart.find((item: any) => item.id === product.id);
 
     if (existingProduct) {
       existingProduct.quantity += 1;
+      existingProduct.total = existingProduct.quantity * existingProduct.price;
     } else {
       const newProduct = { ...product, quantity: 1 };
+      newProduct.total = newProduct.quantity * newProduct.price;
       this.cart.push(newProduct);
     }
 
@@ -42,6 +44,7 @@ export class CartService {
     if (findProd) {
       console.log("count update")
       findProd.quantity = quantity;
+      findProd.total = findProd.quantity * findProd.price;
       this.updateCart()
     } else {
       console.log(`Товар ${product.name} не найден в корзине`);
