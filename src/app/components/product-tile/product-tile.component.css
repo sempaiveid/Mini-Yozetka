@@ -70,7 +70,10 @@
     color: inherit;
     text-decoration: none;
 }
-
+.textProd :hover{
+    text-decoration:solid;
+   color: #ff2200;
+}
 
 .priceCart {
     justify-content: space-between;
