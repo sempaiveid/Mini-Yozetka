@@ -1,8 +1,9 @@
 .tileBox {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding: 20px;
+    cursor: pointer;
 }
 
 .titleTxt {
@@ -20,12 +21,21 @@
     padding: 12px;
     flex-direction: column;
     transition: 0.2s ease-in-out;
-    height: 420px;
+    height: 450px;
     box-sizing: border-box;
+}
+
+.readyDel {
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    color: var(--color-green-600);
 }
 
 .productCard:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: scale(110%);
 }
 
 .imgBox {
@@ -42,16 +52,18 @@
 }
 
 .textProd {
-    height: 3.2em;
+    height: 3.5em;
     font-size: 16px;
     color: #333;
     text-align: center;
     margin: 10px 0;
+    overflow-x: inherit;
     overflow: hidden;
-    display: -webkit-box;
-    /* -webkit-line-clamp: 2; */
-    -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+     /* display: -webkit-box; */
+    /* -webkit-line-clamp: 2; */
+    /* -webkit-box-orient: vertical;*/
+   
 }
 
 .textProd a {
@@ -71,7 +83,7 @@
     font-size: 21px;
     font-family: "Gill Sans", sans-serif;
     color: black;
-     margin-top: auto;
+    margin-top: auto;
 }
 
 .cartBtn {
@@ -85,21 +97,35 @@
 .cartBtn:hover {
     background-color: #daffea;
 }
-.flex{
-      display: flex;
+
+.flex {
+    display: flex;
 }
-.alingCentr{
+
+.alingCentr {
     align-items: center;
 }
 
 
-@media (max-width: 1440px) {
+@media (max-width: 1600px) {
+    .tileBox {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1300px) {
+    .tileBox {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
     .tileBox {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
     .tileBox {
         grid-template-columns: repeat(1, 1fr);
     }
