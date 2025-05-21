@@ -1,11 +1,90 @@
 :host{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     form{
-        width: 40%;
+        width: 30%;
+        height: 45%;
+        display: flex;
+        flex-direction: column;
         border: 1px solid black;
+        border-radius: 15px;
+        justify-content: center;
+        .form_header{
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5%;
+            img{
+                width: 4%;
+                cursor: pointer;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                
+                &:hover{
+                    opacity: 0.6;
+                    transform: scale(1.2);
+                }
+            }
+            h3{
+                font-size: 30px;
+            }
+            
+            
+        }
+        hr {
+            height: 0;
+            color: #797878;
+            border-top-width: 1px;
+        }
+        
+        .forma_container{
+            width: 100%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .input_container{
+                display: flex;  
+                flex-direction: column;
+                margin-bottom: 5%;
+                width: 85%;
+                p{
+                    color: #797878;
+                    font-size: 15px;
+                }
+                input{
+                    padding: 5px;
+                    margin-top:1%;
+                    border: 1px solid #797878;
+                    border-radius: 5px;
+                    background-color: #f8f8f8;
+                    font-size: 16px;
+                    transition: all 0.3s ease;
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+                    &:focus {
+                        outline: none;
+                        border-color: #0000;
+                        background-color: #fff;
+                        box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
+                    }
+                }
+            }
+            
+            button{
+                cursor: pointer;
+                background-color: #00A046;
+                padding: 10px;
+                width:85%;
+                border-radius: 5px;
+                color: #fff;
+            }
+        }
+        
     }
 }
