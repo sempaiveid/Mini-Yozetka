@@ -1,0 +1,69 @@
+    .couter-conrainer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        padding: 0;
+        background-color: transparent;
+        font-size: 16px;
+        height: 40px;
+        margin: 0;
+        outline: none;
+    }
+
+    button:hover {
+        color: #a6a5a5;
+    }
+
+    .plus path {
+        stroke: #1E73BE;
+        stroke-width: 2;
+        stroke-linecap: round;
+        cursor: pointer;
+    }
+
+    .minuse path {
+        stroke: #1E73BE;
+        stroke-width: 4;
+        stroke-linecap: round;
+        cursor: pointer;
+    }
+
+    input {
+        width: 56px;
+        margin-left: 4px;
+        margin-right: 4px;
+        text-align: center;
+        height: 40px;
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+        font-size: 14px;
+        border: 1px solid #d2d2d2;
+        border-radius: 8px;
+        outline: none;
+        overflow: hidden;
+        -webkit-appearance: none;
+    }
+
+    input:focus {
+        border-color: #a6a5a5;
+        box-shadow: 0 0 0 2px #6fc4e5;
+    }
+
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input {
+        -moz-appearance: textfield;
+    }
