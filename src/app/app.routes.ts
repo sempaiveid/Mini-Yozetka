@@ -10,12 +10,12 @@ export const routes: Routes = [
     {
         path: "",
         component: HomeComponent,
-        title: "Home"
+        title: "Інтеренет-магазин Mini-Yozetka™"
     },
     {
         path: "cart",
         component: CartPageComponent,
-        title: "Cart"
+        title: "Інтеренет-магазин Mini-Yozetka™/Cart"
     },
     {
         path: "admin",
