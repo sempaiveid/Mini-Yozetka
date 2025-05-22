@@ -112,6 +112,9 @@
 .cartBtn:hover {
     background-color: #daffea;
 }
+.cartBtn:active{
+    background-color: #b5d7c7;
+}
 
 .flex {
     display: flex;
