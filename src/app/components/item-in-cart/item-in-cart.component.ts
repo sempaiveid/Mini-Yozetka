@@ -16,18 +16,4 @@ export class ItemInCartComponent {
   product: CartService = inject(CartService)
   productCard = this.product.productCart
   inputCount = 1
-  obj = {
-    id: String(crypto.randomUUID()),
-    name: "Бігова доріжка Xiaomi KingSmith",
-    picture: "https://content.rozetka.com.ua/goods/images/big/235053111.jpg",
-    price: 28999,
-    category: "home",
-
-  }
-  constructor() {
-    this.product.productCart = this.obj
-
-    console.log(this.productCard)
-  }
-
 }

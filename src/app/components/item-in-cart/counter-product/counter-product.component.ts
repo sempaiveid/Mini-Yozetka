@@ -26,11 +26,9 @@ export class CounterProductComponent {
       this.inputCount = 1
       return
       this.inputQuantity(event, this.inputCount)
-
     }
     this.inputCount -= 1
     this.inputQuantity(event, this.inputCount)
-
   }
   inputQuantity(event?: Event, quantity?: number) {
     if (quantity !== undefined) {
