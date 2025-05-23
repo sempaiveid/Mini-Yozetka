@@ -4,6 +4,7 @@
     gap: 20px;
     padding: 20px;
     cursor: pointer;
+    position: relative;
 }
 
 .titleTxt {
@@ -134,6 +135,46 @@
     align-items: center;
 }
 
+.container-left,
+.container-right {
+    border-radius: 50%;
+    position: absolute;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 999;
+
+}
+
+.container-left button,
+.container-right button {
+    padding: 15px;
+    cursor: pointer;
+    transition: 300ms;
+
+}
+
+.container-left {
+    left: 5px;
+}
+
+.container-right {
+    right: 5px;
+}
+
+.container-left button:hover,
+.container-right button:hover {
+    background-color:#e0e0e0;
+}
 
 @media (max-width: 1600px) {
     .tileBox {
