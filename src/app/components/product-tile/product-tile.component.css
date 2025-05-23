@@ -47,6 +47,7 @@
     justify-content: center;
     padding: 5px;
 }
+
 .imgBox img {
     max-width: 100%;
     max-height: 100%;
@@ -57,8 +58,10 @@
 .productCard:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: #00c853; /* мягкий зелёный акцент как на Rozetka */
+    border-color: #00c853;
+    /* мягкий зелёный акцент как на Rozetka */
 }
+
 .textProd {
     font-size: 16px;
     color: #333;
@@ -84,6 +87,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.3em;
+    transition: 200ms;
+}
+
+.textProd a:hover {
+    color: #f84147;
+    text-decoration: underline;
 }
 
 
@@ -112,7 +121,8 @@
 .cartBtn:hover {
     background-color: #daffea;
 }
-.cartBtn:active{
+
+.cartBtn:active {
     background-color: #b5d7c7;
 }
 
