@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cart: any = [];
+  cart:any[] = [];
 
   updateCart() {
     localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -52,7 +52,10 @@ export class CartService {
   }
 
   deleteItem(id: string) {
+
+    console.log(this.cart)
     const item_to_remove: number = this.cart.findIndex((item: any) => item.id === id);
+    console.log(item_to_remove)
     this.cart.splice(item_to_remove, 1);
     this.updateCart();
   }
