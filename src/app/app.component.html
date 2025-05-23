@@ -1,3 +1,4 @@
+<app-load-screen *ngIf="isActive"></app-load-screen>
 <app-header></app-header>
 <main class="main_container layout">
   <div class="sidebar_menu">
@@ -8,4 +9,4 @@
   </div>
 </main>
 
-<app-footer></app-footer>
+<app-footer *ngIf="!isActive"></app-footer>
