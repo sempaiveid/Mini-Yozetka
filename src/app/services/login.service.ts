@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
 interface User {
-  login: string;
   id: string;
+  login: string;
+  password: string;
+  
 }
 
 @Injectable({
@@ -12,19 +14,24 @@ export class LoginService {
   isLogined = false;
 
   user: User = {
+    id: crypto.randomUUID(),
     login: 'name',
-    id: crypto.randomUUID()
+    password: '123assd'
   }
 
   login(){
     this.isLogined = true;
     localStorage.setItem('isLogin', JSON.stringify(this.isLogined));
-    localStorage.setItem('user', JSON.stringify(this.user))
+    localStorage.setItem('user', JSON.stringify(this.user));
   }
   
   logOut(){
     this.isLogined = false;
-    localStorage.removeItem('isLogin')
+    localStorage.removeItem('isLogin');
+  }
+
+  getLoginStatus(){
+    localStorage.getItem('isLogin');
   }
  
   constructor() {}

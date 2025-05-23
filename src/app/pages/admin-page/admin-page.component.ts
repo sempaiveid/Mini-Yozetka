@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -9,12 +10,19 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class AdminPageComponent {
   router = inject(Router);
-  logined:boolean = false;
-  constructor(){
+  loginService = inject(LoginService)
+  logined:boolean = this.loginService.isLogined;
+
+  ngOnInit(){
     if (!this.logined) {
       this.router.navigate(["login"])
     } else{
       this.router.navigate(["/admin/profile"])
     }
+  }
+  constructor(){
+    console.log(this.loginService.getLoginStatus());
+    
+    
   }
 }
