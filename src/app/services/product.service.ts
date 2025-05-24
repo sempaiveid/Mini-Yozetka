@@ -116,6 +116,12 @@ export class ProductService {
       this.localUpdate();
     }
   }
+  fiveProduct(num1: number, num2: number): any {
+    console.log(this.items)
+    const arr:any = this.items.slice(num1, num2)
+    return arr
+  }
+
 
   constructor() {
     this.localUpdate();

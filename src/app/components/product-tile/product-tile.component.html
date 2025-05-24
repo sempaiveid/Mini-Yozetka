@@ -1,11 +1,20 @@
 <div class="titleTxt">Найкращі пропозиції для вас</div>
 <div class="tileBox">
+    <div class="container-left" [style.opacity]="canGoLeft ? '1' : '0.3'">
+        <button (click)="btnLeft()" [disabled]="!canGoLeft">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12L6 8L10 4" stroke="black" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
     <div class="productCard flex alingCentr" id="{{item.id}}" *ngFor="let item of products">
         <div class="imgBox flex alingCentr">
             <img [src]="item.picture" alt="">
         </div>
         <div class="textProd">
-            <a href="">{{ item.name }}</a></div>
+            <a href="">{{ item.name }}</a>
+        </div>
         <div class="readyDel flex">
             <svg fill="#ffa900" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 314.335 314.336" xml:space="preserve">
@@ -125,7 +134,6 @@
         <div class="priceCart flex alingCentr">
             <span class="price">{{ item.price }} ₴</span>
             <button (click)="productSet.productCart = item" class="cartBtn">
-
                 <svg _ngcontent-ng-c1542495165="" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
                     viewBox="0 0 24 24" fill="none">
                     <g _ngcontent-ng-c1542495165="" id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -140,5 +148,13 @@
                 </svg>
             </button>
         </div>
+    </div>
+    <div [style.opacity]="canGoRight ? '1' : '0.3'" class="container-right">
+        <button [disabled]="!canGoRight" (click)="btnRight()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4L10 8L6 12" stroke="black" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
     </div>
 </div>
