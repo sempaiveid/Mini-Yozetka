@@ -1,9 +1,42 @@
-:host{
+:host {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
- .box_404{
-     width: 50%;
-    height: 50%;
-} 
+
+.box_404 {
+    width: 70vw;
+    height: 50vh;
+    object-fit: cover;
+}
+
+.box_404 img {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-main {
+    background-color: #00a046;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    outline: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    cursor: pointer;
+    transition: 0.3;
+}
+
+.btn-main:hover {
+    background-color: #00bc52;
+    color: #fff;
+}

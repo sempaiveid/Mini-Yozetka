@@ -1,3 +1,6 @@
+:host{
+    position: relative;
+}
 .tileBox {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -5,6 +8,7 @@
     padding: 20px;
     cursor: pointer;
     position: relative;
+    overflow: visible
 }
 
 .titleTxt {
@@ -39,7 +43,7 @@
 
 .productCard:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: scale(110%);
+    transform: translateY(-5px) scale(1.03);
 }
 
 .imgBox {
@@ -60,7 +64,6 @@
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     border-color: #00c853;
-    /* мягкий зелёный акцент как на Rozetka */
 }
 
 .textProd {

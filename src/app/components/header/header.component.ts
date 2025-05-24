@@ -12,5 +12,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class HeaderComponent {
   showMenu = false;
-  cartService = inject(CartService).getCountOfCart()
+
+  cartService = inject(CartService)
+  count =this.cartService.getCountOfCart()
 }

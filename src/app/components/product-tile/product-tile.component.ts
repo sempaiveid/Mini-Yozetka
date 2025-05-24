@@ -16,6 +16,7 @@ export class ProductTileComponent {
   productItems: ProductService = inject(ProductService);
   productSet: CartService = inject(CartService);
   products = this.productItems.fiveProduct(0, this.count);
+  productArr = this.productSet.getCountOfCart()
 
   btnRight() {
     if (!this.canGoRight) return;
