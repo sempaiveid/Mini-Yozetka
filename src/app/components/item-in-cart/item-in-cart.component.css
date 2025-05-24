@@ -46,6 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .name-card>h2 {
@@ -154,15 +155,44 @@
     color: #fff;
 }
 
+:host {
+    position: relative;
+    max-width: 100%;
+}
+
 /* сообщение спасибо за покупку */
 .offer {
+    opacity: 0;
+    top: 40px;
+    right: -300px;
+    position: absolute;
     background-color: #00d45c;
     display: flex;
     color: #fff;
     padding: 30px;
     width: fit-content;
     border-radius: 18px 18px 1px 18px;
+    transition: 600ms;
 }
-.offer span{
+
+.offer span {
     font-size: 20px;
+}
+
+.none-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    flex-direction: column;
+    height: 50vh;
+    gap: 20px;
+}
+.none-product img{
+   width: 300px;
+   height: 300px;
+}
+.none-product p {
+    font-size: 24px;
+    font-weight: 500 ;
 }
