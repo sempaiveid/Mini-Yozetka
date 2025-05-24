@@ -153,3 +153,16 @@
     background-color: #00bc52;
     color: #fff;
 }
+
+/* сообщение спасибо за покупку */
+.offer {
+    background-color: #00d45c;
+    display: flex;
+    color: #fff;
+    padding: 30px;
+    width: fit-content;
+    border-radius: 18px 18px 1px 18px;
+}
+.offer span{
+    font-size: 20px;
+}
