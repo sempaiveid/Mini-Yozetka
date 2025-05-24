@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-mobile-menu',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './mobile-menu.component.html',
   styleUrl: './mobile-menu.component.css'
 })
