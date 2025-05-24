@@ -17,6 +17,14 @@ export class ItemInCartComponent {
   product: CartService = inject(CartService)
   productCard = this.product.productCart
   inputCount = 1
+  isBuy = false
+
+  buy() {
+    this.product.resetCart()
+    this.productCard = []
+    this.isBuy = true
+    setTimeout(() => this.isBuy = false,1500)
+  }
   clearCart() {
     this.product.resetCart()
     this.productCard = []
