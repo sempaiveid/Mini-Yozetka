@@ -1,1 +1,127 @@
-<p>product works!</p>
+
+<div *ngIf="item" class="bodyProductPage flex">
+    <div class="boxProductPage" >
+        <div class="boxImg">
+            <img [src]="item.picture" alt="" srcset="">
+        </div>
+        <div class="textBox" >
+            <div class="textProd">{{item.name}}</div>
+            <div class="itemProdBox">
+                <span class="grey">Продавець: <img height="30%" width="30%"
+                        src="https://content1.rozetka.com.ua/sellers/logo_svg/original/187326382.svg" alt=""
+                        srcset=""></span>
+                <hr>
+                <span class="readyBox">
+                    <p class="readyTxt">Є в наявності</p>
+                    <p class="price">{{item.price}} ₴</p>
+                </span>
+                <button class="buy">
+                    <svg _ngcontent-ng-c1542495165="" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                        viewBox="0 0 24 24" fill="none">
+                        <g _ngcontent-ng-c1542495165="" id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g _ngcontent-ng-c1542495165="" id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                            stroke-linejoin="round"></g>
+                        <g _ngcontent-ng-c1542495165="" id="SVGRepo_iconCarrier">
+                            <path _ngcontent-ng-c1542495165=""
+                                d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    Купити
+                </button>
+                <div class="boxImgItem">
+                    <img height="10%" width="10%"
+                        src="https://content2.rozetka.com.ua/payments_methods/logo/original/534616559.jpg"
+                        alt="rozetka">
+                    <img height="10%" width="10%"
+                        src="https://content2.rozetka.com.ua/payments_methods/logo/original/437858387.jpg"
+                        alt="privatBank">
+                    <img height="10%" width="10%"
+                        src="https://content1.rozetka.com.ua/payments_methods/logo/original/450067950.jpg"
+                        alt="monoBank">
+                </div>
+            </div>
+            <span class="padding10 textdeliv flex gap5">Самовивіз з магазинів Rozetka — 
+                <p class="colorgreen">
+                    БЕЗКОШТОВНО
+                </p>
+            </span>
+
+            <div class="itemProdBox">
+
+                <div class="txtPayBox flex column">
+                    <span class="flex txtPay">
+                        <svg fill="#787878" width="150px" height="150px" viewBox="0 0 846.66 846.66"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#787878"
+                            transform="matrix(1, 0, 0, 1, 0, 0)">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <defs>
+                                    <style type="text/css">
+                                        .fil0 {
+                                            fill: black;
+                                            fill-rule: nonzero
+                                        }
+                                    </style>
+                                </defs>
+                                <g id="Layer_x0020_1">
+                                    <path class="fil0"
+                                        d="M529.12 88.28c-78.14,74.28 -156.27,148.56 -234.4,222.85l221.68 -1.03 117.45 -111.66c-34.91,-36.72 -69.82,-73.44 -104.73,-110.16zm169.44 410.85l0 118.46 96.19 0 0 -118.46 -96.19 0zm-41.26 118.46l0 -118.46 -50.35 0 0 118.46 50.35 0zm-52.42 -159.73l73.05 0 36.03 0 0 -105.46c-181.34,0 -363.04,0 -544,0 -27.14,0 -27.14,-41.27 0,-41.27l65.01 0 123.31 -117.23 -242.8 0c-34.92,0 -63.57,28.65 -63.57,63.57l0 445.76c0,34.92 28.65,63.56 63.57,63.56l534.91 0c34.92,0 63.57,-28.64 63.57,-63.56l0 -44.37 -109.08 0c-21.57,0 -39.2,-17.67 -39.2,-39.2l0 -122.6c0,-21.56 17.66,-39.2 39.2,-39.2zm150.34 0l41.59 0c21.61,0 39.21,17.6 39.21,39.2l0 122.6c0,21.6 -17.6,39.2 -39.21,39.2l-41.59 0 0 44.37c0,57.7 -47.13,104.83 -104.83,104.83l-534.91 0c-57.7,0 -104.83,-47.13 -104.83,-104.83l0 -445.76c0,-57.7 47.13,-104.83 104.83,-104.83l286.2 0 113.99 -108.37c8.23,-7.84 21.26,-7.51 29.1,0.72l102.34 107.65 3.28 0c57.7,0 104.83,47.13 104.83,104.83l0 74.29 0 126.1zm-180.16 -146.73l138.9 0 0 -53.66c0,-22.33 -11.84,-42.87 -30.81,-54.39 -0.78,4.07 -2.79,7.93 -6.01,11l-102.08 97.05z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <p>Оплата. Картою онлайн, Оплата під час отримання товару, Оплата карткою у відділенні, Apple
+                            Pay,
+                            Google Pay, Безготівковими для юридичних осіб, -5% знижки за умови оплати карткою Mastercard
+                            від OTP
+                            Bank, Безготівковий для фізичних осіб, Visa, Mastercard</p>
+                    </span>
+                    <br>
+                    <hr>
+                    <span class="flex txtPay">
+                        <svg fill="#000000" height="30px" width="40px" version="1.1" id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 31.694 31.694" xml:space="preserve">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g>
+                                    <path
+                                        d="M23.112,9.35c-4.473,2.742-7.697,6.205-9.006,7.744l-3.361-2.633c-0.089-0.064-1.934,1.574-1.885,1.625l6.121,6.223 c0.045,0.051,0.107,0.074,0.174,0.074c0.012,0,0.031,0,0.047-0.004c0.08-0.018,0.148-0.072,0.178-0.152 c0.986-2.521,4.242-7.799,8.4-11.627c0.074-0.07,0.1-0.18,0.059-0.275C23.838,10.324,23.174,9.312,23.112,9.35z">
+                                    </path>
+                                    <path
+                                        d="M27.126,3.842c-9.268,0-10.836-3.518-10.85-3.551C16.208,0.119,16.04,0.004,15.85,0c0,0-0.004,0-0.008,0 c-0.184,0-0.354,0.115-0.428,0.283C15.403,0.32,13.801,3.842,4.568,3.842c-0.258,0-0.462,0.209-0.462,0.461v15.764 c0,6.453,11.084,11.383,11.553,11.59c0.062,0.027,0.121,0.037,0.188,0.037c0.061,0,0.127-0.01,0.186-0.037 c0.473-0.207,11.555-5.137,11.555-11.59V4.303C27.586,4.051,27.381,3.842,27.126,3.842z M25.038,19.15 c0,5.049-8.678,8.912-9.047,9.072c-0.045,0.023-0.098,0.031-0.145,0.031c-0.051,0-0.098-0.008-0.146-0.031 c-0.365-0.16-9.046-4.023-9.046-9.072V6.811c0-0.199,0.161-0.363,0.362-0.363c7.229,0,8.482-2.756,8.494-2.783 c0.057-0.133,0.189-0.223,0.334-0.223c0.002,0,0.006,0,0.006,0c0.148,0.002,0.279,0.092,0.332,0.229 c0.012,0.025,1.24,2.777,8.494,2.777c0.201,0,0.361,0.164,0.361,0.363L25.038,19.15L25.038,19.15z">
+                                    </path>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                    <g> </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <p>Гарантія. 1 місяць Обмін/повернення товару впродовж 14 днів </p>
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+        <app-commit-product></app-commit-product>
+</div>
+

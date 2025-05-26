@@ -1,0 +1,40 @@
+.bodyCommitBox {
+    display: flex;
+    height: 200px;
+    width: 70vw;
+    border: 1px solid green;
+    border-radius: 20px;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.dataText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.commentTxt {
+    margin-top: 20px;
+}
+
+.gray {
+    color: gray;
+}
+
+.txtHeader {
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.send {
+    height: 50px;
+    width: 150px;
+    border: #00a046 2px solid;
+    color: #00a046;
+    align-self: flex-end;
+    margin-top: 30px;
+    border-radius: 10px;
+}

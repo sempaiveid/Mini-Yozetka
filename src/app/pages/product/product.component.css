@@ -1,0 +1,152 @@
+.bodyProductPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    /* gap: 150px; */
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+
+.boxProductPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow-y: scroll; */
+}
+
+
+.boxImg {
+    height: 80vh;
+    width: 35vw;
+    /* border: 1px solid black; */
+}
+
+.textBox {
+    height: 80vh;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border: 1px solid black; */
+    padding: 5px;
+    font-weight: 350;
+}
+
+.itemProdBox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.star {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: #00a046;
+    color: #fff;
+    gap: 10px;
+    font-size: 20px;
+    height: 60px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.boxImgItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.bodyProductPage {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.textProd {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.readyTxt {
+    color: var(--color-green-600);
+    font-size: 18px;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: 550;
+
+}
+
+.grey {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    color: gray;
+    padding: 10px;
+}
+
+.readyBox {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.txtPay {
+    align-items: center;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.textdeliv {
+    font-weight: 550;
+
+}
+
+.colorgreen {
+    color: var(--color-green-600);
+}
+
+.flex {
+    display: flex;
+}
+
+.gap5 {
+    gap: 5px;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.txtPay {
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    overflow: hidden;
+    /* overflow-x: scroll; */
+}
+
+/* color:var(--color-green-600) */
+
+

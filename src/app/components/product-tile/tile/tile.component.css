@@ -1,18 +1,3 @@
-.tileBox {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    padding: 20px;
-    cursor: pointer;
-}
-
-.titleTxt {
-    font-size: 25px;
-    font-family: "Gill Sans", sans-serif;
-    color: black;
-    margin-top: 20px;
-}
-
 .productCard {
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -23,41 +8,15 @@
     transition: 0.2s ease-in-out;
     height: 450px;
     box-sizing: border-box;
+    
 }
-
-.flex {
-    display: flex;
+.titleTxt {
+    font-size: 25px;
+    font-family: "Gill Sans", sans-serif;
+    color: black;
+    margin-top: 20px;
 }
-
-.alingCentr {
-    align-items: center;
-}
-
-
-@media (max-width: 1600px) {
-    .tileBox {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 1300px) {
-    .tileBox {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 1200px) {
-    .tileBox {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
-    .tileBox {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-/* .readyDel {
+.readyDel {
     width: 100%;
     align-items: center;
     justify-content: flex-start;
@@ -96,7 +55,7 @@
     /* -webkit-line-clamp: 2; */
     /* -webkit-box-orient: vertical;*/
    
-/*}
+}
 
 .textProd a {
     color: inherit;
@@ -164,4 +123,4 @@
     .tileBox {
         grid-template-columns: repeat(1, 1fr);
     }
-} */
+}

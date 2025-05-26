@@ -6,14 +6,14 @@ import { Injectable } from '@angular/core';
 export class ProductService {
   items = [
     {
-      id: crypto.randomUUID(),
+      id: " 325499992",
       name: `Бігова доріжка Xiaomi KingSmith Walkingpad&Treadmill R2 Black (6970492718674)`,
       picture: "https://content.rozetka.com.ua/goods/images/big/235053111.jpg",
       price: 28999,
       category: "home",
     },
     {
-      id: crypto.randomUUID(),
+      id:  "365345670",
       name: `Тачка будівельна Budmonster 1-колісна 85 л вантажопідйомність 200 кг колесо лите 4 х 8" (01-011/2)`,
       picture: "https://content2.rozetka.com.ua/goods/images/big/309965559.jpg",
       price: 2075,
@@ -48,7 +48,7 @@ export class ProductService {
       category: "device",
     },
     {
-      id: crypto.randomUUID(),
+      id: "443236253",
       name: `Настільна гра Rozum Вибухові кошенята: Добро і зло (EKIEK12UA) (810083047133)`,
       picture: "https://content1.rozetka.com.ua/goods/images/big/456904280.jpg",
       price: 815,
