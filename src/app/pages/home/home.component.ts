@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ProductTileComponent } from '../../components/product-tile/product-tile.component';
 import { AdsComponent } from '../../components/ads/ads.component';
+import { CategorySidebarComponent } from '../../components/category-sidebar/category-sidebar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [ProductTileComponent,AdsComponent],
+  imports: [ProductTileComponent,AdsComponent,CategorySidebarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
