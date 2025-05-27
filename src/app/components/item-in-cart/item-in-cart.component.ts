@@ -2,32 +2,35 @@ import { Component, inject } from '@angular/core';
 import { PoputMenuComponent } from './poput-menu/poput-menu.component';
 import { CounterProductComponent } from './counter-product/counter-product.component';
 import { ProductService } from '../../services/product.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-item-in-cart',
-  imports: [PoputMenuComponent, CounterProductComponent, NgFor, RouterModule,],
+  imports: [PoputMenuComponent, CounterProductComponent, NgFor, RouterModule, NgIf],
   templateUrl: './item-in-cart.component.html',
   styleUrl: './item-in-cart.component.css'
 })
 export class ItemInCartComponent {
+  cartTemplate: HTMLElement
   product: CartService = inject(CartService)
   productCard = this.product.productCart
   inputCount = 1
-  obj = {
-    id: String(crypto.randomUUID()),
-    name: "Бігова доріжка Xiaomi KingSmith",
-    picture: "https://content.rozetka.com.ua/goods/images/big/235053111.jpg",
-    price: 28999,
-    category: "home",
+  isBuy = false
+
+  buy() {
+    this.product.resetCart()
+    this.productCard = []
+    this.isBuy = true
+    setTimeout(() => this.isBuy = false,1500)
+  }
+  clearCart() {
+    this.product.resetCart()
+    this.productCard = []
 
   }
   constructor() {
-    this.product.productCart = this.obj
-
-    console.log(this.productCard)
+    this.cartTemplate = document.querySelector(".main-cart") as HTMLElement
   }
-
 }

@@ -35,15 +35,15 @@ export class ProductComponent {
     // console.log(this.productItems.items);
    
       const activeRouts = this.activeRoute.snapshot.params["id"];
-      this.item = this.productItems.get().find(item => item.id === activeRouts);
-      console.log(typeof(activeRouts));
-      console.log(this.item);
+      // this.item = this.productItems.get().find(item => item.id === activeRouts);
+      // console.log(typeof(activeRouts));
+      // console.log(this.item);
     
-      console.log('Route ID:', this.activeRoute.snapshot.params["id"]);
-      console.log('Products:', this.productItems.get()[0].id);
+      // console.log('Route ID:', this.activeRoute.snapshot.params["id"]);
+      // console.log('Products:', this.productItems.get()[0].id);
 
-      console.log("Route param id:", activeRouts);
-      console.log("All product ids:");
+      // console.log("Route param id:", activeRouts);
+      // console.log("All product ids:");
       // this.productItems.get().forEach(item => console.log(item.id));
       
   }

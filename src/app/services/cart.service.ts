@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cart: any = [];
+  cart:any[] = [];
 
   updateCart() {
     localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -16,12 +16,14 @@ export class CartService {
       return;
     }
 
-    const existingProduct = this.cart.find((item: any) => item.name === product.name);
+    const existingProduct = this.cart.find((item: any) => item.id === product.id);
 
     if (existingProduct) {
       existingProduct.quantity += 1;
+      existingProduct.total = existingProduct.quantity * existingProduct.price;
     } else {
       const newProduct = { ...product, quantity: 1 };
+      newProduct.total = newProduct.quantity * newProduct.price;
       this.cart.push(newProduct);
     }
 
@@ -42,6 +44,7 @@ export class CartService {
     if (findProd) {
       console.log("count update")
       findProd.quantity = quantity;
+      findProd.total = findProd.quantity * findProd.price;
       this.updateCart()
     } else {
       console.log(`Товар ${product.name} не найден в корзине`);
@@ -49,7 +52,10 @@ export class CartService {
   }
 
   deleteItem(id: string) {
+
+    console.log(this.cart)
     const item_to_remove: number = this.cart.findIndex((item: any) => item.id === id);
+    console.log(item_to_remove)
     this.cart.splice(item_to_remove, 1);
     this.updateCart();
   }

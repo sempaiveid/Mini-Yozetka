@@ -14,7 +14,7 @@ export class AdminPageComponent {
     if (!this.logined) {
       this.router.navigate(["login"])
     } else{
-      this.router.navigate(["profile"])
+      this.router.navigate(["/admin/profile"])
     }
   }
 }

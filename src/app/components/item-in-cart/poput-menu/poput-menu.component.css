@@ -1,4 +1,5 @@
 button {
+    position: relative;
     cursor: pointer;
     fill: #3e77aa;
     transform: 200ms;
@@ -12,4 +13,38 @@ button {
 
 button:hover {
     fill: #f84147;
+}
+
+.modal {
+
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border: none;
+    color: #3e77aa;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1000;
+    top: -15px;
+    left: -80px;
+    transition: 300ms;
+}
+
+.modal button {
+    width: 100%;
+    margin: 0px 10px;
+}
+
+.modal:hover {
+    color: #ff7878;
 }
