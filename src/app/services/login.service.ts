@@ -15,8 +15,8 @@ export class LoginService {
 
   user: User = {
     id: crypto.randomUUID(),
-    login: 'name',
-    password: '123assd'
+    login: 'admin',
+    password: 'admin'
   }
 
   login(){

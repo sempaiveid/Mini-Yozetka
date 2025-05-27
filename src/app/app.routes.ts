@@ -6,6 +6,7 @@ import { ProfileComponent } from './pages/admin-page/profile/profile.component';
 import { Routes } from '@angular/router';
 import { ProductComponent } from './pages/product/product.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -22,12 +23,12 @@ export const routes: Routes = [
         path: "admin",
         component: AdminPageComponent,
         title: "Admin",
+        canActivate:[authGuard],
         children: [
             {
-                path: "profile",
-                component: ProfileComponent,
-                title: "Profile"
-            }
+                path: "", redirectTo:"profile", pathMatch:'full',
+            },
+            {path:"profile", component:ProfileComponent, title: "Profile"}
         ]
     },
     {

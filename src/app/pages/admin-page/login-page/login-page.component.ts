@@ -1,20 +1,22 @@
 import { Router, RouterOutlet } from '@angular/router';
 import { LoginService } from './../../../services/login.service';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
   router = inject(Router);
   loginService = inject(LoginService);
+  loginForm = new FormBuilder().group({
+    password: ['', [Validators.required, Validators.minLength(5)]]
+  });
 
   // login_input = new FormControl('login');
-  // password_input = new FormControl('password');
   
   ngOnInit(){
     if(this.loginService.isLogined){
@@ -24,13 +26,18 @@ export class LoginPageComponent {
 
 
   login(){
-    console.log("login");
-    this.loginService.login();
-    this.router.navigate(["/admin/profile"]);
+    const password = this.loginForm.get('password')?.value;
+
+    if(password === this.loginService.user.password){
+      this.loginService.login();
+      this.router.navigate(["/admin/profile"]);
+    }else{
+      alert("Неверный пароль")
+    }
+    
   }
 
   constructor(){
     console.log(this.loginService.getLoginStatus());
-    
   }
 }
