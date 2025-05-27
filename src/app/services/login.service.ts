@@ -11,7 +11,7 @@ interface User {
   providedIn: 'root'
 })
 export class LoginService {
-  isLogined = false;
+  isLogined: boolean = false;
 
   user: User = {
     id: crypto.randomUUID(),
@@ -30,9 +30,15 @@ export class LoginService {
     localStorage.removeItem('isLogin');
   }
 
-  getLoginStatus(){
-    localStorage.getItem('isLogin');
+  updateLoginStatus(){
+    this.isLogined = JSON.parse(localStorage.getItem('isLogin') || 'false');
+  }
+
+  getLoginStatus() : boolean {
+    return JSON.parse(localStorage.getItem('isLogin') || 'false');
   }
  
-  constructor() {}
+  constructor() {
+    this.updateLoginStatus();
+  }
 }

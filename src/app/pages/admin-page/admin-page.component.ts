@@ -11,7 +11,7 @@ import { LoginService } from '../../services/login.service';
 export class AdminPageComponent {
   router = inject(Router);
   loginService = inject(LoginService)
-  logined:boolean = this.loginService.isLogined;
+  logined:boolean = this.loginService.getLoginStatus();
 
   ngOnInit(){
     if (!this.logined) {
@@ -21,8 +21,5 @@ export class AdminPageComponent {
     }
   }
   constructor(){
-    console.log(this.loginService.getLoginStatus());
-    
-    
   }
 }

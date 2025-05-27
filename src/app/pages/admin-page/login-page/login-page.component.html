@@ -1,20 +1,20 @@
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form_header">
         <h3>Вход</h3>
         <img src="https://www.svgrepo.com/show/513658/cross.svg" alt="X-close">
     </div>
     <hr>
     <div class="forma_container">
-        <div class="input_container">
+        <!-- <div class="input_container">
             <p class="name_forma">Логин</p>
-            <input class="login" type="text">
-        </div>
+            <input formControl="login" class="login" type="text">
+        </div> -->
         <div class="input_container">
             <p>Пароль</p>
-            <input type="text">
+            <input formControlName="password" type="text">
         </div>
         
-        <button (click)="login()">Войти</button>
+        <button type="submit" [disabled]="loginForm.invalid">Войти</button>
     </div>
     
 </form>
