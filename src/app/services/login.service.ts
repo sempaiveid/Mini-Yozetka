@@ -1,31 +1,44 @@
 import { Injectable } from '@angular/core';
 
 interface User {
-  login: string;
   id: string;
+  login: string;
+  password: string;
+  
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  isLogined = false;
+  isLogined: boolean = false;
 
   user: User = {
-    login: 'name',
-    id: crypto.randomUUID()
+    id: crypto.randomUUID(),
+    login: 'admin',
+    password: 'admin'
   }
 
   login(){
     this.isLogined = true;
     localStorage.setItem('isLogin', JSON.stringify(this.isLogined));
-    localStorage.setItem('user', JSON.stringify(this.user))
+    localStorage.setItem('user', JSON.stringify(this.user));
   }
   
   logOut(){
     this.isLogined = false;
-    localStorage.removeItem('isLogin')
+    localStorage.removeItem('isLogin');
+  }
+
+  updateLoginStatus(){
+    this.isLogined = JSON.parse(localStorage.getItem('isLogin') || 'false');
+  }
+
+  getLoginStatus() : boolean {
+    return JSON.parse(localStorage.getItem('isLogin') || 'false');
   }
  
-  constructor() {}
+  constructor() {
+    this.updateLoginStatus();
+  }
 }

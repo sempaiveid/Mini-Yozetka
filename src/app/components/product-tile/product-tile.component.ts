@@ -14,6 +14,9 @@ import { TileComponent } from './tile/tile.component';
   providers: [CartService, ProductService]
 })
 export class ProductTileComponent {
+  @Input() category: string | null = null;
+  @Input() categoryName: string | null = null;
+
   count = 5;
   productItems: ProductService = inject(ProductService);
   productSet: CartService = inject(CartService);
@@ -38,5 +41,13 @@ export class ProductTileComponent {
 
   get canGoRight(): boolean {
     return this.count < this.productItems.items.length;
+  }
+
+  ngOnChanges(): void {
+    const filtered = this.category
+      ? this.productItems.items.filter(p => p.category === this.category)
+      : this.productItems.items;
+  
+    this.products = filtered.slice(0, this.count);
   }
 }

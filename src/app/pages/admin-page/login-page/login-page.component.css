@@ -1,12 +1,12 @@
 :host{
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     align-items: center;
     form{
         width: 30%;
-        height: 45%;
+        height: 55%;
         display: flex;
         flex-direction: column;
         border: 1px solid black;
@@ -56,6 +56,7 @@
                     color: #797878;
                     font-size: 15px;
                 }
+                
                 input{
                     padding: 5px;
                     margin-top:1%;
@@ -73,6 +74,21 @@
                         background-color: #fff;
                         box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
                     }
+                    
+                }
+
+                .ng-invalid{
+                    border-color: #f3020249;
+                    box-shadow: 0 0 0 3px #f3020249;
+                }
+                .ng-pristine{
+                    border-color: #0000;
+                    background-color: #fff;
+                    box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
+                }
+                .ng-valid{
+                    border-color: #02f32a49;
+                    box-shadow: 0 0 0 3px #f3020249;
                 }
             }
             
@@ -83,8 +99,13 @@
                 width:85%;
                 border-radius: 5px;
                 color: #fff;
+                &:disabled{
+                    background-color: #797878;
+                    cursor:default;
+                }
             }
         }
         
     }
 }
+

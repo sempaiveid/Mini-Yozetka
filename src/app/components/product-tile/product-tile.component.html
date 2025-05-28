@@ -1,4 +1,4 @@
-<div class="titleTxt">Найкращі пропозиції для вас</div>
+<div class="titleTxt">{{ categoryName || 'Найкращі пропозиції для вас' }}</div>
 <div class="tileBox">
     <div class="container-left" [style.opacity]="canGoLeft ? '1' : '0.3'">
         <button (click)="btnLeft()" [disabled]="!canGoLeft">
