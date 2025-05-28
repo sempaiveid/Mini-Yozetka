@@ -19,7 +19,8 @@ export class ProductTileComponent {
   productItems: ProductService = inject(ProductService);
   productSet: CartService = inject(CartService);
   products = this.productItems.fiveProduct(0, this.count);
-  productArr = this.productSet.getCountOfCart()
+  productArr = this.productSet.getCountOfCart();
+
 
   btnRight() {
     if (!this.canGoRight) return;
@@ -41,7 +42,12 @@ export class ProductTileComponent {
     return this.count < this.productItems.items.length;
   }
 
-  ngOnChanges(): void {
+  ngOnChanges():void {
+    this.initProducts();
+  }
+
+  private async initProducts(){
+    await this.productItems.loadFirstItems();
     const filtered = this.category
       ? this.productItems.items.filter(p => p.category === this.category)
       : this.productItems.items;
