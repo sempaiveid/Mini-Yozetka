@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { AdminFormComponent } from "../../admin-form/admin-form.component";
 import { NgIf } from '@angular/common';
 import { Event } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-poput-menu',
-  imports: [AdminFormComponent, NgIf],
+  imports: [NgIf],
   templateUrl: './poput-menu.component.html',
   styleUrl: './poput-menu.component.css'
 })
