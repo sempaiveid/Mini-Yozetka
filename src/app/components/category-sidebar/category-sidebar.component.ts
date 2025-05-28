@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,13 +8,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './category-sidebar.component.css'
 })
 export class CategorySidebarComponent {
+  @Output() categoryChange = new EventEmitter<{ name: string; key: string }>();
   categories = [
-    { name: 'Побутова техніка', icon: 'tools' },
-    { name: 'Зоотовари', icon: 'food' },
-    { name: 'Одяг', icon: 'clothes' },
+    { name: 'Побутова техніка', icon: 'tools', key: 'device' },
+    { name: 'Зоотовари', icon: 'food', key: 'food_pets' },
+    { name: 'Одяг', icon: 'clothes', key: 'cloth' },
   ];
 
-  onCategorySelect(category: string) {
-    console.log('Выбрана категория:', category);
+  onCategorySelect(category: any) {
+    this.categoryChange.emit(category);
   }
 }

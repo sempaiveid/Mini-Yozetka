@@ -10,5 +10,11 @@ import { CategorySidebarComponent } from '../../components/category-sidebar/cate
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  selectedCategory: string | null = null;
+  selectedCategoryName: string | null = null;
 
+  onCategoryChanged(category: any) {
+    this.selectedCategory = category.key;
+    this.selectedCategoryName = category.name;
+  }
 }

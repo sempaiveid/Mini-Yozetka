@@ -1,9 +1,9 @@
 <main class="main_container layout">
     <div class="sidebar_menu">
-      <app-category-sidebar></app-category-sidebar>
+      <app-category-sidebar (categoryChange)="onCategoryChanged($event)"></app-category-sidebar>
     </div>
     <div class="content_container flex-1">
         <app-ads></app-ads>
-        <app-product-tile></app-product-tile>
+        <app-product-tile [category]="selectedCategory" [categoryName]="selectedCategoryName"></app-product-tile>
     </div>
 </main>
