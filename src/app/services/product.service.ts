@@ -6,14 +6,14 @@ import { Injectable } from '@angular/core';
 export class ProductService {
   items = [
     {
-      id: " 325499992",
+      id: crypto.randomUUID(),
       name: `Бігова доріжка Xiaomi KingSmith Walkingpad&Treadmill R2 Black (6970492718674)`,
       picture: "https://content.rozetka.com.ua/goods/images/big/235053111.jpg",
       price: 28999,
       category: "device",
     },
     {
-      id:  "365345670",
+      id: crypto.randomUUID(),
       name: `Тачка будівельна Budmonster 1-колісна 85 л вантажопідйомність 200 кг колесо лите 4 х 8" (01-011/2)`,
       picture: "https://content2.rozetka.com.ua/goods/images/big/309965559.jpg",
       price: 2075,
@@ -48,7 +48,7 @@ export class ProductService {
       category: "device",
     },
     {
-      id: "443236253",
+      id: crypto.randomUUID(),
       name: `Настільна гра Rozum Вибухові кошенята: Добро і зло (EKIEK12UA) (810083047133)`,
       picture: "https://content1.rozetka.com.ua/goods/images/big/456904280.jpg",
       price: 815,
@@ -118,7 +118,7 @@ export class ProductService {
   }
   fiveProduct(num1: number, num2: number): any {
     console.log(this.items)
-    const arr:any = this.items.slice(num1, num2)
+    const arr: any = this.items.slice(num1, num2)
     return arr
   }
 
