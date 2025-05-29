@@ -7,6 +7,7 @@ export interface Product {
   name: string;
   picture: string;
   price: number;
+  description: string;
   category: string;
 }
 
@@ -42,6 +43,9 @@ export class ProductService {
 
   set addProduct(product: Product) {
     if (typeof product === "object" && Object.values(product).every((v) => v !== undefined && v !== null)) {
+      const existingItems = localStorage.getItem("items");
+      this.items = existingItems ? JSON.parse(existingItems) : [];
+
       product.id = crypto.randomUUID();
       this.items.push(product);
       this.localUpdate();
@@ -62,7 +66,6 @@ export class ProductService {
         await new Promise<void>((resolve, reject)=>{
           this.http.get<Product[]>('/data/default-products.json').subscribe({
             next: (data)=>{
-              console.log(data);
               this.items = data.map(product => ({...product, id: crypto.randomUUID()}));
               this.localUpdate();
               resolve();

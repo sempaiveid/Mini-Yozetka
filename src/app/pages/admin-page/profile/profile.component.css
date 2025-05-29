@@ -3,32 +3,62 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
-    .profile_icon{
-        width: 300px;
-        margin-left: 2%;
-        margin-top: 2%;
+
+    .profile_container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        .profile_setting{
-            margin-top: 2%;
-            width: 90%;
+        margin-left: 2%;
+        margin-top: 2%;
+        .profile_icon{
+            max-width: 300px;
             display: flex;
-            justify-content: space-between;
-            p{
-                font-size: 25px;
+            flex-direction: column;
+            align-items: center;
+            .profile_setting{
+                margin-top: 2%;
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+                p{
+                    font-size: 25px;
+                }
+                button{
+                    cursor: pointer;
+                    background-color: rgba(128, 128, 128, 0.773);
+                    border-radius: 10px;
+                    padding: 0px 10px;
+                }
             }
-            button{
-                cursor: pointer;
-                background-color: rgba(128, 128, 128, 0.773);
+            img{
                 border-radius: 10px;
-                padding: 0px 10px;
             }
         }
-        img{
-            border-radius: 10px;
+        .item_for_sale{
+            width: 100%;
+            .item_сontainer{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                border: 1px solid black;
+                border-radius: 10px;
+                img{
+                    max-width: 100px;
+                }
+                p{
+                    font-size: 20px;
+                }
+                button{
+                    cursor: pointer;
+                    background-color: rgb(168, 16, 16);
+                    border-radius: 10px;
+                    padding: 5px 10px;
+                }
+            }
         }
     }
+    
     .form_container{
         background-color: #007B2D;
         border-radius: 10px;
@@ -85,6 +115,30 @@
                     &::placeholder{
                         color: rgba(255, 255, 255, 0.8);
                     }
+                    &:hover {
+                        background-color: #0c4a23;
+                    }
+                    &:focus {
+                        outline: none;
+                        border-color: #0000;
+                        background-color: #0c4a23d4;
+                        box-shadow: 0 0 0 2px #000000;
+                    }
+
+                    &.ng-touched{
+                        outline: none;
+                        border-color: #0000;
+                        background-color: #0c4a23d4;
+                        box-shadow: 0 0 0 2px #000000;
+                    }
+                    &.ng-touched.ng-invalid{
+                        border-color: #e74c3c;
+                        box-shadow: 0 0 5px 1px #e74c3c;
+                    }
+                    &.ng-valid{
+                        border-color: #2ecc71;
+                        box-shadow: 0 0 3px 1px #2ecc71;
+                    }
                 }
                 textarea {
                     margin-top: 10px;
@@ -97,6 +151,29 @@
                     resize: none;
                     &::placeholder{
                         color: rgba(255, 255, 255, 0.8);
+                    }
+                    &:hover {
+                        background-color: #0c4a23;
+                    }
+                    &:focus {
+                        outline: none;
+                        border-color: #0000;
+                        background-color: #0c4a23d4;
+                        box-shadow: 0 0 0 2px #000000;
+                    }
+                    &.ng-touched{
+                        outline: none;
+                        border-color: #0000;
+                        background-color: #0c4a23d4;
+                        box-shadow: 0 0 0 2px #000000;
+                    }
+                    &.ng-touched.ng-invalid{
+                        border-color: #e74c3c;
+                        box-shadow: 0 0 5px 1px #e74c3c;
+                    }
+                    &.ng-valid{
+                        border-color: #2ecc71;
+                        box-shadow: 0 0 5px 1px #2ecc71;
                     }
                 }
             }
@@ -134,6 +211,31 @@
                             &::placeholder{
                                 color: rgba(255, 255, 255, 0.8);
                             }
+                    
+                            &:hover {
+                                background-color: #0c4a23;
+                            }
+                            &:focus {
+                                outline: none;
+                                border-color: #0000;
+                                background-color: #0c4a23d4;
+                                box-shadow: 0 0 0 2px #000000;
+                            }
+                            &.ng-touched{
+                                outline: none;
+                                border-color: #0000;
+                                background-color: #0c4a23d4;
+                                box-shadow: 0 0 0 2px #000000;
+                            }
+                            &.ng-touched.ng-invalid{
+                                border-color: #e74c3c;
+                                box-shadow: 0 0 5px 1px #e74c3c;
+                            }
+                            &.ng-valid{
+                                border-color: #2ecc71;
+                                box-shadow: 0 0 5px 1px #2ecc71;
+                            }
+                            
                         }
                     }
                     button{
@@ -142,6 +244,10 @@
                         padding: 10px 25px;
                         color: white;
                         background-color: #00a63e;
+                        &:disabled{
+                            background-color: #797878;
+                            cursor: not-allowed;
+                        }
                     }
                 }
 

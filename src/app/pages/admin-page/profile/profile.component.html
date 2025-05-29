@@ -1,38 +1,55 @@
-<div class="profile_icon">
-    <img src="https://upload.wikimedia.org/wikipedia/it/thumb/2/20/Megumin.png/1200px-Megumin.png" alt="">
-    <div class="profile_setting">
-        <p class="profile_name">
-            Name_profile
-        </p>
-        <button>Изменить</button>
+
+<div class="profile_container">
+    <div class="profile_icon">
+        <img src="https://upload.wikimedia.org/wikipedia/it/thumb/2/20/Megumin.png/1200px-Megumin.png" alt="">
+        <div class="profile_setting">
+            <p class="profile_name">
+                Name_profile
+            </p>
+            <button>Изменить</button>
+        </div>  
     </div>
-    
+
+    <div class="item_for_sale">
+        <div class="item_сontainer">
+            <img src="https://i.moyo.ua/img/products/4691/4_4000.jpg" alt="">
+            <p>Naming</p>
+            <button>Удалить</button>
+        </div>
+        <div class="item_сontainer">
+            <img src="https://i.moyo.ua/img/products/4691/4_4000.jpg" alt="">
+            <p>Naming</p>
+            <button>Удалить</button>
+        </div>
+    </div>
 </div>
+
+
 <div class="form_container">
     <div class="form_name">
         <img src="https://mmr.ua/uploaded/materials/a2a89af751.png" alt="">
         <p>Добавить товар</p>
     </div>
-    <form action="">
+    <form [formGroup]="addProductForm" (submit)="addProduct()">
         <div class="input_container">
             <p>Название товара</p>
-            <input type="text" placeholder="Введите название">
+            <input formControlName="name_product" type="text" placeholder="Введите название">
         </div>
         <div class="input_container">
             <p>Изображение</p>
-            <input type="text" placeholder="Ссылка на изображение">
+            <input formControlName="image_product" type="text" placeholder="Ссылка на изображение">
         </div>
         <div class="input_container">
             <p>Описание</p>
-            <textarea rows="4" placeholder="Описание товара"></textarea>
+            <textarea formControlName="description_product" rows="4" placeholder="Описание товара"></textarea>
         </div>
         
         <div class="submit_price">
             <div class="input_price">
                 <p>Цена</p>
-                <input type="number" min="0" class="no-spinners" placeholder="Введите цену">
+                <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену">
             </div>
-            <button type="submit">Submit</button>
+            <button [disabled]="addProductForm.invalid" type="submit">Добавить</button>
         </div>
         
     </form>
