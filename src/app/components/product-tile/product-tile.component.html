@@ -12,9 +12,10 @@
         <div class="imgBox flex alingCentr">
             <img [src]="item.picture" alt="">
         </div>
-        <div class="textProd">
-            <a href="">{{ item.name }}</a>
-        </div>
+         <app-tile 
+         [id]="item.id" 
+         [name]="item.name" >
+         </app-tile>
         <div class="readyDel flex">
             <svg fill="#ffa900" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 314.335 314.336" xml:space="preserve">
@@ -157,4 +158,5 @@
             </svg>
         </button>
     </div>
-</div>
+
+

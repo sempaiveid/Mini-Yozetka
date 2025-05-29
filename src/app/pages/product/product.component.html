@@ -1,1 +1,17 @@
-<p>product works!</p>
+<div *ngIf="item" class="bodyProductPage flex">
+    <app-header-catergory [category]="item.category"></app-header-catergory>
+    <div class="boxProductPage">
+        <div class="boxImg">
+            <app-product-image [srcImg]="item.picture"></app-product-image>
+        </div>
+        <div class="textBox">
+            <app-tile-price [name]="item.name" [price]="item.price"></app-tile-price>
+            <app-product-tile-data></app-product-tile-data>
+
+        </div>
+    </div>
+    <div class="boxCommit">
+        <app-commit-product></app-commit-product>
+    </div>
+
+</div>

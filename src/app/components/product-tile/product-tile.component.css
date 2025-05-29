@@ -31,7 +31,6 @@
     box-sizing: border-box;
     overflow: hidden;
 }
-
 .readyDel {
     width: 100%;
     align-items: center;
@@ -178,6 +177,39 @@
 .container-right button:hover {
     background-color:#e0e0e0;
 }
+
+@media (max-width: 1600px) {
+    .tileBox {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1300px) {
+    .tileBox {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .tileBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .tileBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.alingCentr {
+    align-items: center;
+}
+
 
 @media (max-width: 1600px) {
     .tileBox {
