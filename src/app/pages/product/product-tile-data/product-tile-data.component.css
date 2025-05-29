@@ -1,0 +1,47 @@
+.itemProdBox {
+    /*!*/
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 10px;
+    gap: 58px;
+}
+
+.flex {
+    /*!*/
+    display: flex;
+}
+
+.column {
+    /*!*/
+    flex-direction: column;
+}
+
+.txtPay {
+    /*!*/
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+     overflow: hidden; 
+    font-size: 100%;
+}
+
+.txtPay2 {
+    /*!*/
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    overflow: hidden;
+}
+
+/* color:var(--color-green-600) */
+@media (max-width: 1325px) {
+    .itemProdBox {
+        padding: 5px;
+    }
+}

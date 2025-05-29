@@ -3,29 +3,27 @@
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
-    /* gap: 150px; */
     flex-direction: column;
-    margin-top: 30px;
-
+    margin-top: 20px;
 }
 
 .boxProductPage {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    /* overflow-y: scroll; */
 }
 
-
 .boxImg {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 80vh;
-    width: 35vw;
-    /* border: 1px solid black; */
 }
 
 .textBox {
-    height: 80vh;
-    width: 35vw;
+    /* height: 100%; */
+    width: 45vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -35,65 +33,25 @@
     font-weight: 350;
 }
 
-.itemProdBox {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border: 1px solid black;
+img {
+    min-height: 80%;
+}
+
+app-header-catergory {
+    align-self: flex-start;
     width: 100%;
-    border-radius: 10px;
 }
 
-.star {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    margin-bottom: 20px;
+app-product-tile-data {
+    width: 100%;
 }
 
-.buy {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    background-color: #00a046;
-    color: #fff;
-    gap: 10px;
-    font-size: 20px;
-    height: 60px;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
+app-commit-product {
+    width: 100%;
 }
 
-.boxImgItem {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-}
-
-.bodyProductPage {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.textProd {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.readyTxt {
-    color: var(--color-green-600);
-    font-size: 18px;
-}
-
-.price {
-    font-size: 30px;
-    font-weight: 550;
-
+app-tile-price {
+    width: 100%;
 }
 
 .grey {
@@ -104,22 +62,8 @@
     padding: 10px;
 }
 
-.readyBox {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.txtPay {
-    align-items: center;
-}
-
 .padding10 {
     padding: 10px;
-}
-
-.textdeliv {
-    font-weight: 550;
-
 }
 
 .colorgreen {
@@ -138,15 +82,5 @@
     flex-direction: column;
 }
 
-.txtPay {
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    overflow: hidden;
-    /* overflow-x: scroll; */
-}
 
 /* color:var(--color-green-600) */
-
-

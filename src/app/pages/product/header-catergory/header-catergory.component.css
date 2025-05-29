@@ -1,0 +1,20 @@
+.boxCateg {
+
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-left: 50px;
+    color: gray;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+svg :hover {
+    fill: red;
+    text-decoration: underline;
+}
