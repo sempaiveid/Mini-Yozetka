@@ -4,20 +4,23 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+   
     form{
         width: 30%;
-        height: 55%;
+        max-width: 400px;
         display: flex;
         flex-direction: column;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         border-radius: 15px;
         justify-content: center;
+        padding-bottom:10px;
+        box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
         .form_header{
             height: 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 5%;
+            margin: 2% 5% 2% 5%;
             img{
                 width: 4%;
                 cursor: pointer;
@@ -35,9 +38,9 @@
             
         }
         hr {
-            height: 0;
             color: #797878;
             border-top-width: 1px;
+            margin-bottom: 5%;
         }
         
         .forma_container{
@@ -74,22 +77,18 @@
                         background-color: #fff;
                         box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
                     }
+                    &.ng-touched.ng-invalid{
+                        border-color: #e74d3c49;
+                        box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.4);
+                    }
+                    &.ng-valid{
+                        border-color: #2ecc706b;
+                        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.4);
+                    }
                     
                 }
 
-                .ng-invalid{
-                    border-color: #f3020249;
-                    box-shadow: 0 0 0 3px #f3020249;
-                }
-                .ng-pristine{
-                    border-color: #0000;
-                    background-color: #fff;
-                    box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
-                }
-                .ng-valid{
-                    border-color: #02f32a49;
-                    box-shadow: 0 0 0 3px #f3020249;
-                }
+                
             }
             
             button{
@@ -101,7 +100,7 @@
                 color: #fff;
                 &:disabled{
                     background-color: #797878;
-                    cursor:default;
+                    cursor: not-allowed;
                 }
             }
         }

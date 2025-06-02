@@ -5,6 +5,7 @@ import { CartService } from './services/cart.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoadScreenComponent } from './load-screen/load-screen.component';
 import { NgIf } from '@angular/common';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,15 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent {
   isActive = true
+
+  productService = inject(ProductService);
+
+  private async initProducts(){
+    await this.productService.loadFirstItems();
+  }
+
   ngOnInit() {
+    this.initProducts();
     setTimeout(() => {
       this.isActive = false
     }, 3000)

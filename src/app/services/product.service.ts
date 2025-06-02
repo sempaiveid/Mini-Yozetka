@@ -7,7 +7,9 @@ export interface Product {
   name: string;
   picture: string;
   price: number;
+  description: string;
   category: string;
+  uploader: string;
 }
 
 @Injectable({
@@ -27,6 +29,11 @@ export class ProductService {
     return arrayObj ? [...JSON.parse(arrayObj)] : [];
   }
 
+  find_uploader(user_name:string){
+    const user_products = this.get().filter((obj)=> obj.uploader === user_name);
+    return user_products;
+  }
+
   get_category(name_category: string) {
     const array_category = this.get().filter((obj) => obj.category === name_category);
     return array_category;
@@ -42,6 +49,9 @@ export class ProductService {
 
   set addProduct(product: Product) {
     if (typeof product === "object" && Object.values(product).every((v) => v !== undefined && v !== null)) {
+      const existingItems = localStorage.getItem("items");
+      this.items = existingItems ? JSON.parse(existingItems) : [];
+
       product.id = crypto.randomUUID();
       this.items.push(product);
       this.localUpdate();
@@ -62,7 +72,6 @@ export class ProductService {
         await new Promise<void>((resolve, reject)=>{
           this.http.get<Product[]>('/data/default-products.json').subscribe({
             next: (data)=>{
-              console.log(data);
               this.items = data.map(product => ({...product, id: crypto.randomUUID()}));
               this.localUpdate();
               resolve();
@@ -78,6 +87,12 @@ export class ProductService {
       console.error(`JSON не обработан, ошибка: ${e}`);
       this.items = [];
     }
+  }
+
+
+  deleteProduct(id : string){
+    this.items = this.items.filter(item => item.id !== id);
+    this.localUpdate();
   }
 
   constructor(private http: HttpClient) {
