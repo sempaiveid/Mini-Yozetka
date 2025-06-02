@@ -3,11 +3,11 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../services/product.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule , NgFor],
+  imports: [ReactiveFormsModule , NgFor, NgIf],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -23,6 +23,8 @@ export class ProfileComponent {
   })
 
   user_products:Product[] = [];
+
+  productToDelete: string | null = null;
 
   constructor(){
     this.update_user_products();
@@ -57,8 +59,18 @@ export class ProfileComponent {
     this.update_user_products();
   }
 
-  deleteProduct(product_id: string){
-    this.productService.deleteProduct(product_id);
-    this.update_user_products();
+  confirmDelete(productId: string) {
+    this.productToDelete = productId;
   }
+
+  cancelDelete() {
+    this.productToDelete = null;
+  }
+
+  deleteProduct(productId: string) {
+    this.productService.deleteProduct(productId);
+    this.update_user_products();
+    this.productToDelete = null;
+  }
+
 }

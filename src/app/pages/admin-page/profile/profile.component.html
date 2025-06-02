@@ -14,7 +14,16 @@
         <div class="item_сontainer">
             <img [src]="product.picture" [alt]="product.name">
             <p>{{ product.name }}</p>
-            <button (click)=deleteProduct(product.id)>Удалить</button>
+            <button (click)="confirmDelete(product.id)">Удалить</button>
+        </div>
+        <div class="modal_confirm" *ngIf="productToDelete === product.id">
+            <div class="window">
+                <p>Удалить?</p>
+                <div class="btn_container">
+                    <button (click)="deleteProduct(product.id)">Да</button>
+                    <button (click)="cancelDelete()">Нет</button>
+                </div>
+            </div>
         </div>
     </div>
 
