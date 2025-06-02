@@ -34,7 +34,7 @@
                 border-radius: 10px;
             }
         }
-        .item_for_sale{
+        .items_for_sale{
             width: 100%;
             .item_сontainer{
                 width: 100%;
@@ -43,6 +43,8 @@
                 justify-content: space-around;
                 border: 1px solid black;
                 border-radius: 10px;
+                min-height: 100px;
+                margin-top: 5%;
                 img{
                     max-width: 100px;
                 }
@@ -60,6 +62,7 @@
     }
     
     .form_container{
+        max-height:700px;
         background-color: #007B2D;
         border-radius: 10px;
         margin: 2%;

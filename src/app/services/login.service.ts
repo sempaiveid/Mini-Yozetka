@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Product } from './product.service';
 
 interface User {
   id: string;
   login: string;
   password: string;
-  
+  added_product:Product[];
 }
 
 @Injectable({
@@ -16,7 +17,19 @@ export class LoginService {
   user: User = {
     id: crypto.randomUUID(),
     login: 'admin',
-    password: 'admin'
+    password: 'admin',
+    added_product: [],
+  }
+
+  users_products = this.user.added_product;
+
+  add_user_product(products:Product[]){
+    this.users_products.push(...products);
+    this.update_user();
+  }
+
+  update_user(){
+    localStorage.setItem('user', JSON.stringify(this.user));
   }
 
   login(){

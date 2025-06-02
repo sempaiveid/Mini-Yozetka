@@ -1,22 +1,39 @@
+import { LoginService } from './../../../services/login.service';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../services/product.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule , NgFor],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
   productService: ProductService = inject(ProductService);
+  loginService: LoginService = inject(LoginService);
+
   addProductForm = new FormBuilder().group({
     name_product : ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё\s]+$/), Validators.minLength(4)]],
     image_product: ['', [Validators.required]],
     description_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё0-9\s]+$/), Validators.minLength(5)]],
     price_product:[ 0 , [Validators.required, Validators.pattern(/^\d+$/), Validators.pattern(/^[1-9][0-9]*$/)]]
   })
+
+  user_products:Product[] = [];
+
+  constructor(){
+    this.update_user_products();
+  }
+
+  update_user_products(){
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    if(user){
+      this.user_products = this.productService.find_uploader(user.login);
+    }
+  }
   
   addProduct(){
     if (this.addProductForm.invalid) {
@@ -31,9 +48,17 @@ export class ProfileComponent {
       price: this.addProductForm.controls.price_product.value as number,
       category:"No Category",
       description: this.addProductForm.controls.description_product.value as string,
+      uploader: this.loginService.user.login as string,
     };
 
     this.productService.addProduct = product;
+    this.loginService.add_user_product(this.productService.find_uploader(product.uploader));
     this.addProductForm.reset();
+    this.update_user_products();
+  }
+
+  deleteProduct(product_id: string){
+    this.productService.deleteProduct(product_id);
+    this.update_user_products();
   }
 }

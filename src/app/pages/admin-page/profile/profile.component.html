@@ -10,18 +10,14 @@
         </div>  
     </div>
 
-    <div class="item_for_sale">
+    <div class="items_for_sale" *ngFor="let product of user_products">
         <div class="item_сontainer">
-            <img src="https://i.moyo.ua/img/products/4691/4_4000.jpg" alt="">
-            <p>Naming</p>
-            <button>Удалить</button>
-        </div>
-        <div class="item_сontainer">
-            <img src="https://i.moyo.ua/img/products/4691/4_4000.jpg" alt="">
-            <p>Naming</p>
-            <button>Удалить</button>
+            <img [src]="product.picture" [alt]="product.name">
+            <p>{{ product.name }}</p>
+            <button (click)=deleteProduct(product.id)>Удалить</button>
         </div>
     </div>
+
 </div>
 
 

@@ -9,6 +9,7 @@ export interface Product {
   price: number;
   description: string;
   category: string;
+  uploader: string;
 }
 
 @Injectable({
@@ -26,6 +27,11 @@ export class ProductService {
   get() {
     const arrayObj = localStorage.getItem("items");
     return arrayObj ? [...JSON.parse(arrayObj)] : [];
+  }
+
+  find_uploader(user_name:string){
+    const user_products = this.get().filter((obj)=> obj.uploader === user_name);
+    return user_products;
   }
 
   get_category(name_category: string) {
@@ -81,6 +87,12 @@ export class ProductService {
       console.error(`JSON не обработан, ошибка: ${e}`);
       this.items = [];
     }
+  }
+
+
+  deleteProduct(id : string){
+    this.items = this.items.filter(item => item.id !== id);
+    this.localUpdate();
   }
 
   constructor(private http: HttpClient) {
