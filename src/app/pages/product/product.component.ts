@@ -14,7 +14,6 @@ import { ProductTileDataComponent } from './product-tile-data/product-tile-data.
   imports: [CommitProductComponent, NgIf,HeaderCatergoryComponent, ProductImageComponent, TilePriceComponent,ProductTileDataComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
-  providers: [ProductService]
 })
 
 export class ProductComponent {
