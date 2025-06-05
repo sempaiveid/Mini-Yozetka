@@ -13,22 +13,5 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent {
   showMenu = false;
-
   cartService = inject(CartService)
-  count = 0;
-  private intervalId: any;
-
-  ngOnInit() {
-    this.count = this.cartService.getCountOfCart();
-    this.intervalId = setInterval(() => {
-      const newCount = this.cartService.getCountOfCart();
-      if (newCount !== this.count) {
-        this.count = newCount;
-      }
-    }, 100);
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.intervalId);
-  }
 }

@@ -50,11 +50,11 @@
                             </g>
 
                         </svg>
-                        <div class="cart-count">{{count}}</div>
+                       <div class="cart-count">{{this.cartService.getCountOfCart()}}</div>
                     </button>
                 </li>
             </ul>
         </div>
-        <app-mobile-menu [isOpen]="showMenu" [cartCount]="count" (close)="showMenu = false"></app-mobile-menu>
+        <app-mobile-menu [isOpen]="showMenu" [cartCount]="this.cartService.getCountOfCart()" (close)="showMenu = false"></app-mobile-menu>
     </div>
 </header>
