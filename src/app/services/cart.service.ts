@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cart:any[] = [];
+  cart: any[] = [];
 
   updateCart() {
     localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -69,7 +69,7 @@ export class CartService {
   }
 
   getCountOfCart() {
-    return this.cart.reduce((sum: number, item: any) => sum + item.quantity, 0)
+    return this.cart.reduce((sum: number, item: any) => sum += item.quantity, 0)
   }
 
   constructor() {

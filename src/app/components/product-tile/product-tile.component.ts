@@ -7,11 +7,10 @@ import { TileComponent } from './tile/tile.component';
 
 @Component({
   selector: 'app-product-tile',
-  imports: [NgFor, RouterModule,TileComponent],
+  imports: [NgFor, RouterModule, TileComponent],
   standalone: true,
   templateUrl: './product-tile.component.html',
   styleUrl: './product-tile.component.css',
-  providers: [CartService, ProductService]
 })
 export class ProductTileComponent {
   @Input() category: string | null = null;
@@ -44,16 +43,19 @@ export class ProductTileComponent {
     return this.count < this.productItems.items.length;
   }
 
-  ngOnChanges():void {
+  ngOnChanges(): void {
     this.initProducts();
   }
+  addToCart(product: any) {
+    this.productSet.productCart = product;
+  }
 
-  private async initProducts(){
+  private async initProducts() {
     await this.productItems.loadFirstItems();
     const filtered = this.category
       ? this.productItems.items.filter(p => p.category === this.category)
       : this.productItems.items;
-  
+
     this.products = filtered.slice(0, this.count);
   }
 }
