@@ -26,7 +26,7 @@ export class AppComponent {
     this.initProducts();
     setTimeout(() => {
       this.isActive = false
-    }, 3000)
+    }, 1600)
   }
 
 }
