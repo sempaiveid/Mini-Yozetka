@@ -162,9 +162,9 @@
 
 /* сообщение спасибо за покупку */
 .offer {
-    opacity: 0;
+    opacity: 0 ;
     top: 40px;
-    right: -300px;
+    right: -50px;
     position: absolute;
     background-color: #00d45c;
     display: flex;
@@ -183,7 +183,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50vw;
     flex-direction: column;
     height: 50vh;
     gap: 20px;

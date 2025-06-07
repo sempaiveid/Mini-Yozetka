@@ -3,6 +3,7 @@ import { HeaderInputComponent } from './header-input/header-input.component';
 import { RouterModule } from '@angular/router';
 import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 import { CartService } from '../../services/cart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,5 @@ import { CartService } from '../../services/cart.service';
 })
 export class HeaderComponent {
   showMenu = false;
-
   cartService = inject(CartService)
-  count =this.cartService.getCountOfCart()
 }

@@ -1,7 +1,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form_header">
         <h3>Вход</h3>
-        <img src="https://www.svgrepo.com/show/513658/cross.svg" alt="X-close">
+        <img (click)="closeForm()" src="https://www.svgrepo.com/show/513658/cross.svg" alt="X-close">
     </div>
     <hr>
     <div class="forma_container">

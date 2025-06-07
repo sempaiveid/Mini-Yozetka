@@ -9,13 +9,11 @@
         </button>
     </div>
     <div class="productCard flex alingCentr" id="{{item.id}}" *ngFor="let item of products">
-        <div class="imgBox flex alingCentr">
+        <div [routerLink]="['/product',item.id]" class="imgBox flex alingCentr">
             <img [src]="item.picture" alt="">
         </div>
-         <app-tile 
-         [id]="item.id" 
-         [name]="item.name" >
-         </app-tile>
+        <app-tile [id]="item.id" [name]="item.name">
+        </app-tile>
         <div class="readyDel flex">
             <svg fill="#ffa900" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 314.335 314.336" xml:space="preserve">
@@ -134,19 +132,59 @@
 
         <div class="priceCart flex alingCentr">
             <span class="price">{{ item.price }} ₴</span>
-            <button (click)="productSet.productCart = item" class="cartBtn">
-                <svg _ngcontent-ng-c1542495165="" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
-                    viewBox="0 0 24 24" fill="none">
-                    <g _ngcontent-ng-c1542495165="" id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g _ngcontent-ng-c1542495165="" id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                        stroke-linejoin="round"></g>
-                    <g _ngcontent-ng-c1542495165="" id="SVGRepo_iconCarrier">
-                        <path _ngcontent-ng-c1542495165=""
-                            d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
-                            stroke="var(--color-green-600)" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                    </g>
-                </svg>
+            <button (click)="addToCart(item)" class="cartBtn">
+                <ng-container *ngIf="!isItemInCart(item); else isCard">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <g stroke-width="0"></g>
+                        <g stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g>
+                            <path
+                                d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                                stroke="var(--color-green-600)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </ng-container>
+
+                <ng-template #isCard>
+                    <svg width="24px" height="24px" viewBox="0 0 32.00 32.00" id="svg5" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" fill="#00bc52"
+                        transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)" stroke="#00bc52" stroke-width="0.00032">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="0.064"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <defs id="defs2"></defs>
+                            <g id="layer1" transform="translate(36,-292)">
+                                <path
+                                    d="m -27,316.00586 c -1.645008,0 -3,1.35499 -3,3 0,1.64501 1.354992,3 3,3 1.645008,0 3,-1.35499 3,-3 0,-1.64501 -1.354992,-3 -3,-3 z m 0,2 c 0.564129,0 1,0.43587 1,1 0,0.56413 -0.435871,1 -1,1 -0.564129,0 -1,-0.43587 -1,-1 0,-0.56413 0.435871,-1 1,-1 z"
+                                    id="circle5359"
+                                    style="color:#00bc52;fill:#00bc52;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                                </path>
+                                <path
+                                    d="m -13,316.00586 c -1.645008,0 -3,1.35499 -3,3 0,1.64501 1.354992,3 3,3 1.645008,0 3,-1.35499 3,-3 0,-1.64501 -1.354992,-3 -3,-3 z m 0,2 c 0.564129,0 1,0.43587 1,1 0,0.56413 -0.435871,1 -1,1 -0.564129,0 -1,-0.43587 -1,-1 0,-0.56413 0.435871,-1 1,-1 z"
+                                    id="circle5361"
+                                    style="color:#00bc52;fill:#00bc52;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                                </path>
+                                <path
+                                    d="m -12,294.00586 c -3.30186,0 -6,2.69814 -6,6 0,3.30186 2.69814,6 6,6 3.30186,0 6,-2.69814 6,-6 0,-3.30186 -2.69814,-6 -6,-6 z m 0,2 c 2.2209809,0 4,1.77902 4,4 0,2.22098 -1.7790191,4 -4,4 -2.220981,0 -4,-1.77902 -4,-4 0,-2.22098 1.779019,-4 4,-4 z"
+                                    id="circle43373-3"
+                                    style="color:#00bc52;fill:#00bc52;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                                </path>
+                                <path
+                                    d="m -9.8984375,298.01172 a 1,1 0 0 0 -0.7343755,0.21875 l -2.029296,1.65625 -0.65625,-0.61133 a 1,1 0 0 0 -1.41211,0.0488 1,1 0 0 0 0.04883,1.41211 l 1.292969,1.20898 a 1.0001,1.0001 0 0 0 1.3125,0.043 l 2.7089845,-2.20703 a 1,1 0 0 0 0.1425781,-1.40625 1,1 0 0 0 -0.6738281,-0.36328 z"
+                                    id="path43375-6"
+                                    style="color:#00bc52;fill:#00bc52;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                                </path>
+                                <path
+                                    d="m -32.95117,294 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 1.17969 l 2.65039,13.24219 c -1.07078,0.46018 -1.83008,1.52737 -1.83008,2.75781 0,1.6447 1.3553,3 3,3 h 17 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 h -17 c -0.5713,0 -1,-0.4287 -1,-1 0,-0.5713 0.4287,-1 1,-1 h 15 a 1,1 0 0 0 0.0293,-0.006 h 2.9707 a 1.0001,1.0001 0 0 0 0.98828,-0.84375 l 0.93945,-5.96875 A 1,1 0 0 0 -8.85547,303.03697 1,1 0 0 0 -10,303.87095 l -0.80664,5.12319 H -27.13086 L -28.93164,300 h 12.08399 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 h -12.48438 l -0.63867,-3.19531 A 1.0001,1.0001 0 0 0 -30.95117,294 Z"
+                                    id="path21288"
+                                    style="color:#00bc52;fill:#00bc52;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </ng-template>
             </button>
         </div>
     </div>
@@ -158,5 +196,3 @@
             </svg>
         </button>
     </div>
-
-

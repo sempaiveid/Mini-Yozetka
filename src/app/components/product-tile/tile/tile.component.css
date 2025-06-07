@@ -27,6 +27,42 @@
     transition: 200ms;
 }
 
+.cartBtn:hover {
+    background-color: #daffea;
+}
+
+.flex {
+    display: flex;
+}
+
+.alingCentr {
+    align-items: center;
+}
+
+
+@media (max-width: 1600px) {
+    .tileBox {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1300px) {
+    .tileBox {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .tileBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .tileBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 .textProd a:hover {
     color: #f84147;
     text-decoration: underline;

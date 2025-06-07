@@ -5,7 +5,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
@@ -32,9 +32,14 @@ export class LoginPageComponent {
       this.loginService.login();
       this.router.navigate(["/admin/profile"]);
     }else{
-      alert("Неверный пароль")
+      alert("Неверный пароль");
     }
     
+  }
+
+  closeForm(){
+    this.router.navigate(["/"]);
+    this.loginForm.reset();
   }
 
   constructor(){

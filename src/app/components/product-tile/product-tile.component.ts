@@ -1,13 +1,13 @@
 import { Component, inject, Input } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { RouterModule } from '@angular/router';
 import { TileComponent } from './tile/tile.component';
 
 @Component({
   selector: 'app-product-tile',
-  imports: [NgFor, RouterModule,TileComponent],
+  imports: [NgFor, RouterModule, TileComponent, NgIf],
   standalone: true,
   templateUrl: './product-tile.component.html',
   styleUrl: './product-tile.component.css',
@@ -43,16 +43,28 @@ export class ProductTileComponent {
     return this.count < this.productItems.items.length;
   }
 
-  ngOnChanges():void {
+  ngOnChanges(): void {
     this.initProducts();
   }
+  addToCart(product: any) {
+    let isCart: any = this.productSet.productCart.some((el: any) => el.id === product.id)
+    if (!isCart) {
+      this.productSet.productCart = product;
+    }
+    else {
+      this.productSet.deleteItem(product.id)
+    }
+  }
+  isItemInCart(item: any): boolean {
+    return this.productSet.productCart.some((el: any) => el.id === item.id)
+  }
 
-  private async initProducts(){
+  private async initProducts() {
     await this.productItems.loadFirstItems();
     const filtered = this.category
       ? this.productItems.items.filter(p => p.category === this.category)
       : this.productItems.items;
-  
+
     this.products = filtered.slice(0, this.count);
   }
 }

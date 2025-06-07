@@ -1,38 +1,60 @@
-<div class="profile_icon">
-    <img src="https://upload.wikimedia.org/wikipedia/it/thumb/2/20/Megumin.png/1200px-Megumin.png" alt="">
-    <div class="profile_setting">
-        <p class="profile_name">
-            Name_profile
-        </p>
-        <button>Изменить</button>
+
+<div class="profile_container">
+    <div class="profile_icon">
+        <img src="https://upload.wikimedia.org/wikipedia/it/thumb/2/20/Megumin.png/1200px-Megumin.png" alt="">
+        <div class="profile_setting">
+            <p class="profile_name">
+                Name_profile
+            </p>
+            <button>Изменить</button>
+        </div>  
     </div>
-    
+
+    <div class="items_for_sale" *ngFor="let product of user_products">
+        <div class="item_сontainer">
+            <img [src]="product.picture" [alt]="product.name">
+            <p>{{ product.name }}</p>
+            <button (click)="confirmDelete(product.id)">Удалить</button>
+        </div>
+        <div class="modal_confirm" *ngIf="productToDelete === product.id">
+            <div class="window">
+                <p>Удалить?</p>
+                <div class="btn_container">
+                    <button (click)="deleteProduct(product.id)">Да</button>
+                    <button (click)="cancelDelete()">Нет</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
 <div class="form_container">
     <div class="form_name">
         <img src="https://mmr.ua/uploaded/materials/a2a89af751.png" alt="">
         <p>Добавить товар</p>
     </div>
-    <form action="">
+    <form [formGroup]="addProductForm" (submit)="addProduct()">
         <div class="input_container">
             <p>Название товара</p>
-            <input type="text" placeholder="Введите название">
+            <input formControlName="name_product" type="text" placeholder="Введите название">
         </div>
         <div class="input_container">
             <p>Изображение</p>
-            <input type="text" placeholder="Ссылка на изображение">
+            <input formControlName="image_product" type="text" placeholder="Ссылка на изображение">
         </div>
         <div class="input_container">
             <p>Описание</p>
-            <textarea rows="4" placeholder="Описание товара"></textarea>
+            <textarea formControlName="description_product" rows="4" placeholder="Описание товара"></textarea>
         </div>
         
         <div class="submit_price">
             <div class="input_price">
                 <p>Цена</p>
-                <input type="number" min="0" class="no-spinners" placeholder="Введите цену">
+                <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену">
             </div>
-            <button type="submit">Submit</button>
+            <button [disabled]="addProductForm.invalid" type="submit">Добавить</button>
         </div>
         
     </form>
