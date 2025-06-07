@@ -9,4 +9,8 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductImageComponent {
 @Input()  srcImg: string = ""
+
+onClick(){
+  console.log("click")
+}
 }

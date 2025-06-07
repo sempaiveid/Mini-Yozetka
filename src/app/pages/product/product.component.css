@@ -1,40 +1,34 @@
 .bodyProductPage {
-    display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
-    flex-direction: column;
     margin-top: 20px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
 }
 
 .boxProductPage {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-}
-
-.boxImg {
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
+    height: 100%;
+    width: 100%;
+    gap: 30px;
 }
 
 .textBox {
-    /* height: 100%; */
-    width: 45vw;
+    width: 45%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    /* border: 1px solid black; */
     padding: 5px;
-    font-weight: 350;
 }
 
-img {
-    min-height: 80%;
+app-product-image {
+    height: 100%;
+    width: 50%;
 }
 
 app-header-catergory {
@@ -42,16 +36,11 @@ app-header-catergory {
     width: 100%;
 }
 
-app-product-tile-data {
+app-tile-price,app-commit-product,app-product-tile-data{
     width: 100%;
 }
-
-app-commit-product {
-    width: 100%;
-}
-
-app-tile-price {
-    width: 100%;
+app-description-product{
+    width: 95%;
 }
 
 .grey {

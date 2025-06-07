@@ -11,7 +11,6 @@ import { TileComponent } from './tile/tile.component';
   standalone: true,
   templateUrl: './product-tile.component.html',
   styleUrl: './product-tile.component.css',
-  providers: [CartService, ProductService]
 })
 export class ProductTileComponent {
   @Input() category: string | null = null;

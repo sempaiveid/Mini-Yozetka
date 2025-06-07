@@ -7,14 +7,14 @@ import { HeaderCatergoryComponent } from './header-catergory/header-catergory.co
 import { ProductImageComponent } from './product-image/product-image.component';
 import { TilePriceComponent } from './tile-price/tile-price.component';
 import { ProductTileDataComponent } from './product-tile-data/product-tile-data.component';
+import { DescriptionProductComponent } from './description-product/description-product.component';
 
 
 @Component({
   selector: 'app-product',
-  imports: [CommitProductComponent, NgIf,HeaderCatergoryComponent, ProductImageComponent, TilePriceComponent,ProductTileDataComponent],
+  imports: [CommitProductComponent, NgIf,HeaderCatergoryComponent, ProductImageComponent, TilePriceComponent,ProductTileDataComponent,DescriptionProductComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
-  providers: [ProductService]
 })
 
 export class ProductComponent {
@@ -30,7 +30,7 @@ export class ProductComponent {
       picture: string;
       price: number;
       category: string;
-      discribe :string;
+      description :{tile:string,text:string,bold:boolean};
     }
     | undefined;
 
@@ -41,7 +41,9 @@ export class ProductComponent {
     if (!this.item) {
       this.router.navigate(['/404']);
     }
-
+    document.body.style.backgroundColor="#f5f5f5"
+    //console.log(this.item?.description.text)
+   // localStorage.clear()
   }
 
 }

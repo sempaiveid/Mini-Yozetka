@@ -1,28 +1,29 @@
 
+div{
+    background-color: #fff;;
+}
 
 .itemProdBox {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border: 1px solid black;
+    padding: 20px;
     width: 100%;
     border-radius: 10px;
-    gap: 20px;
+    gap: 15px;
 }
 
 .buy {
-    display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    background-color: #00a046;
-    color: #fff;
+    background-color: rgb(0, 166, 80);
+    color: white;
     gap: 10px;
     font-size: 20px;
     height: 60px;
     margin-top: 20px;
     margin-bottom: 30px;
     border-radius: 10px;
+}
+.buy:hover{
+    background-color:rgb(0, 197, 95);
 }
 
 .boxImgItem {
@@ -33,12 +34,13 @@
 }
 
 .textProd {
-    font-size: 25px;
-    margin-bottom: 30px;
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-weight: 500;
 }
 
 .readyTxt {
-    color: var(--color-green-600);
+    color: rgb(0, 166, 80);
     font-size: 18px;
 }
 
@@ -70,28 +72,21 @@
 
 .textdeliv {
     font-weight: 550;
+    gap: 5px;
 
 }
 
 .colorgreen {
-    color: var(--color-green-600);
+    color:  rgb(0, 166, 80);
 }
 
 .flex {
     display: flex;
 }
 
-.gap5 {
-    gap: 5px;
-}
-
 .column {
     flex-direction: column;
 }
-
-
-
-/* color:var(--color-green-600) */
 
 app-header-catergory {
     align-self: flex-start;
