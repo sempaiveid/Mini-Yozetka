@@ -1,46 +1,3 @@
-.productCard {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: 12px;
-    flex-direction: column;
-    transition: 0.2s ease-in-out;
-    height: 450px;
-    box-sizing: border-box;
-    
-}
-.titleTxt {
-    font-size: 25px;
-    font-family: "Gill Sans", sans-serif;
-    color: black;
-    margin-top: 20px;
-}
-.readyDel {
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    color: var(--color-green-600);
-}
-
-.productCard:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: scale(110%);
-}
-
-.imgBox {
-    width: 100%;
-    height: 60%;
-    justify-content: center;
-    padding: 5px;
-}
-
-.imgBox img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
 
 .textProd {
     font-size: 16px;
@@ -54,11 +11,11 @@
     text-overflow: ellipsis;
     line-height: 1.3em;
     height: calc(1.3em * 2);
-   
+
 }
 
 .textProd a {
-      display: -webkit-box;
+    display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     color: inherit;
@@ -68,32 +25,6 @@
     text-overflow: ellipsis;
     line-height: 1.3em;
     transition: 200ms;
-}
-.textProd :hover{
-    text-decoration:solid;
-   color: #ff2200;
-}
-
-.priceCart {
-    justify-content: space-between;
-    width: 100%;
-    margin-top: auto;
-    padding-top: 10px;
-}
-
-.price {
-    font-size: 21px;
-    font-family: "Gill Sans", sans-serif;
-    color: black;
-    margin-top: auto;
-}
-
-.cartBtn {
-    border: none;
-    border-radius: 4px;
-    padding: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .cartBtn:hover {
@@ -131,4 +62,8 @@
     .tileBox {
         grid-template-columns: repeat(1, 1fr);
     }
+}
+.textProd a:hover {
+    color: #f84147;
+    text-decoration: underline;
 }

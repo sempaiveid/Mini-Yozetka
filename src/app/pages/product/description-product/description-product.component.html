@@ -1,0 +1,15 @@
+<div class="deskBox">
+    <b class="firstTxt"> Опис </b>
+
+    <div [class.collapsed]="isCollapsed" #textBox class="textBox">
+        <b> {{description.tile}}</b>
+        <div  *ngFor="let line of lines">
+            <p>{{ line }}</p>
+            
+        </div>
+        
+    </div>
+</div>
+<div> <button class="button" type="button" (click)="openDiv()">
+        {{ isCollapsed ? 'Розгорнути' : 'Згорнути' }}
+    </button></div>

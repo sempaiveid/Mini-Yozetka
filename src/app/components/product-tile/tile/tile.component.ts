@@ -7,7 +7,6 @@ import { ProductService } from '../../../services/product.service';
   imports: [RouterLink, RouterModule],
   templateUrl: './tile.component.html',
   styleUrl: './tile.component.css',
-  providers: [ProductService]
 })
 export class TileComponent {
   @Input() name = "";
