@@ -1,6 +1,6 @@
-
-div{
-    background-color: #fff;;
+div {
+    background-color: #fff;
+    ;
 }
 
 .itemProdBox {
@@ -21,9 +21,12 @@ div{
     margin-top: 20px;
     margin-bottom: 30px;
     border-radius: 10px;
+    transition: 0.7s;
 }
-.buy:hover{
-    background-color:rgb(0, 197, 95);
+
+.buy:hover {
+    background-color: rgb(0, 197, 95);
+    cursor: pointer;
 }
 
 .boxImgItem {
@@ -31,6 +34,13 @@ div{
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.boxImgItem::-webkit-scrollbar {
+    background: gray;
+    height: 2px;
 }
 
 .textProd {
@@ -77,7 +87,7 @@ div{
 }
 
 .colorgreen {
-    color:  rgb(0, 166, 80);
+    color: rgb(0, 166, 80);
 }
 
 .flex {

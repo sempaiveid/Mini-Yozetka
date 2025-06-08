@@ -25,6 +25,13 @@
     align-items: flex-start;
     padding: 5px;
 }
+.product-banner__picture{
+    width: 100%;
+    vertical-align: middle;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 app-product-image {
     height: 100%;

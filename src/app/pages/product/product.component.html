@@ -5,9 +5,9 @@
             <app-product-image [srcImg]="item.picture"></app-product-image>
         
         <div class="textBox">
-            <app-tile-price [name]="item.name" [price]="item.price"></app-tile-price>
+            <app-tile-price [name]="item.name" [price]="item.price" [product]="item"></app-tile-price>
+            <img  class="product-banner__picture" alt="Розігріваємо знижками до -55%" src="https://content2.rozetka.com.ua/banner_product_page/image_big_ua/original/556289718.jpg">
             <app-product-tile-data></app-product-tile-data>
-
         </div>
     </div>
     <app-description-product [description]="item.description"/>
