@@ -10,9 +10,11 @@ import { CommonModule } from '@angular/common';
 export class CategorySidebarComponent {
   @Output() categoryChange = new EventEmitter<{ name: string; key: string }>();
   categories = [
-    { name: 'Побутова техніка', icon: 'tools', key: 'device' },
+    { name: 'Техніка та інструменти', icon: 'tools', key: 'device' },
+    { name: 'Одяг, взуття та прикрасси', icon: 'clothes', key: 'cloth' },
+    { name: 'Їжа та напої', icon: 'eat', key: 'eat' },
     { name: 'Зоотовари', icon: 'food', key: 'food_pets' },
-    { name: 'Одяг', icon: 'clothes', key: 'cloth' },
+    { name: 'Побутова Хімія', icon: 'chemicals', key: 'chemic' },
   ];
 
   onCategorySelect(category: any) {

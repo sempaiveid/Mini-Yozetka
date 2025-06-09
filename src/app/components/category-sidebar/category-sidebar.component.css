@@ -44,3 +44,9 @@
 .sidebar li a[data-icon="clothes"]::before {
     background-image: url('/clothing.png');
 }
+.sidebar li a[data-icon="eat"]::before {
+    background-image: url('/eat.svg');
+}
+.sidebar li a[data-icon="chemicals"]::before {
+    background-image: url('/chemicals.svg');
+}

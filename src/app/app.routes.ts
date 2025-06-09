@@ -7,6 +7,7 @@ import { Routes } from '@angular/router';
 import { ProductComponent } from './pages/product/product.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { authGuard } from './guards/auth.guard';
+import { SearchReasultComponent } from './components/search-reasult/search-reasult.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,11 @@ export const routes: Routes = [
     {
         path: "product/:id",
         component:  ProductComponent,
+        title: "Product"
+    },
+    {
+        path: "search",
+        component:  SearchReasultComponent,
         title: "Product"
     },
     {
