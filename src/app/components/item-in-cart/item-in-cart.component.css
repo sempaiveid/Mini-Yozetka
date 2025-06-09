@@ -163,6 +163,7 @@
 /* сообщение спасибо за покупку */
 .offer {
     opacity: 0 ;
+    pointer-events: none;
     top: 40px;
     right: -50px;
     position: absolute;
