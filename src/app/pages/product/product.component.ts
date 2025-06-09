@@ -7,12 +7,13 @@ import { HeaderCatergoryComponent } from './header-catergory/header-catergory.co
 import { ProductImageComponent } from './product-image/product-image.component';
 import { TilePriceComponent } from './tile-price/tile-price.component';
 import { ProductTileDataComponent } from './product-tile-data/product-tile-data.component';
+import { DescriptionProductComponent } from './description-product/description-product.component';
 import { Title } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-product',
-  imports: [CommitProductComponent, NgIf, HeaderCatergoryComponent, ProductImageComponent, TilePriceComponent, ProductTileDataComponent],
+  imports: [CommitProductComponent, NgIf,HeaderCatergoryComponent, ProductImageComponent, TilePriceComponent,ProductTileDataComponent,DescriptionProductComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
@@ -31,7 +32,7 @@ export class ProductComponent {
       picture: string;
       price: number;
       category: string;
-      discribe: string;
+      description :{tile:string,text:string,bold:boolean};
     }
     | undefined;
 
@@ -45,6 +46,7 @@ export class ProductComponent {
     else {
       this.titleService.setTitle(this.item.name)
     }
+    document.body.style.backgroundColor="#f5f5f5"
 
   }
 

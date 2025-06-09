@@ -1,17 +1,18 @@
-<div *ngIf="item" class="bodyProductPage flex">
+<div *ngIf="item" class="bodyProductPage flex column">
     <app-header-catergory [category]="item.category"></app-header-catergory>
     <div class="boxProductPage">
-        <div class="boxImg">
+        
             <app-product-image [srcImg]="item.picture"></app-product-image>
-        </div>
+        
         <div class="textBox">
-            <app-tile-price [name]="item.name" [price]="item.price"></app-tile-price>
+            <app-tile-price [name]="item.name" [price]="item.price" [product]="item"></app-tile-price>
+            <img  class="product-banner__picture" alt="Розігріваємо знижками до -55%" src="https://content2.rozetka.com.ua/banner_product_page/image_big_ua/original/556289718.jpg">
             <app-product-tile-data></app-product-tile-data>
-
         </div>
     </div>
+    <app-description-product [description]="item.description"/>
     <div class="boxCommit">
-        <app-commit-product></app-commit-product>
+        <app-commit-product/>
     </div>
 
 </div>
