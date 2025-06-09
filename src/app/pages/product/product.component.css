@@ -1,3 +1,6 @@
+:host ::ng-deep *{
+        cursor: pointer;
+}
 .bodyProductPage {
     align-items: center;
     justify-content: center;
@@ -5,7 +8,6 @@
     margin-top: 20px;
     height: 100%;
     width: 100%;
-    cursor: pointer;
 }
 
 .boxProductPage {
