@@ -12,14 +12,6 @@
     width: 10%;
 }
 
-/* .textBox {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
-    overflow: hidden;
-} */
 .open{
     background-color: antiquewhite;
     height: 60px;
@@ -49,9 +41,7 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    /* height: calc(5.5em * 2); */
     max-height: 500px;
-   
   }
   .button{
     color: gray;
