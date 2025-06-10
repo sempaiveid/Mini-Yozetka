@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../services/product.service';
 import { NgFor, NgIf } from '@angular/common';
+import { imageExistsValidator } from '../../../validators/image-exists.validator';
 
 @Component({
   selector: 'app-profile',
@@ -17,9 +18,10 @@ export class ProfileComponent {
 
   addProductForm = new FormBuilder().group({
     name_product : ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё\s]+$/), Validators.minLength(4)]],
-    image_product: ['', [Validators.required]],
+    image_product: ['', [Validators.required, Validators.pattern(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg))$/i)], [imageExistsValidator()]],
     description_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё0-9\s]+$/), Validators.minLength(5)]],
-    price_product:[ 0 , [Validators.required, Validators.pattern(/^\d+$/), Validators.pattern(/^[1-9][0-9]*$/)]]
+    price_product:[ 0 , [Validators.required, Validators.pattern(/^\d+$/), Validators.pattern(/^[1-9][0-9]*$/)]],
+    category_product:['', [Validators.required]],
   })
 
   user_products:Product[] = [];
@@ -48,8 +50,8 @@ export class ProfileComponent {
       name: this.addProductForm.controls.name_product.value as string,
       picture: this.addProductForm.controls.image_product.value as string,
       price: this.addProductForm.controls.price_product.value as number,
-      category:"No Category",
-      description: this.addProductForm.controls.description_product.value as string,
+      category:this.addProductForm.controls.category_product.value as string,
+      description: {text: this.addProductForm.controls.description_product.value as string} as object,
       uploader: this.loginService.user.login as string,
     };
 

@@ -1,4 +1,6 @@
 <app-load-screen *ngIf="isActive"></app-load-screen>
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer *ngIf="!isActive"></app-footer>
+<app-header class="header"></app-header>
+<main class="main">
+    <router-outlet></router-outlet>
+</main>
+<app-footer class="footer" *ngIf="!isActive"></app-footer>

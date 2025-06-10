@@ -1,16 +1,20 @@
-.main_container {
-    flex: 1;
-    display: flex;
-    height: auto;
-    gap: 24px;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0px 32px;
+:host{
+    height: 100%;
+        .main_container {
+            flex: 1;
+            display: flex;
+            height: 100%;
+            gap: 24px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0px 32px;
+        }
+    .sidebar_menu {
+        width: 300px;
+        flex-shrink: 0;
+    }
+    .content_container {
+        flex-grow: 1;
+    }
 }
-.sidebar_menu {
-    width: 300px;
-    flex-shrink: 0;
-}
-.content_container {
-    flex-grow: 1;
-}
+
