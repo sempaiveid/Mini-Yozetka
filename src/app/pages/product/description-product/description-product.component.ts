@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input } from '@angular/core';
   styleUrl: './description-product.component.css'
 })
 export class DescriptionProductComponent {
-  @Input() description: { tile: string, text: string, bold: boolean } = { "tile": "", "text": "", "bold": false };
+  @Input() description: { tile: string, text: string} = { "tile": "", "text": ""};
   isCollapsed = true;
   lines = ['']
 

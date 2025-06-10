@@ -20,12 +20,13 @@
 }
 
 .textBox {
-    width: 45%;
-    height: 100%;
+    width: 40%;
+    height: 900px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 5px;
+    box-sizing: border-box;
 }
 .product-banner__picture{
     width: 100%;
@@ -36,8 +37,11 @@
 }
 
 app-product-image {
-    height: 100%;
-    width: 50%;
+    height: 900px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 app-header-catergory {
@@ -49,7 +53,7 @@ app-tile-price,app-commit-product,app-product-tile-data{
     width: 100%;
 }
 app-description-product{
-    width: 95%;
+    width: 80%;
 }
 
 .grey {
