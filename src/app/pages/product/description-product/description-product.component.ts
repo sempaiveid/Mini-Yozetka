@@ -16,8 +16,7 @@ export class DescriptionProductComponent {
   ngOnInit() {
     const text = this.description.text
     const lines = text.split('\n')
-    this.lines = lines
-
+    this.lines = lines;
   }
   openDiv() {
 

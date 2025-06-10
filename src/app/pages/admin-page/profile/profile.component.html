@@ -46,7 +46,7 @@
         </div>
         <div class="input_container">
             <p>Описание</p>
-            <textarea formControlName="description_product" rows="4" placeholder="Описание товара"></textarea>
+            <textarea name="area" formControlName="description_product" rows="4" placeholder="Описание товара"></textarea>
         </div>
         
         <div class="submit_price">
@@ -54,6 +54,16 @@
                 <p>Цена</p>
                 <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену">
             </div>
+            <div class="select_container">
+                    <select formControlName="category_product" class="category_select" name="выбор ктегории">
+                        <option value="" disabled>Укажите категорию</option>
+                        <option value="device">Девайсы</option>
+                        <option value="eat">Еда</option>
+                        <option value="chemic">Химия</option>
+                        <option value="cloth">Одежда</option>
+                        <option value="food_pets">Еда для питомцев</option>
+                    </select>
+                </div>
             <button [disabled]="addProductForm.invalid" type="submit">Добавить</button>
         </div>
         
