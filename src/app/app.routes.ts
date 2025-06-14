@@ -48,8 +48,13 @@ export const routes: Routes = [
         title: "Product"
     },
     {
+        path: "category/:id",
+        component: HomeComponent,
+        title: "Category"
+    },
+    {
         path: '**',
         component: NotFoundPageComponent,
         title: 'Page not found'
-      }
+    },
 ];

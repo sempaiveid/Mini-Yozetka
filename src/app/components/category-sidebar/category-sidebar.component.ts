@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-category-sidebar',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './category-sidebar.component.html',
   styleUrl: './category-sidebar.component.css'
 })
@@ -17,7 +19,9 @@ export class CategorySidebarComponent {
     { name: 'Побутова Хімія', icon: 'chemicals', key: 'chemic' },
   ];
 
+  constructor(private router: Router) {}
+
   onCategorySelect(category: any) {
-    this.categoryChange.emit(category);
+    this.router.navigate(['/category', category.key]);
   }
 }
