@@ -9,23 +9,25 @@
             <button>Изменить</button>
         </div>  
     </div>
-
-    <div class="items_for_sale" *ngFor="let product of user_products">
-        <div class="item_сontainer">
-            <img [src]="product.picture" [alt]="product.name">
-            <p>{{ product.name }}</p>
-            <button (click)="confirmDelete(product.id)">Удалить</button>
-        </div>
-        <div class="modal_confirm" *ngIf="productToDelete === product.id">
-            <div class="window">
-                <p>Удалить?</p>
-                <div class="btn_container">
-                    <button (click)="deleteProduct(product.id)">Да</button>
-                    <button (click)="cancelDelete()">Нет</button>
+    <div class="added_product">
+        <div class="items_for_sale" *ngFor="let product of user_products">
+            <div class="item_сontainer">
+                <img [src]="product.picture" [alt]="product.name">
+                <p>{{ product.name }}</p>
+                <button (click)="confirmDelete(product.id)">Удалить</button>
+            </div>
+            <div class="modal_confirm" *ngIf="productToDelete === product.id">
+                <div class="window">
+                    <p>Удалить?</p>
+                    <div class="btn_container">
+                        <button (click)="deleteProduct(product.id)">Да</button>
+                        <button (click)="cancelDelete()">Нет</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 
 </div>
 
@@ -50,10 +52,19 @@
         </div>
         
         <div class="submit_price">
-            <div class="input_price">
-                <p>Цена</p>
-                <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену">
+            <div class="price_container">
+                <div class="input_price">
+                    <p>Цена</p>
+                    <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену">
+                </div>
+                <select name="currency" formControlName="currency_price_product">
+                    <option value="hryvnia">₴ - Гривна</option>
+                    <option value="dollar">$ - Доллар</option>
+                    <option value="euro">€ - Эвро</option>
+                </select>
             </div>
+            
+           
             <div class="select_container">
                     <select formControlName="category_product" class="category_select" name="выбор ктегории">
                         <option value="" disabled>Укажите категорию</option>

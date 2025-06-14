@@ -12,16 +12,20 @@
         align-items: center;
         margin-left: 2%;
         margin-top: 2%;
+        height: 100%;
+        max-height: 800px;
         .profile_icon{
             max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            height: 50%;
             .profile_setting{
                 margin-top: 5%;
-                width: 90%;
+                width: 100%;
                 display: flex;
                 justify-content: space-between;
+                height: 15%;
                 p{
                     font-size: 35px;
                 }
@@ -31,7 +35,7 @@
                     cursor: pointer;
                     background-color: #00a63e;
                     border-radius: 10px;
-                    padding: 0px 20px;
+                    padding: 10px 20px;
                     transition: background-color 0.3s ease;
                     &:hover{
                         background-color: #008c34;
@@ -40,30 +44,52 @@
             }
             img{
                 border-radius: 10px;
+                height: 80%;
             }
         }
-        .items_for_sale{
+        .added_product{
             width: 100%;
-            .item_сontainer{
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                border: 1px solid black;
-                border-radius: 10px;
-                min-height: 100px;
-                margin-top: 5%;
-                img{
-                    max-width: 100px;
-                }
-                p{
-                    font-size: 20px;
-                }
-                button{
-                    cursor: pointer;
-                    background-color: #e63946;
+            min-height: 300px;
+            max-height: 50%;
+            overflow-y: auto;
+            margin-top: 5%;
+            
+            .items_for_sale:first-child .item_сontainer {
+                margin-top: 0;
+            }
+
+            .items_for_sale{
+                
+                .item_сontainer{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border: 1px solid black;
                     border-radius: 10px;
-                    padding: 5px 10px;
+                    min-height: 100px;
+                    margin-top: 5%;
+                    max-height:300px;
+                    
+                    img{
+                        border-radius: 10px;
+                        min-width: 100px;
+                        max-width: 150px;
+                    }
+                    p{
+                        font-size: 20px;
+                        min-width: 150px;
+                        max-width: 200px;
+                        overflow-x:hidden;
+                        text-overflow: ellipsis;
+                    }
+                    button{
+                        cursor: pointer;
+                        background-color: #e63946;
+                        border-radius: 10px;
+                        padding: 15px 25px;
+                        margin-right: 2%;
+                    }
                 }
             }
         }
@@ -161,6 +187,36 @@
                 textarea {
                     resize: none;
                     height: 120px;
+                    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                    border: 1px solid #d1d5db;
+                    &::placeholder {
+                        color: #9ca3af;
+                    }
+
+                    &:hover {
+                        border: 1px solid;
+                        border-color: #00a63e;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        border: 1px solid;
+                        border-color: #00a63e;
+                        box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                        background-color: white;
+                    }
+
+                    &.ng-touched.ng-invalid {
+                        border: 1px solid;
+                        border-color: #e63946;
+                        box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+                    }
+
+                    &.ng-valid {
+                        border: 1px solid;
+                        border-color: #00a63e;
+                        box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                    }
                 }
             }
 
@@ -170,65 +226,111 @@
                 align-items: flex-end;
                 justify-content: space-between;
                 margin-top: 20px;
-
-                .input_price {
-                    width: 30%;
+                .price_container{
                     display: flex;
-                    flex-direction: column;
-
-                    p {
-                        font-size: 16px;
-                        font-weight: 500;
-                        color: #2d2d2d;
-                        margin-bottom: 8px;
-                    }
-
-                    input {
-                        width: 100%;
+                    align-items: end;
+                    select{
+                        margin-left: 1%;
+                        width:100%;
                         padding: 12px;
                         border: 1px solid #d1d5db;
                         border-radius: 8px;
                         font-size: 16px;
-                        text-align: center;
-                        -webkit-appearance: none;
-                        -moz-appearance: textfield;
+                        color: #2d2d2d;
+                        background-color: #f9fafb;
+                        cursor: pointer;
+                        transition: border-color 0.3s ease, box-shadow 0.3s ease;
                         appearance: none;
-
-                        &::-webkit-outer-spin-button,
-                        &::-webkit-inner-spin-button {
-                            -webkit-appearance: none;
-                        }
-
+                        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                        background-repeat: no-repeat;
+                        background-position: right 12px center;
+                        background-size: 18px;
                         &::placeholder {
-                            color: #9ca3af;
+                                color: #9ca3af;
+                            }
+
+                            &:hover {
+                                border-color: #00a63e;
+                            }
+
+                            &:focus {
+                                outline: none;
+                                border-color: #00a63e;
+                                box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                                background-color: white;
+                            }
+
+                            &.ng-touched.ng-invalid {
+                                border-color: #e63946;
+                                box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+                            }
+
+                            &.ng-touched.ng-valid {
+                                border-color: #00a63e;
+                                box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                            }
+                    }
+                    .input_price {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        p {
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: #2d2d2d;
+                            margin-bottom: 8px;
                         }
 
-                        &:hover {
-                            border-color: #00a63e;
-                        }
+                        input {
+                            width: 100%;
+                            padding: 12px;
+                            border: 1px solid #d1d5db;
+                            border-radius: 8px;
+                            font-size: 16px;
+                            text-align: center;
+                            -webkit-appearance: none;
+                            -moz-appearance: textfield;
+                            appearance: none;
+                            transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
-                        &:focus {
-                            outline: none;
-                            border-color: #00a63e;
-                            box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                            background-color: white;
-                        }
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                            }
 
-                        &.ng-touched.ng-invalid {
-                            border-color: #e63946;
-                            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
-                        }
+                            &::placeholder {
+                                color: #9ca3af;
+                            }
 
-                        &.ng-valid {
-                            border-color: #00a63e;
-                            box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                            &:hover {
+                                border-color: #00a63e;
+                            }
+
+                            &:focus {
+                                outline: none;
+                                border-color: #00a63e;
+                                box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                                background-color: white;
+                            }
+
+                            &.ng-touched.ng-invalid {
+                                border-color: #e63946;
+                                box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+                            }
+
+                            &.ng-valid {
+                                border-color: #00a63e;
+                                box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                            }
                         }
                     }
                 }
 
+                
+
                 .select_container {
                     width: 30%;
-
                     select.category_select {
                         width: 100%;
                         padding: 12px;
