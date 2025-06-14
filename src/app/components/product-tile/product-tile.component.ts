@@ -23,13 +23,13 @@ export class ProductTileComponent {
   productArr = this.productSet.getCountOfCart();
 
 
-  btnRight() {
-    if (!this.canGoRight) return;
+  btnRight(btnR: HTMLButtonElement) {
+    if (!this.canGoRight) return
     this.count += 5;
     this.products = this.productItems.fiveProduct(this.count - 5, this.count);
   }
 
-  btnLeft() {
+  btnLeft(btnL: HTMLButtonElement) {
     if (!this.canGoLeft) return;
     this.count -= 5;
     this.products = this.productItems.fiveProduct(this.count - 5, this.count);
@@ -65,6 +65,8 @@ export class ProductTileComponent {
       ? this.productItems.items.filter(p => p.category === this.category)
       : this.productItems.items;
 
-    this.products = filtered.slice(0, this.count);
+      this.products = this.category
+      ? filtered
+      : filtered.slice(this.count - 5, this.count);
   }
 }
