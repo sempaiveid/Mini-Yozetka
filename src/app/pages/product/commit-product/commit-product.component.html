@@ -1,11 +1,48 @@
-<b class="txtHeader">Коментарі</b> 
+<!-- <b class="txtHeader">Коментарі</b> 
 
 <div class="bodyCommitBox">
     <div class="dataText">
         <b class="name">name</b>
         <span class="gray">Відгук від покупця. Продавець: Rozetka </span>
     </div>
-    <input type="text" class="commentTxt">
-    <button type="submit" class="send" (click)="onClick()">Відправити коментар</button>
-</div>
+    <input type="text" class="commentTxt" [(ngModel)] = "textCommit" >
+    <button type="submit" class="send" (click)="saveToLocalStorage()">Відправити коментар</button>
+</div> -->
 
+<!-- (input) = "saveToLocalStorage()" -->
+
+
+
+<b class="txtHeader">Коментарі</b>
+
+<div class="bodyCommitBox">
+  <div class="dataText">
+    <b class="name">name</b>
+    <span class="gray">Відгук від покупця. Продавець: Rozetka</span>
+  </div>
+
+  <!-- Поле вводу -->
+   <input 
+    type="text" 
+    class="commentTxt" 
+    [(ngModel)]="textCommit"
+    placeholder="Напишіть свій коментар"
+    required 
+  >
+  <!-- Кнопка додавання -->
+   <button 
+    type="submit" 
+    class="send" 
+    [disabled]="textCommit.trim() === ''" 
+    (click)="saveToLocalStorage()"
+  >
+    Відправити коментар
+  </button>
+</div> 
+
+<!-- Список коментарів -->
+ <ul>
+  <li *ngFor="let comment of comments">
+    {{ comment }}
+  </li>
+</ul> 
