@@ -2,9 +2,8 @@
   <h2 class="font-bold mb-4">Категории</h2>
   <ul>
     <li *ngFor="let category of categories">
-      <a href="#"
-         [attr.data-icon]="category.icon"
-         (click)="onCategorySelect(category)">
+      <a [routerLink]="['/category', category.key]"
+         [attr.data-icon]="category.icon">
         {{ category.name }}
       </a>
     </li>

@@ -1,7 +1,7 @@
 <div class="titleTxt">{{ categoryName || 'Найкращі пропозиції для вас' }}</div>
 <div class="tileBox">
     <div class="container-left" [style.opacity]="canGoLeft ? '1' : '0.3'">
-        <button (click)="btnLeft()" [disabled]="!canGoLeft">
+        <button (click)="btnLeft(btnL)" [disabled]="!canGoLeft" #btnL *ngIf="!categoryName">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 12L6 8L10 4" stroke="black" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
@@ -189,7 +189,7 @@
         </div>
     </div>
     <div [style.opacity]="canGoRight ? '1' : '0.3'" class="container-right">
-        <button [disabled]="!canGoRight" (click)="btnRight()">
+        <button [disabled]="!canGoRight" (click)="btnRight(btnR)" #btnR *ngIf="!categoryName">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 4L10 8L6 12" stroke="black" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
