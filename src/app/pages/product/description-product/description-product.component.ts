@@ -14,7 +14,7 @@ export class DescriptionProductComponent {
   lines = ['']
 
   ngOnInit() {
-    const text = this.description.text
+     const text = this.description.text     
     const lines = text.split('\n')
     this.lines = lines;
   }

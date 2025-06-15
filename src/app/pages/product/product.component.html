@@ -12,7 +12,8 @@
     </div>
     <app-description-product [description]="item.description"/>
     <div class="boxCommit">
-        <app-commit-product/>
+        <!-- <app-commit-product/> -->
+        <app-commit-product *ngIf="item" [productId]="item.id"></app-commit-product>
     </div>
 
 </div>

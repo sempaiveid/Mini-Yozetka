@@ -13,6 +13,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product',
+  standalone: true,
   imports: [CommitProductComponent, NgIf,HeaderCatergoryComponent, ProductImageComponent, TilePriceComponent,ProductTileDataComponent,DescriptionProductComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
