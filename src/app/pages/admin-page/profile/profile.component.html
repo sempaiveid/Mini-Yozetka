@@ -1,12 +1,12 @@
 
 <div class="profile_container">
     <div class="profile_icon">
-        <img src="https://upload.wikimedia.org/wikipedia/it/thumb/2/20/Megumin.png/1200px-Megumin.png" alt="">
+        <img src={{loginService.user.profile_icon}} alt="">
         <div class="profile_setting">
             <p class="profile_name">
-                Name_profile
+                {{loginService.user.user_name}}
             </p>
-            <button>Изменить</button>
+            <button (click)="loginService.logOut()">Выйти</button>
         </div>  
     </div>
     <div class="added_product">

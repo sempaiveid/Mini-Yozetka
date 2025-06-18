@@ -9,42 +9,47 @@
      .profile_container{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: start;
         margin-left: 2%;
         margin-top: 2%;
         height: 100%;
         max-height: 800px;
+        width: 35%;
         .profile_icon{
-            max-width: 600px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             height: 50%;
             .profile_setting{
                 margin-top: 5%;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+                align-items:center;
                 height: 15%;
                 p{
                     font-size: 35px;
+                    margin-right: 5%;
                 }
                 button{
                     font-family: "Gill Sans", sans-serif;
                     font-size: 25px;
                     cursor: pointer;
-                    background-color: #00a63e;
+                    background-color: #e63946;
                     border-radius: 10px;
                     padding: 10px 20px;
                     transition: background-color 0.3s ease;
                     &:hover{
-                        background-color: #008c34;
+                        background-color: #d4002a;
                     }
                 }
             }
             img{
                 border-radius: 10px;
+                width: 100%;
                 height: 80%;
+                object-fit: contain;
+                object-position:left center;
             }
         }
         .added_product{
@@ -67,20 +72,21 @@
                     justify-content: space-between;
                     border: 1px solid black;
                     border-radius: 10px;
-                    min-height: 100px;
+                
                     margin-top: 5%;
-                    max-height:300px;
                     
                     img{
                         border-radius: 10px;
-                        min-width: 100px;
-                        max-width: 150px;
+                        object-fit:contain;
+                        height: 118px;
+                        
                     }
                     p{
-                        font-size: 20px;
-                        min-width: 150px;
-                        max-width: 200px;
-                        overflow-x:hidden;
+                        text-align: center;
+                        font-size: 25px;
+                        width: 500px;
+                        overflow:hidden;
+                        white-space: nowrap;
                         text-overflow: ellipsis;
                     }
                     button{
@@ -89,6 +95,11 @@
                         border-radius: 10px;
                         padding: 15px 25px;
                         margin-right: 2%;
+                        margin-left: 2%;
+                        transition: background-color 0.3s ease;
+                        &:hover{
+                            background-color: #d4002a;
+                        }
                     }
                 }
             }

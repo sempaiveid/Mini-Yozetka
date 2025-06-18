@@ -35,6 +35,7 @@ export class ProfileComponent {
 
   ngOnInit(){
     this.addProductForm.get('currency_price_product')?.setValue('hryvnia');
+    this.addProductForm.get('category_product')?.setValue('');
   }
 
   constructor(){
@@ -78,6 +79,7 @@ export class ProfileComponent {
     this.addProductForm.reset();
     this.update_user_products();
     this.addProductForm.get('currency_price_product')?.setValue('hryvnia');
+    this.addProductForm.get('category_product')?.setValue('');
   }
 
   confirmDelete(productId: string) {
