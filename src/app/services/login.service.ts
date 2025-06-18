@@ -6,6 +6,8 @@ interface User {
   login: string;
   password: string;
   added_product:Product[];
+  user_name: string;
+  profile_icon: string;
 }
 
 @Injectable({
@@ -19,6 +21,8 @@ export class LoginService {
     login: 'admin',
     password: 'admin',
     added_product: [],
+    user_name:'Admin',
+    profile_icon:'https://cdn-icons-png.flaticon.com/512/17003/17003310.png'
   }
 
   users_products = this.user.added_product;
@@ -41,6 +45,7 @@ export class LoginService {
   logOut(){
     this.isLogined = false;
     localStorage.removeItem('isLogin');
+    location.reload();
   }
 
   updateLoginStatus(){
