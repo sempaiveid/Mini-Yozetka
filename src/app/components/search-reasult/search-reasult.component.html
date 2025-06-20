@@ -1,13 +1,14 @@
 <div class="search-list">
     <div class="category">
-        <h1>Категорія : {{products[0].category}} </h1>
+        <h1> Результати пошуку «<span style="color: green;">{{ whatSearch }}</span>»
+        </h1>
     </div>
-    <ul class="list">
-        <li *ngFor="let item of products" class="list-container">
+    <ul class="list" *ngIf="newProduct.length > 0 ; else noSearch">
+        <li *ngFor="let item of newProduct" class="list-container">
             <div class="container-img">
                 <img src="{{item.picture}}" alt="{{item.name}}">
             </div>
-            <div class="title"><app-tile [name]="item.name" [id]="item.id" ></app-tile>
+            <div class="title"><app-tile [name]="item.name" [id]="item.id"></app-tile>
                 <div class="star">
                     <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
                         <svg fill="#ffa900" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
@@ -27,13 +28,29 @@
             </div>
             <div class="tools">
                 <span class="price">{{ item.price }} ₴</span>
-                <button class="btn">
-                    <ng-container *ngIf="!false">
-                        Купити
-                    </ng-container>
+                <button (click)="addToCart(item)" class="btn">
+                    <p>{{isItemInCart(item)?"В Корзині":" Купити"}}</p>
+
+
                 </button>
             </div>
         </li>
     </ul>
+    <ng-template #noSearch>
+        <div class="container-search">
+            <div class="img">
+                <img src="./noSearch.svg" alt="">
+            </div>
+            <div class="conteiner-content">
+                <h1 class="search-dont">За запитом «<span style="color: green;">{{ whatSearch }}</span>» нічого не
+                    знайдено
+                </h1>
+                <p>Перевірте правильність написання запиту, спробуйте використати синоніми чи більш загальні запити</p>
+                <div class="btn-back-to-main">
+                    <button routerLink="" class="btn-main">Повернутися на головну</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 
 </div>
