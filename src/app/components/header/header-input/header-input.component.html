@@ -1,8 +1,8 @@
-<form action="">
-    <div class="inner-form ">
-        <div class="inner-form-input">
-            <input placeholder="Я шукаю..." type=" text-white text">
-        </div>
-        <button class="find bg-green-600 text-white">Знайти</button>
+<form (submit)="onEnter($event)">
+  <div class="inner-form">
+    <div class="inner-form-input">
+      <input [formControl]="liveValue" name="search" placeholder="Я шукаю..." type="text">
     </div>
+    <button type="submit" class="find bg-green-600 text-white">Знайти</button>
+  </div>
 </form>
