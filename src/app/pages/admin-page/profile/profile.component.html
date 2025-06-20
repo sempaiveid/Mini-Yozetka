@@ -12,10 +12,12 @@
     <div class="added_product">
         <div class="items_for_sale" *ngFor="let product of user_products">
             <div class="item_сontainer">
-                <img [src]="product.picture" [alt]="product.name">
+                <div class="img_div"><img [src]="product.picture" [alt]="product.name"></div>
+                
                 <p>{{ product.name }}</p>
                 <button (click)="confirmDelete(product.id)">Удалить</button>
             </div>
+            
             <div class="modal_confirm" *ngIf="productToDelete === product.id">
                 <div class="window">
                     <p>Удалить?</p>
@@ -41,22 +43,43 @@
         <div class="input_container">
             <p>Название товара</p>
             <input formControlName="name_product" type="text" placeholder="Введите название">
+            <ul class="errors" *ngIf="addProductForm.get('name_product')?.touched && addProductForm.get('name_product')?.invalid">
+                <li *ngIf="addProductForm.get('name_product')?.errors?.['required']">Поле обязательно</li>
+                <li *ngIf="addProductForm.get('name_product')?.errors?.['minlength']">Название должно быть длиннее 4-х символов</li>
+                <li *ngIf="addProductForm.get('name_product')?.errors?.['pattern']">Название должно содержать только буквы и пробелы</li>
+            </ul>
         </div>
-        <div class="input_container">
-            <p>Изображение</p>
-            <input formControlName="image_product" type="text" placeholder="Ссылка на изображение">
-        </div>
+        
         <div class="input_container">
             <p>Описание</p>
             <textarea name="area" formControlName="description_product" rows="4" placeholder="Описание товара"></textarea>
+            <ul class="errors" *ngIf="addProductForm.get('description_product')?.touched && addProductForm.get('description_product')?.invalid">
+                <li *ngIf="addProductForm.get('description_product')?.errors?.['required']">Поле обязательно</li>
+                <li *ngIf="addProductForm.get('description_product')?.errors?.['pattern']">Описание не должно содержать спецсимволы</li>
+                <li *ngIf="addProductForm.get('description_product')?.errors?.['minlength']">Минимальная длинна описания 5 символов</li>
+            </ul>
+        </div>
+
+        <div class="input_container">
+            <p>Изображение</p>
+            <input formControlName="image_product" type="text" placeholder="Ссылка на изображение">
+            <ul class="errors" *ngIf="addProductForm.get('image_product')?.touched && addProductForm.get('image_product')?.invalid">
+                <li *ngIf="addProductForm.get('image_product')?.errors?.['required']">Поле обязательно</li>
+                <li *ngIf="addProductForm.get('image_product')?.errors?.['pattern']">Путь к картинке не верен</li>
+                <li *ngIf="addProductForm.get('image_product')?.errors?.['imageNotFound']">Не существующая картинка</li>
+            </ul>
         </div>
         
         <div class="submit_price">
             <div class="price_container">
                 <div class="input_price">
                     <p>Цена</p>
-                    <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену">
+                    <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену" >
                 </div>
+                <ul class="errors_price" *ngIf="addProductForm.get('price_product')?.touched && addProductForm.get('price_product')?.invalid">
+                    <li *ngIf="addProductForm.get('price_product')?.errors?.['required']">Поле обязательно</li>
+                    <li class="long_err" *ngIf="addProductForm.get('price_product')?.errors?.['pattern']">Поле не должно содержать сторонние символы</li>
+                </ul>
                 <select name="currency" formControlName="currency_price_product">
                     <option value="hryvnia">₴ - Гривна</option>
                     <option value="dollar">$ - Доллар</option>
