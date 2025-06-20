@@ -10,6 +10,7 @@ export function imageExistsValidator() {
 
     return new Observable(observer => {
       const img = new Image();
+      img.src = url;
       img.onload = () => {
         observer.next(null);
         observer.complete();
@@ -18,7 +19,6 @@ export function imageExistsValidator() {
         observer.next({ imageNotFound: true });
         observer.complete();
       };
-      img.src = url;
     });
   };
 }
