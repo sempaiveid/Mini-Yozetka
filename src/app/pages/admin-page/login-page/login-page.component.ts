@@ -32,7 +32,7 @@ export class LoginPageComponent {
       this.loginService.login();
       this.router.navigate(["/admin/profile"]);
     }else{
-      alert("Неверный пароль");
+      alert("Невірний пароль");
     }
     
   }

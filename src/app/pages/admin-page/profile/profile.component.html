@@ -6,7 +6,7 @@
             <p class="profile_name">
                 {{loginService.user.user_name}}
             </p>
-            <button (click)="loginService.logOut()">Выйти</button>
+            <button (click)="loginService.logOut()">Вийти</button>
         </div>  
     </div>
     <div class="added_product">
@@ -15,15 +15,15 @@
                 <div class="img_div"><img [src]="product.picture" [alt]="product.name"></div>
                 
                 <p>{{ product.name }}</p>
-                <button (click)="confirmDelete(product.id)">Удалить</button>
+                <button (click)="confirmDelete(product.id)">Видалити</button>
             </div>
             
             <div class="modal_confirm" *ngIf="productToDelete === product.id">
                 <div class="window">
-                    <p>Удалить?</p>
+                    <p>Видалити товар?</p>
                     <div class="btn_container">
-                        <button (click)="deleteProduct(product.id)">Да</button>
-                        <button (click)="cancelDelete()">Нет</button>
+                        <button (click)="deleteProduct(product.id)">Так</button>
+                        <button (click)="cancelDelete()">Нi</button>
                     </div>
                 </div>
             </div>
@@ -37,68 +37,68 @@
 <div class="form_container">
     <div class="form_name">
         <img src="https://mmr.ua/uploaded/materials/a2a89af751.png" alt="">
-        <p>Добавить товар</p>
+        <p>Додати товар</p>
     </div>
     <form [formGroup]="addProductForm" (submit)="addProduct()">
         <div class="input_container">
-            <p>Название товара</p>
-            <input formControlName="name_product" type="text" placeholder="Введите название">
+            <p>Назва товару</p>
+            <input formControlName="name_product" type="text" placeholder="Введiть назву">
             <ul class="errors" *ngIf="addProductForm.get('name_product')?.touched && addProductForm.get('name_product')?.invalid">
-                <li *ngIf="addProductForm.get('name_product')?.errors?.['required']">Поле обязательно</li>
-                <li *ngIf="addProductForm.get('name_product')?.errors?.['minlength']">Название должно быть длиннее 4-х символов</li>
-                <li *ngIf="addProductForm.get('name_product')?.errors?.['pattern']">Название должно содержать только буквы и пробелы</li>
+                <li *ngIf="addProductForm.get('name_product')?.errors?.['required']">Поле обов'язкове</li>
+                <li *ngIf="addProductForm.get('name_product')?.errors?.['minlength']">Назва має бути довше 4-х символiв</li>
+                <li *ngIf="addProductForm.get('name_product')?.errors?.['pattern']">Назва має мiстити тiльки букви та пробiли</li>
             </ul>
         </div>
         
         <div class="input_container">
-            <p>Описание</p>
-            <textarea name="area" formControlName="description_product" rows="4" placeholder="Описание товара"></textarea>
+            <p>Опис</p>
+            <textarea name="area" formControlName="description_product" rows="4" placeholder="Опис товару"></textarea>
             <ul class="errors" *ngIf="addProductForm.get('description_product')?.touched && addProductForm.get('description_product')?.invalid">
-                <li *ngIf="addProductForm.get('description_product')?.errors?.['required']">Поле обязательно</li>
-                <li *ngIf="addProductForm.get('description_product')?.errors?.['pattern']">Описание не должно содержать спецсимволы</li>
-                <li *ngIf="addProductForm.get('description_product')?.errors?.['minlength']">Минимальная длинна описания 5 символов</li>
+                <li *ngIf="addProductForm.get('description_product')?.errors?.['required']">Поле обов'язкове</li>
+                <li *ngIf="addProductForm.get('description_product')?.errors?.['pattern']">Опис не має мiстити спецсимволи</li>
+                <li *ngIf="addProductForm.get('description_product')?.errors?.['minlength']">Мiнiмальна довжина опису 5-ть символiв</li>
             </ul>
         </div>
 
         <div class="input_container">
-            <p>Изображение</p>
-            <input formControlName="image_product" type="text" placeholder="Ссылка на изображение">
+            <p>Зображення</p>
+            <input formControlName="image_product" type="text" placeholder="Посилання на зображення">
             <ul class="errors" *ngIf="addProductForm.get('image_product')?.touched && addProductForm.get('image_product')?.invalid">
-                <li *ngIf="addProductForm.get('image_product')?.errors?.['required']">Поле обязательно</li>
-                <li *ngIf="addProductForm.get('image_product')?.errors?.['pattern']">Путь к картинке не верен</li>
-                <li *ngIf="addProductForm.get('image_product')?.errors?.['imageNotFound']">Не существующая картинка</li>
+                <li *ngIf="addProductForm.get('image_product')?.errors?.['required']">Поле обов'язкове</li>
+                <li *ngIf="addProductForm.get('image_product')?.errors?.['pattern']">Шлях до зображення не вiрний</li>
+                <li *ngIf="addProductForm.get('image_product')?.errors?.['imageNotFound']">Не iснуюче зображення</li>
             </ul>
         </div>
         
         <div class="submit_price">
             <div class="price_container">
                 <div class="input_price">
-                    <p>Цена</p>
-                    <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введите цену" >
+                    <p>Цiна</p>
+                    <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введiть цiну" >
                 </div>
                 <ul class="errors_price" *ngIf="addProductForm.get('price_product')?.touched && addProductForm.get('price_product')?.invalid">
-                    <li *ngIf="addProductForm.get('price_product')?.errors?.['required']">Поле обязательно</li>
-                    <li class="long_err" *ngIf="addProductForm.get('price_product')?.errors?.['pattern']">Поле не должно содержать сторонние символы</li>
+                    <li *ngIf="addProductForm.get('price_product')?.errors?.['required']">Поле обов'язкове</li>
+                    <li class="long_err" *ngIf="addProductForm.get('price_product')?.errors?.['pattern']">Поле не має містити стороннi символи</li>
                 </ul>
                 <select name="currency" formControlName="currency_price_product">
-                    <option value="hryvnia">₴ - Гривна</option>
-                    <option value="dollar">$ - Доллар</option>
-                    <option value="euro">€ - Эвро</option>
+                    <option value="hryvnia">₴ - UAH</option>
+                    <option value="dollar">$ - USD</option>
+                    <option value="euro">€ - Euro</option>
                 </select>
             </div>
             
            
             <div class="select_container">
                     <select formControlName="category_product" class="category_select" name="выбор ктегории">
-                        <option value="" disabled>Укажите категорию</option>
-                        <option value="device">Девайсы</option>
-                        <option value="eat">Еда</option>
-                        <option value="chemic">Химия</option>
-                        <option value="cloth">Одежда</option>
-                        <option value="food_pets">Еда для питомцев</option>
+                        <option value="" disabled>Вкажiть категорiю</option>
+                        <option value="device">Девайси</option>
+                        <option value="eat">Їжа</option>
+                        <option value="chemic">Хiмiя</option>
+                        <option value="cloth">Одежа</option>
+                        <option value="food_pets">Їжа для улюбленцiв</option>
                     </select>
                 </div>
-            <button [disabled]="addProductForm.invalid" type="submit">Добавить</button>
+            <button [disabled]="addProductForm.invalid|| addProductForm.pending" type="submit">Додати</button>
         </div>
         
     </form>

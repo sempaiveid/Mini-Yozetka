@@ -18,7 +18,7 @@ export class ProfileComponent {
 
   addProductForm = new FormBuilder().group({
     name_product : ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё\s]+$/), Validators.minLength(4)]],
-    image_product: ['', [Validators.required, Validators.pattern(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg))$/i)], [imageExistsValidator()]],
+    image_product: ['', [Validators.required], [imageExistsValidator()]],
     description_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё0-9\s]+$/), Validators.minLength(5)]],
     price_product:[ null , [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
     category_product:['', [Validators.required]],
