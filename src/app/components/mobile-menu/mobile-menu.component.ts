@@ -17,4 +17,9 @@ export class MobileMenuComponent {
   onCloseClick() {
     this.close.emit(); // сообщение родителю, что нужно закрыть меню
   }
+  showCategories = false;
+
+  toggleCategories() {
+    this.showCategories = !this.showCategories;
+  }
 }

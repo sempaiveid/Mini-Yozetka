@@ -1,7 +1,7 @@
 <!-- Оверлей -->
 <div class="menu-overlay" [class.visible]="isOpen" (click)="onCloseClick()"></div>
 
-<!-- Выезжающее меню -->
+<!-- Меню -->
 <div class="mobile-menu" [class.active]="isOpen">
   <!-- Верхняя панель -->
   <div class="top-bar">
@@ -10,19 +10,60 @@
     <button class="close-btn" (click)="onCloseClick()">✕</button>
   </div>
 
-  <button class="catalog-btn">Каталог товарів</button>
+  <!-- Каталог -->
+  <button class="catalog-btn" (click)="toggleCategories()">
+    Каталог товарів
+  </button>
 
+  <!-- Категории -->
+  <ul class="category-list" *ngIf="showCategories">
+    <li routerLink="/category/electronics">📱 Техніка та електроніка</li>
+    <li routerLink="/category/tools">🛠️ Інструменти</li>
+    <li routerLink="/category/home">🏠 Товари для дому</li>
+    <li routerLink="/category/auto">🚗 Автотовари</li>
+    <li routerLink="/category/chemistry">🧼 Побутова хімія</li>
+  </ul>
+
+  <!-- Пользователь -->
   <div class="user-info">
     <p><strong>Олександр Хрустальов</strong></p>
-    <p>test-gmail.com</p>
+    <p>test&#64;gmail.com</p>
   </div>
 
+  <!-- Основне -->
+  <h4 class="menu-heading">🛍️ Основне</h4>
   <ul class="menu-list">
-    <li>Бонусний рахунок</li>
-    <li>Замовлення</li>
-    <li>Персональні пропозиції<span class="badge">3</span></li>
-    <li routerLink="/cart">Кошик<span class="badge">{{ cartCount }}</span></li>
-    <li>Списки бажаного</li>
-    <li>Переглянуті товари</li>
+    <li routerLink="/cart">🛒 Кошик<span class="badge">{{ cartCount }}</span></li>
+    <li>❤️ Списки бажаного</li>
+    <li>👀 Переглянуті товари</li>
+  </ul>
+
+  <!-- Інформація про компанію -->
+  <h4 class="menu-heading">ℹ️ Інформація про компанію</h4>
+  <ul class="menu-list">
+    <li routerLink="/about">Про нас</li>
+    <li routerLink="/terms">Умови використання</li>
+    <li routerLink="/contacts">Контакти</li>
+  </ul>
+
+  <!-- Допомога -->
+  <h4 class="menu-heading">🛠️ Допомога</h4>
+  <ul class="menu-list">
+    <li routerLink="/delivery">Доставка</li>
+    <li routerLink="/warranty">Гарантія</li>
+    <li routerLink="/returns">Повернення</li>
+  </ul>
+
+  <!-- Сервіси -->
+  <h4 class="menu-heading">🎯 Сервіси</h4>
+  <ul class="menu-list">
+    <li routerLink="/bonus">Бонусний рахунок</li>
+    <li routerLink="/gift-cards">Подарункові сертифікати</li>
+  </ul>
+
+  <!-- Адміністрування -->
+  <h4 class="menu-heading">🔐 Адміністрування</h4>
+  <ul class="menu-list">
+    <li routerLink="/login">Вхід для адміністратора</li>
   </ul>
 </div>
