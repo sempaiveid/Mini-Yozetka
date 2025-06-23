@@ -3,7 +3,7 @@ import { HeaderInputComponent } from './header-input/header-input.component';
 import { RouterModule } from '@angular/router';
 import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 import { CartService } from '../../services/cart.service';
-import { Subscription } from 'rxjs';
+import { PipeService } from '../../services/pipe.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +12,14 @@ import { Subscription } from 'rxjs';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  pipe_service = inject(PipeService)
   showMenu = false;
-  cartService = inject(CartService)
+  cartService = inject(CartService);
+
+  selectedCurrency = this.pipe_service.currency;
+
+  changeCurrency(event:Event){
+    const selectElement = event.target as HTMLSelectElement;
+    this.pipe_service.set_currency(selectElement.value);
+  }
 }

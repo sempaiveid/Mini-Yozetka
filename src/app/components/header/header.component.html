@@ -15,6 +15,12 @@
                 <header-input></header-input>
             </div>
             <ul class="navigation">
+                <select class="select_currency" (change)="changeCurrency($event)" [value]="selectedCurrency">
+                    <option class="option_currency" value="UAH">UAH</option>
+                    <option class="option_currency" value="USD">USD</option>
+                    <option class="option_currency" value="EUR">EUR</option>
+                </select>
+
                 <li class="header-comparisons">
                     <button routerLink="admin" title="Адмін" class="button-admin">
                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 64 64" fill="none"
