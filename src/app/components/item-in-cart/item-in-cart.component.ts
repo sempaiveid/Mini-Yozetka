@@ -5,10 +5,11 @@ import { ProductService } from '../../services/product.service';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
 
 @Component({
   selector: 'app-item-in-cart',
-  imports: [PoputMenuComponent, CounterProductComponent, NgFor, RouterModule, NgIf],
+  imports: [PoputMenuComponent, CounterProductComponent, NgFor, RouterModule, NgIf, CurrencyPipe],
   templateUrl: './item-in-cart.component.html',
   styleUrl: './item-in-cart.component.css'
 })
