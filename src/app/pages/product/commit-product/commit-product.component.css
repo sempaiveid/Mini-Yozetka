@@ -1,13 +1,10 @@
 .bodyCommitBox {
     display: flex;
-    height: 200px;
-    width: 70vw;
     border: 1px solid green;
     border-radius: 20px;
     flex-direction: column;
     padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 10px 0;
 }
 
 .dataText {
@@ -18,7 +15,15 @@
 }
 
 .commentTxt {
-    margin-top: 20px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding-left: 10px;
+    min-width: 200px;
+    min-height: 40px;
+}
+.listComment{
+    margin-left: 15px;
 }
 
 .gray {
@@ -26,8 +31,9 @@
 }
 
 .txtHeader {
-    font-size: 30px;
-    font-weight: 200;
+    font-size: 24px;
+    font-weight: 400;
+    padding-left: 10px;
 }
 
 .send {

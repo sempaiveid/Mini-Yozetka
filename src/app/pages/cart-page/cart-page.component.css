@@ -1,5 +1,9 @@
 :host{
-    padding-left: 7vw;
-    padding-right: 7vw;
     height: 100vh;
-}
+    display: block;
+    height: 100%;
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0px 32px;
+    }

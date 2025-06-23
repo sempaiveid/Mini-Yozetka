@@ -1,0 +1,35 @@
+.bonus-page {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+.bonus-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #222;
+    text-align: center;
+    border-bottom: 2px solid #00a100;
+    padding-bottom: 10px;
+    display: inline-block;
+} 
+.bonus-page h2 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #00a100;
+}
+.bonus-page ul {
+    padding-left: 20px;
+    list-style: disc;
+    margin-bottom: 20px;
+}
+.bonus-page li::marker {
+    color: #00a100;
+}
+.bonus-page a {
+    color: #00a100;
+    text-decoration: underline;
+} 
+.bonus-page a:hover {
+    text-decoration: none;
+}
