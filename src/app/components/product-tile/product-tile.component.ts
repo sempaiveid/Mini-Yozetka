@@ -4,10 +4,11 @@ import { NgFor, NgIf } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { RouterModule } from '@angular/router';
 import { TileComponent } from './tile/tile.component';
+import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
 
 @Component({
   selector: 'app-product-tile',
-  imports: [NgFor, RouterModule, TileComponent, NgIf],
+  imports: [NgFor, RouterModule, TileComponent, NgIf, CurrencyPipe],
   standalone: true,
   templateUrl: './product-tile.component.html',
   styleUrl: './product-tile.component.css',

@@ -5,7 +5,7 @@
     <hr>
     <span class="readyBox">
         <p class="readyTxt">Є в наявності</p>
-        <p class="price">{{price}} ₴</p>
+        <p class="price">{{price | currency_pipe}}</p>
     </span>
 
     <button #btn class="flex buy" (click)="addToCart(product);buttonClick(btn)">

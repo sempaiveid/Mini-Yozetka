@@ -1,10 +1,11 @@
 import { Event } from '@angular/router';
 import { Component, inject, Input } from '@angular/core';
 import { CartService } from '../../../services/cart.service';
+import { CurrencyPipe } from '../../../pipes/currency-convert.pipe';
 
 @Component({
   selector: 'app-tile-price',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './tile-price.component.html',
   styleUrl: './tile-price.component.css'
 })
