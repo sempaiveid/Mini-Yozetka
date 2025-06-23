@@ -11,35 +11,49 @@
 
 <!-- (input) = "saveToLocalStorage()" -->
 
-<h3 class="txtHeader">Коментарі</h3>
-<div class="bodyCommitBox">
-  <div class="dataText">
-    <b class="name">name</b>
-    <span class="gray">Відгук від покупця. Продавець: Rozetka</span>
+<!-- Список коментарів -->
+<div class="w-full p-6 bg-white shadow-md rounded-xl">
+  <!-- Заголовок -->
+  <h2 class="text-xl font-semibold text-gray-800 mb-4">Коментарі</h2>
+
+  <!-- Комментарий от пользователя -->
+  <div class="flex items-start gap-4 mb-6">
+    <img src="https://i.pravatar.cc/40?u=name" alt="avatar" class="w-10 h-10 rounded-full" />
+
+    <div>
+      <p class="font-semibold text-gray-900">Name</p>
+      <p class="text-sm text-gray-500">
+        Відгук від покупця. Продавець:
+        <span class="text-green-600 font-medium">Rozetka</span>
+      </p>
+    </div>
   </div>
 
-  <!-- Поле вводу -->
-  <input 
-    type="text" 
-    class="commentTxt" 
-    [(ngModel)]="textCommit"
-    placeholder="Напишіть свій коментар"
-    required 
-  >
-  <!-- Кнопка додавання -->
-  <button 
-    type="submit" 
-    class="send" 
-    [disabled]="textCommit.trim() === ''" 
-    (click)="saveToLocalStorage()"
-  >
-    Відправити коментар
-  </button>
-</div> 
+  <!-- Текстовое поле с кнопкой внутри -->
+  <div class="relative">
+    <textarea [(ngModel)]="textCommit" rows="4" placeholder="Напишіть свій коментар"
+      class="w-full px-4 py-3 pr-20 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-sm resize-none"></textarea>
 
-<!-- Список коментарів -->
-<ul class="listComment">
-  <li *ngFor="let comment of comments">
-    {{ comment }}
+    <!-- Кнопка внутри textarea -->
+    <button type="submit" (click)="saveToLocalStorage()" [disabled]="textCommit.trim() === ''"
+      class="absolute bottom-3 right-3 bg-green-600 text-white px-4 py-2 text-sm rounded-lg shadow-md font-medium hover:bg-green-700 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+      Надіслати
+    </button>
+  </div>
+</div>
+
+
+<ul class="space-y-4 mt-5">
+  <li *ngFor="let comment of comments.slice().reverse()" class="bg-white p-4 rounded-xl shadow-md">
+    <div class="flex items-start gap-3">
+      <img src="https://i.pravatar.cc/40?u={{ comment }}" alt="Avatar" class="w-10 h-10 rounded-full object-cover" />
+
+      <div>
+        <h4 class="font-semibold text-gray-800">Ім'я користувача</h4>
+        <p class="text-gray-700 text-sm mt-1">
+          {{ comment }}
+        </p>
+      </div>
+    </div>
   </li>
-</ul> 
+</ul>
