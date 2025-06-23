@@ -1,11 +1,11 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-commit-product',
   standalone: true,
-  imports: [FormsModule,NgFor],
+  imports: [FormsModule,NgFor,NgIf],
   templateUrl: './commit-product.component.html',
   styleUrls: ['./commit-product.component.css']
 })
