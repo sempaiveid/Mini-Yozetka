@@ -7,10 +7,26 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-
 app-root {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 100vh;
+}
+.main_container {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0px 32px;
+}
+.stylish_container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0px 32px;
 }

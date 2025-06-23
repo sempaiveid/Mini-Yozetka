@@ -11,10 +11,7 @@
 
 <!-- (input) = "saveToLocalStorage()" -->
 
-
-
-<b class="txtHeader">Коментарі</b>
-
+<h3 class="txtHeader">Коментарі</h3>
 <div class="bodyCommitBox">
   <div class="dataText">
     <b class="name">name</b>
@@ -22,7 +19,7 @@
   </div>
 
   <!-- Поле вводу -->
-   <input 
+  <input 
     type="text" 
     class="commentTxt" 
     [(ngModel)]="textCommit"
@@ -30,7 +27,7 @@
     required 
   >
   <!-- Кнопка додавання -->
-   <button 
+  <button 
     type="submit" 
     class="send" 
     [disabled]="textCommit.trim() === ''" 
@@ -41,7 +38,7 @@
 </div> 
 
 <!-- Список коментарів -->
- <ul>
+<ul class="listComment">
   <li *ngFor="let comment of comments">
     {{ comment }}
   </li>
