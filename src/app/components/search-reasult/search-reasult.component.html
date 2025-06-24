@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="tools">
-                <span class="price">{{ item.price }} ₴</span>
+                <span class="price">{{ item.price | currency_pipe}}</span>
                 <button (click)="addToCart(item)" class="btn">
                     <p>{{isItemInCart(item)?"В Корзині":" Купити"}}</p>
 

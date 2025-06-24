@@ -4,10 +4,11 @@ import { ProductService } from '../../services/product.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
 
 @Component({
   selector: 'app-search-reasult',
-  imports: [TileComponent, NgFor, NgIf,RouterModule],
+  imports: [TileComponent, NgFor, NgIf,RouterModule, CurrencyPipe],
   templateUrl: './search-reasult.component.html',
   styleUrl: './search-reasult.component.css'
 })
@@ -15,7 +16,7 @@ export class SearchReasultComponent {
 
   product = inject(ProductService)
   products = this.product.get()
-  newProduct: { name: string, picture: string, id: string, price: string }[] = []
+  newProduct: { name: string, picture: string, id: string, price: number }[] = []
   whatSearch = ""
 
   cart = inject(CartService)
