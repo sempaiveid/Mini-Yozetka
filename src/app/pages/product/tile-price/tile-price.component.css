@@ -22,6 +22,7 @@ div {
     margin-bottom: 30px;
     border-radius: 10px;
     transition: 0.7s;
+    cursor: pointer;
 }
 
 .buy:hover {
