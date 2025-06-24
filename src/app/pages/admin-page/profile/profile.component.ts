@@ -5,10 +5,11 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../services/product.service';
 import { NgFor, NgIf } from '@angular/common';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule , NgFor, NgIf],
+  imports: [ReactiveFormsModule , NgFor, NgIf, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
