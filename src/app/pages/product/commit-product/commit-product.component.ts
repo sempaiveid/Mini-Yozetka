@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { NgFor } from '@angular/common';
-=======
 import { NgFor} from '@angular/common';
->>>>>>> main
 import { Component, OnInit,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
