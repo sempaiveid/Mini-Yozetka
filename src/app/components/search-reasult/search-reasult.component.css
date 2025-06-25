@@ -1,20 +1,25 @@
-:host{
+:host {
     display: flex;
     height: 100%;
-    max-width: 1600px;
     margin: 0 auto;
     padding: 0px 32px;
+    justify-content: center;
+
 }
+
 .category {
     font-size: 24px;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .search-list {
     display: flex;
+    width: 100%;
     flex-direction: column;
     margin: 10px 5vh 0px 5vh;
     justify-content: flex-start;
+    align-items: center;
     height: 100%;
 
 }
@@ -26,10 +31,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
 
 }
 
 .list-container {
+    cursor: pointer;
     padding: 10px;
     box-sizing: border-box;
     height: 200px;
@@ -118,6 +125,7 @@
 .price {
     font-size: 25px;
     font-weight: 400;
+    text-wrap: nowrap;
 }
 
 .container-search {
@@ -126,7 +134,8 @@
     justify-content: center;
     align-items: center;
 }
-.conteiner-content{
+
+.conteiner-content {
     display: flex;
     flex-direction: column;
     gap: 20px;

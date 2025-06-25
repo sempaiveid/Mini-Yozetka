@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderInputComponent {
   constructor() {
-    this.liveValue.valueChanges.subscribe(value => { // подписываемя на изменения значения у инпута и делаем живой поиск 
-      this.router.navigate(['/search'], { queryParams: { nameProduct: value } })
+    this.liveValue.valueChanges.subscribe(value => {
+      if (value !== "")// подписываемя на изменения значения у инпута и делаем живой поиск 
+        this.router.navigate(['/search'], { queryParams: { nameProduct: value } })
 
     })
   }
