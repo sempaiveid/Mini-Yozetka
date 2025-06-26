@@ -5,10 +5,11 @@ import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-search-reasult',
-  imports: [TileComponent, NgFor, NgIf,RouterModule, CurrencyPipe],
+  imports: [TileComponent, NgFor, NgIf, RouterModule, CurrencyPipe],
   templateUrl: './search-reasult.component.html',
   styleUrl: './search-reasult.component.css'
 })
@@ -20,7 +21,7 @@ export class SearchReasultComponent {
   whatSearch = ""
 
   cart = inject(CartService)
-
+  titleService = inject(Title);
   route = inject(ActivatedRoute)
   ngOnInit() {
     this.route.queryParams.subscribe(({ nameProduct }) => {
@@ -28,6 +29,7 @@ export class SearchReasultComponent {
       this.newProduct = this.products.filter(el =>
         el.name.toLowerCase().includes(nameProduct.toLowerCase())
       );
+      this.titleService.setTitle(`Пошук : ${nameProduct}`)
     })
   }
   addToCart(product: any) {
@@ -43,5 +45,6 @@ export class SearchReasultComponent {
   isItemInCart(item: any): boolean {
     return this.cart.productCart.some((el: any) => el.id === item.id)
   }
+
 
 }
