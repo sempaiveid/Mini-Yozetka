@@ -1,11 +1,9 @@
-Ось оновлена, коротка і чиста версія `README.md` англійською, **без тестів**, **з технологічним стеком** і **іменами команди**:
 
----
-
-````markdown
 # 🛒 MiniYozetka
 
-**MiniYozetka** is a simple e-commerce web application built with Angular for learning purposes.
+**MiniYozetka** is a lightweight e-commerce web application built with Angular for learning and teamwork practice.
+
+---
 
 ## 🚀 Getting Started
 
@@ -16,27 +14,41 @@ ng serve
 
 Open in browser: [http://localhost:4200](http://localhost:4200)
 
-## 🧱 Tech Stack
+---
+
+## 🔧 Tech Stack
 
 * Angular 19
 * TypeScript
-* TailwindCSS
+* TailwindCSS(small)
 * Angular Router
-* RxJS
-* REST API
 * HTML & SCSS
 
-## 👥 Team
+---
 
+## ✨ Features
+
+* 🛍 **Product catalog** — display list of products
+* 🔎 **Search** — filter products by name or category
+* 📄 **Product details page** — view full info about selected product
+* 🛒 **Shopping cart** — add/remove items, view cart content
+* 🔐 **Authentication**  — admin login
+
+
+---
+
+## 👥 Team
+* Vlad
 * Marina
 * Max
 * Zhenya
 * Sasha
-* Vlad
 
-```
 
 ---
 
-Хочеш — можу одразу згенерувати `README.md` файл або додати секцію з фічами (каталог, кошик, авторизація тощо).
+> 💡 This project was created for educational purposes using modern frontend technologies and teamwork practices.
+
 ```
+
+
