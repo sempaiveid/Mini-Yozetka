@@ -143,3 +143,6 @@
 .category-list li:hover {
     color: #00b517;
 }
+.container{
+    padding: 0 0 25px 0;
+}

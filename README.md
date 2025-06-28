@@ -49,6 +49,5 @@ Open in browser: [http://localhost:4200](http://localhost:4200)
 
 > 💡 This project was created for educational purposes using modern frontend technologies and teamwork practices.
 
-```
 
 

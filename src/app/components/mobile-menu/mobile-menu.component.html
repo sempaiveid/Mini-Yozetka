@@ -9,7 +9,7 @@
     <span class="title">Mini-Yozetka</span>
     <button class="close-btn" (click)="onCloseClick()">✕</button>
   </div>
-  <div class="container overflow-scroll">
+  <div class="container overflow-y-scroll ">
     <!-- Каталог -->
     <button class="catalog-btn" (click)="toggleCategories()">
       Каталог товарів
@@ -34,8 +34,10 @@
     <h4 class="menu-heading">🛍️ Основне</h4>
     <ul class="menu-list">
       <li routerLink="/cart">🛒 Кошик<span class="badge">{{ cartCount }}</span></li>
-      <li>❤️ Списки бажаного</li>
-      <li>👀 Переглянуті товари</li>
+      <li style=" opacity: 0.4;filter: grayscale(100%);cursor: not-allowed;" disabled>❤️ Списки
+        бажаного</li>
+      <li style=" opacity: 0.4;filter: grayscale(100%);cursor: not-allowed;" disabled>👀
+        Переглянуті товари</li>
     </ul>
 
     <!-- Інформація про компанію -->
