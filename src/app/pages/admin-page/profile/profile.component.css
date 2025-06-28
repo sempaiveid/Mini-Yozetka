@@ -32,6 +32,7 @@
                     margin-right: 5%;
                 }
                 button{
+                    color: white;
                     font-family: "Gill Sans", sans-serif;
                     font-size: 25px;
                     cursor: pointer;
@@ -98,6 +99,7 @@
                         text-overflow: ellipsis;
                     }
                     button{
+                        color: white;
                         cursor: pointer;
                         background-color: #e63946;
                         border-radius: 10px;
@@ -440,6 +442,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+            color: white;
             button {
                 width: 100px;
                 margin-left: 15px;
@@ -447,7 +450,6 @@
                 padding: 8px 20px;
                 border-radius: 8px;
                 cursor: pointer;
-                color: #2d2d2d;
                 border: none;
 
                 &:first-of-type {
