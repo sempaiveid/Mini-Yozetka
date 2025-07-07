@@ -4,6 +4,7 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+    background-color: var(--background-color);
    
     form{
         width: 30%;
@@ -15,6 +16,8 @@
         justify-content: center;
         padding-bottom:10px;
         box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
+        background-color: var(--grey);
+        color: var(--text-color);
         .form_header{
             height: 10%;
             display: flex;
@@ -65,16 +68,17 @@
                     margin-top:1%;
                     border: 1px solid #797878;
                     border-radius: 5px;
-                    background-color: #f8f8f8;
+                    background-color: var(--background-color);
                     font-size: 16px;
                     transition: all 0.3s ease;
+                    color: var(--text-color);
                     &:hover {
-                        background-color: #f0f0f0;
+                        background-color: var(--grey);
                     }
                     &:focus {
                         outline: none;
                         border-color: #0000;
-                        background-color: #fff;
+                        background-color: var(--grey);
                         box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
                     }
                     &.ng-touched.ng-invalid{

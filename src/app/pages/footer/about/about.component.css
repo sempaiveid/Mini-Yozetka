@@ -5,7 +5,7 @@
 .about-page h1 {
   font-size: 2.2rem;
   margin-bottom: 30px;
-  color: #222;
+  color: var(--burg-222-text);
   text-align: center;
   border-bottom: 2px solid #00b300;
   padding-bottom: 10px;
@@ -19,12 +19,13 @@ font-size: 1.5rem;
 }
 .about-page p {
   margin-bottom: 20px;
-  color: #444;
+  color: var(--burg-222-text);
 } 
 .about-page ul {
   padding-left: 20px;
   list-style: disc;
   margin-bottom: 20px;
+  color: var(--burg-222-text);
 }
 .about-page li::marker {
   color: #00a100; /* зелёный маркер списка */

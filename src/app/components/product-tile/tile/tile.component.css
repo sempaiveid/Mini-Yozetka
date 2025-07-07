@@ -1,7 +1,7 @@
 
 .textProd {
     font-size: 16px;
-    color: #333;
+    color: var(--text-color);
     text-align: start;
     padding: 3px 0;
     margin: 10px 0;

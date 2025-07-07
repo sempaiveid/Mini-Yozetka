@@ -15,6 +15,7 @@
         height: 100%;
         max-height: 800px;
         width: 35%;
+        color: var(--text-color);
         .profile_icon{
             display: flex;
             flex-direction: column;
@@ -71,7 +72,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    border: 1px solid black;
+                    border: 1px solid var(--text-color);
                     border-radius: 10px;
                 
                     margin-top: 5%;
@@ -118,7 +119,7 @@
 
     .form_container {
         max-height: 800px;
-        background-color: white;
+        background-color: var(--grey);
         border-radius: 12px;
         margin: 2%;
         width: 65%;
@@ -161,7 +162,7 @@
                 p {
                     font-size: 16px;
                     font-weight: 500;
-                    color: #2d2d2d;
+                    color: var(--text-color);
                     margin-bottom: 8px;
                 }
 
@@ -171,8 +172,7 @@
                     padding: 12px;
                     border-radius: 8px;
                     font-size: 16px;
-                    color: #2d2d2d;
-                    background-color: #f9fafb;
+                    color: var(--text-color);
                     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
                     &::placeholder {
@@ -187,9 +187,8 @@
                     &:focus {
                         outline: none;
                         border: 1px solid;
-                        border-color: #00a63e;
                         box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                        background-color: white;
+                        background-color: var(--grey);
                     }
 
                     &.ng-touched.ng-invalid {
@@ -224,7 +223,7 @@
                         border: 1px solid;
                         border-color: #00a63e;
                         box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                        background-color: white;
+                        background-color: var(--grey);
                     }
 
                     &.ng-touched.ng-invalid {
@@ -258,8 +257,7 @@
                         border: 1px solid #d1d5db;
                         border-radius: 8px;
                         font-size: 16px;
-                        color: #2d2d2d;
-                        background-color: #f9fafb;
+                        color: #9ca3af;
                         cursor: pointer;
                         transition: border-color 0.3s ease, box-shadow 0.3s ease;
                         appearance: none;
@@ -279,7 +277,7 @@
                                 outline: none;
                                 border-color: #00a63e;
                                 box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                                background-color: white;
+                                background-color: var(--grey);
                             }
 
                             &.ng-touched.ng-invalid {
@@ -290,6 +288,7 @@
                             &.ng-touched.ng-valid {
                                 border-color: #00a63e;
                                 box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                                color: var(--text-color);
                             }
                     }
                     .input_price {
@@ -300,7 +299,7 @@
                         p {
                             font-size: 16px;
                             font-weight: 500;
-                            color: #2d2d2d;
+                            color: var(--text-color);
                             margin-bottom: 8px;
                         }
 
@@ -315,6 +314,8 @@
                             -moz-appearance: textfield;
                             appearance: none;
                             transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                            flex-direction: column;
+                            color: var(--text-color);
 
                             &::-webkit-outer-spin-button,
                             &::-webkit-inner-spin-button {
@@ -333,7 +334,7 @@
                                 outline: none;
                                 border-color: #00a63e;
                                 box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                                background-color: white;
+                                background-color: var(--grey); 
                             }
 
                             &.ng-touched.ng-invalid {
@@ -359,8 +360,7 @@
                         border: 1px solid #d1d5db;
                         border-radius: 8px;
                         font-size: 16px;
-                        color: #2d2d2d;
-                        background-color: #f9fafb;
+                        color: #9ca3af;
                         cursor: pointer;
                         transition: border-color 0.3s ease, box-shadow 0.3s ease;
                         appearance: none;
@@ -377,7 +377,7 @@
                             outline: none;
                             border-color: #00a63e;
                             box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                            background-color: white;
+                            background-color: var(--grey);
                         }
 
                         option[value=""] {

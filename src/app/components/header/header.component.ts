@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 import { CartService } from '../../services/cart.service';
 import { PipeService } from '../../services/pipe.service';
+import { ThemeCheckComponent } from './theme-check/theme-check.component';
 
 @Component({
   selector: 'app-header',
-  imports: [HeaderInputComponent, RouterModule, MobileMenuComponent],
+  imports: [HeaderInputComponent, RouterModule, MobileMenuComponent,ThemeCheckComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

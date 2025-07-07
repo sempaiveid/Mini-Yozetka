@@ -1,5 +1,5 @@
 div {
-    background-color: #fff;
+    background-color: var(--grey);
     ;
 }
 
@@ -36,7 +36,15 @@ div {
     gap: 20px;
     overflow: hidden;
     overflow-x: scroll;
+    cursor:no-drop;
+    z-index: 1;
+    background-color: rgb(63, 63, 63); 
 }
+.boxImgItem img{
+z-index: 0;
+opacity: 0.5;
+}
+
 
 .boxImgItem::-webkit-scrollbar {
     background: gray;
@@ -57,7 +65,7 @@ div {
 .price {
     font-size: 30px;
     font-family: "Gill Sans", sans-serif;
-    color: black;
+    color: var(--text-color);
     margin-top: auto;
 }
 
@@ -65,7 +73,7 @@ div {
     display: flex;
     align-items: center;
     gap: 1%;
-    color: gray;
+    color: var(--text-color);
     padding: 10px;
 }
 
