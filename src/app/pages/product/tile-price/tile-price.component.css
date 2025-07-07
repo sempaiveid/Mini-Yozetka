@@ -36,7 +36,15 @@ div {
     gap: 20px;
     overflow: hidden;
     overflow-x: scroll;
+    cursor:no-drop;
+    z-index: 1;
+    background-color: rgb(63, 63, 63); 
 }
+.boxImgItem img{
+z-index: 0;
+opacity: 0.5;
+}
+
 
 .boxImgItem::-webkit-scrollbar {
     background: gray;
