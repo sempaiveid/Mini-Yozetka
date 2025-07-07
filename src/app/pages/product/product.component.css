@@ -1,7 +1,6 @@
 .bodyProductPage {
     align-items: center;
     justify-content: center;
-    /* overflow-y: scroll; */
     margin-top: 20px;
     height: 100%;
     width: 100%;
@@ -83,4 +82,3 @@ app-description-product{
 app-commit-product{
     width: 80%;
 }
-/* color:var(--color-green-600) */

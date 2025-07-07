@@ -1,5 +1,5 @@
 div {
-    background-color: #fff;
+    background-color: var(--grey);
     ;
 }
 
@@ -57,7 +57,7 @@ div {
 .price {
     font-size: 30px;
     font-family: "Gill Sans", sans-serif;
-    color: black;
+    color: var(--text-color);
     margin-top: auto;
 }
 
@@ -65,7 +65,7 @@ div {
     display: flex;
     align-items: center;
     gap: 1%;
-    color: gray;
+    color: var(--text-color);
     padding: 10px;
 }
 

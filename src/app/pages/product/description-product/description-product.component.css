@@ -1,6 +1,6 @@
 .deskBox {
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--grey);
   width: 100%;
   border: 1px solid gray;
   border-radius: 20px;
@@ -38,7 +38,7 @@
 
 .textBox.collapsed {
   font-size: 16px;
-  color: #333;
+  color: var(--text-color);
   text-align: start;
   display: -webkit-box;
   -webkit-line-clamp: 2;
