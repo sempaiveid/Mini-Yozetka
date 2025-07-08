@@ -41,9 +41,7 @@ export class AuthService {
 
   login(login: string, password: string): boolean{
     const users = this.getAllUsers();
-
-    const foundUser = users.find((user)=>{user.login === login && user.password === password});
-
+    const foundUser = users.find((user)=>{return user.login === login && user.password === password});
     if(!foundUser) return false;
     this.loginService.setUser(foundUser);
     return true;

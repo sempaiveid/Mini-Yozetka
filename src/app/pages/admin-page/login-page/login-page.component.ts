@@ -45,8 +45,10 @@ export class LoginPageComponent {
   async login(){
     const login = this.loginForm.get('login')?.value || '';
     const password =  this.loginForm.get('password')?.value || '';
-
+    console.log(login, password);
+    
     const success = await this.authService.login(login, password);
+    console.log(success);
     
     if (success) {
       this.router.navigate(["/admin/profile"]);

@@ -12,9 +12,9 @@
         justify-content: center;
         align-items: end;
         overflow: hidden;
-        width: 7%;
+        padding:10px 0px 10px 10px;
         button{
-            width: 90%;
+            width: 100%;
             padding: 10px 20px;
             font-size: 1.25rem;
             border-radius: 40px 0px 0px 40px;
@@ -31,19 +31,22 @@
     }
    
     form{
+        margin-right: 10%;
         width: 30%;
         max-width: 400px;
         display: flex;
         flex-direction: column;
         border-radius: 15px;
         justify-content: center;
-        padding-bottom:10px;
+        padding-bottom:20px;
         box-shadow: 0 0 20px #7978788f;
         background-color: var(--background-color);
         color: var(--text-color);
-        
         &.ng-valid{
             box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
+        }
+        &.ng-submitted.ng-invalid {
+            box-shadow: 0 0 20px rgba(160, 0, 0, 0.3);
         }
         .form_header{
             height: 10%;
@@ -149,6 +152,7 @@
 
 :host-context(body.dark-theme) .input_container{
    input{
+    border: 1px solid #ffffff;
     background-color: var(--grey) !important;
     color: white;
    }
@@ -159,4 +163,11 @@
     &.ng-valid{
         box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
     }
+}
+
+:host-context(body.dark-theme) .select_mode{
+    button{
+        color: white;
+    }
+
 }

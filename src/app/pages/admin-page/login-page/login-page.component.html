@@ -1,7 +1,7 @@
 
 <div class="select_mode">
-    <button [class.selected]="mode === 'login'" (click)="switchMode('login')">Login</button>
-    <button [class.selected]="mode === 'register'" (click)="switchMode('register')">Register</button>   
+    <button [class.selected]="mode === 'login'" (click)="switchMode('login')">Увiйти</button>
+    <button [class.selected]="mode === 'register'" (click)="switchMode('register')">Зареєструватися</button>   
 </div>
 
 <form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="mode === 'login'">
@@ -26,7 +26,7 @@
 
 <form [formGroup]="registerForm" (ngSubmit)="register()" *ngIf="mode === 'register'">
     <div class="form_header">
-        <h3>Register</h3>
+        <h3>Реєстрація</h3>
         <img (click)="closeForm()" src="/cross.svg" alt="X-close">
     </div>
     <hr>
