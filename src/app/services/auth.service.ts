@@ -17,7 +17,7 @@ export class AuthService {
     password: string,
     user_name: string,
     profile_icon: string = 'https://cdn-icons-png.flaticon.com/512/17003/17003310.png',
-  ): boolean{
+  ): boolean {
     const users = this.getAllUsers();
 
     const exists = users.find((user)=> user.login === login);
@@ -36,6 +36,14 @@ export class AuthService {
     users.push(newUser);
     localStorage.setItem(this.usersKey, JSON.stringify(users));
     this.loginService.setUser(newUser);
+    return true;
+  }
+
+  login(login: string, password: string): boolean{
+    const users = this.getAllUsers();
+    const foundUser = users.find((user)=>{return user.login === login && user.password === password});
+    if(!foundUser) return false;
+    this.loginService.setUser(foundUser);
     return true;
   }
 
