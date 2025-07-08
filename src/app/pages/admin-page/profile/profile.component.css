@@ -256,7 +256,7 @@
                         border: 1px solid #d1d5db;
                         border-radius: 8px;
                         font-size: 16px;
-                        color: #9ca3af;
+                        color: black;
                         cursor: pointer;
                         transition: border-color 0.3s ease, box-shadow 0.3s ease;
                         appearance: none;
@@ -287,7 +287,7 @@
                             &.ng-touched.ng-valid {
                                 border-color: #00a63e;
                                 box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
-                                color: var(--text-color);
+                                
                             }
                     }
                     .input_price {
@@ -359,7 +359,7 @@
                         border: 1px solid #d1d5db;
                         border-radius: 8px;
                         font-size: 16px;
-                        color: #9ca3af;
+                        color: black;
                         cursor: pointer;
                         transition: border-color 0.3s ease, box-shadow 0.3s ease;
                         appearance: none;
