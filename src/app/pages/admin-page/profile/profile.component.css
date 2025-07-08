@@ -119,7 +119,6 @@
 
     .form_container {
         max-height: 800px;
-        background-color: var(--grey);
         border-radius: 12px;
         margin: 2%;
         width: 65%;
@@ -494,3 +493,6 @@ input {
 }
 
 
+:host-context(body.dark-theme) .form_container{
+    background-color: #7272726f;
+}
