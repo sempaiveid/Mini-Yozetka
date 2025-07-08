@@ -167,6 +167,7 @@
 
                
                 input, textarea {
+                    background-color: #f9fafb;
                     width: 100%;
                     padding: 12px;
                     border-radius: 8px;
@@ -202,7 +203,37 @@
                         box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
                     }
                 }
+                input{
+                    &::placeholder {
+                        color: #9ca3af;
+                    }
 
+                    &:hover {
+                        border: 1px solid;
+                        border-color: #00a63e;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        border: 1px solid;
+                        border-color: #00a63e;
+                        box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                        background-color: var(--grey);
+                    }
+
+                    &.ng-touched.ng-invalid {
+                        border: 1px solid;
+                        border-color: #e63946;
+                        box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+                    }
+
+                    &.ng-valid {
+                        border: 1px solid;
+                        border-color: #00a63e;
+                        box-shadow: 0 0 0 3px rgba(0, 166, 62, 0.1);
+                    }
+                }
+                
                 textarea {
                     resize: none;
                     height: 120px;
@@ -506,5 +537,10 @@ input {
 :host-context(body.dark-theme) .select_container{
     select{
         color: var(--text-color) !important;
+    }
+}
+:host-context(body.dark-theme) .input_container{
+    input,textarea{
+        background-color: #7272726f !important;
     }
 }

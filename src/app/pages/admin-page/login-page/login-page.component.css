@@ -171,3 +171,7 @@
     }
 
 }
+:host-context(body.dark-theme) .name_forma{
+    color: white !important;
+}
+
