@@ -34,7 +34,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 10px;
-    background-color: var(--grey);
+    filter:var(--invert);
     border-radius: 5px
 }
 .sidebar li a[data-icon="tools"]::before {

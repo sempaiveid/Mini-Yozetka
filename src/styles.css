@@ -20,6 +20,7 @@ html, body {
   --burg-333-text: #333;
   --burg-111-text: #111;
   --burg-222-text: #222;
+  --invert:invert(0);
 }
 
 body.dark-theme {
@@ -30,6 +31,7 @@ body.dark-theme {
   --burg-333-text: #c1c1c1;
   --burg-111-text: #7a7a7a;
   --burg-222-text: #bfbfbf;
+  --invert:invert(1);
 }
 
 app-root {
