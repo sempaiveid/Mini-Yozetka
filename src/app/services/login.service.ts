@@ -30,6 +30,15 @@ export class LoginService {
     return this.getUser()?.added_product || [];
   }
 
+  addUserProducts(products: Product[]) {
+    const user = this.getUser();
+    if (user) {
+      user.added_product.push(...products);
+      this.setUser(user);
+    }
+  }
+
+
   getUser(): User | null {
     return this.userSubject.value;
   }
