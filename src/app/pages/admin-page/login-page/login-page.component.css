@@ -22,7 +22,8 @@
             transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
             
             &.selected{
-                background-color: #7978788f;
+                background-color: var(--color-green-600);
+                color: white;
                 transform: scale(1.05);
                 opacity: 0.9; 
             }
