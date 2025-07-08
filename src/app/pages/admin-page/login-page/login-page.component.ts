@@ -67,7 +67,7 @@ export class LoginPageComponent {
       return;
     }
 
-    const success = this.authService.register(login, password, user_name);
+    const success = await this.authService.register(login, password, user_name);
 
     if(success){
       this.router.navigate(["/admin/profile"]);
