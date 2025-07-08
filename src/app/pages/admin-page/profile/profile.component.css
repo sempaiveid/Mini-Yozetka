@@ -496,3 +496,15 @@ input {
 :host-context(body.dark-theme) .form_container{
     background-color: #7272726f;
 }
+
+:host-context(body.dark-theme) .price_container{
+    select{
+        color: var(--text-color) !important;
+    }
+   
+}
+:host-context(body.dark-theme) .select_container{
+    select{
+        color: var(--text-color) !important;
+    }
+}
