@@ -44,3 +44,15 @@
     position: relative;
 bottom: 0;
 }
+
+@media(max-width:476px){
+    .footer-columns{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /* .footer-col{
+        display: flex;
+        align-items: center;
+    } */
+}

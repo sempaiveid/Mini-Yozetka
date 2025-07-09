@@ -49,3 +49,10 @@
     left: 45%;
     bottom: 25px;
   }
+
+  @media(max-width:476px){
+    .deskBox{
+      flex-direction: column;
+      
+    }
+  }
