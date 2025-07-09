@@ -29,28 +29,6 @@ div {
     background-color: rgb(0, 197, 95);
 }
 
-.boxImgItem {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    overflow: hidden;
-    overflow-x: scroll;
-    cursor:no-drop;
-    z-index: 1;
-    background-color: rgb(63, 63, 63); 
-}
-.boxImgItem img{
-z-index: 0;
-opacity: 0.5;
-}
-
-
-.boxImgItem::-webkit-scrollbar {
-    background: gray;
-    height: 2px;
-}
-
 .textProd {
     font-size: 20px;
     margin-bottom: 25px;

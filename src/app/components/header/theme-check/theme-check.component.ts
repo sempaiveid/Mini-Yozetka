@@ -10,34 +10,45 @@ import { FormsModule } from '@angular/forms';
 export class ThemeCheckComponent {
   isDark: boolean = false;
 
-  constructor(){
+  constructor() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      this.darkTheme();
+
+    if (savedTheme) {
+      if (savedTheme === 'dark') {
+        this.darkTheme();
+      } else {
+        this.lightTheme();
+      }
     } else {
-      this.ligthTheme();
+      const userThemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (userThemeDark) {
+        this.darkTheme();
+      } else {
+        this.lightTheme();
+      }
     }
   }
 
   click() {
     this.isDark = !this.isDark;
     if (this.isDark) {
-      this.darkTheme()
-    }else{
-      this.ligthTheme()
+      this.darkTheme();
+    } else {
+      this.lightTheme();
     }
-
   }
-  ligthTheme(): void {
-    document.body.classList.add("ligth-theme");
+
+  lightTheme(): void {
+    document.body.classList.add("light-theme");
     document.body.classList.remove("dark-theme");
-    localStorage.setItem("theme", "light")
+    localStorage.setItem("theme", "light");
     this.isDark = false;
   }
+
   darkTheme(): void {
     document.body.classList.add("dark-theme");
     document.body.classList.remove("light-theme");
-    localStorage.setItem("theme", "dark")
+    localStorage.setItem("theme", "dark");
     this.isDark = true;
   }
 }
