@@ -15,7 +15,6 @@ export class ThemeCheckComponent {
 
     if (savedTheme) {
       if (savedTheme === 'dark') {
-        console.log(localStorage.getItem("theme"))
         this.darkTheme();
       } else {
         this.lightTheme();
