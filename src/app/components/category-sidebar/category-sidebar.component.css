@@ -52,3 +52,9 @@
 .sidebar li a[data-icon="chemicals"]::before {
     background-image: url('/chemicals.svg');
 }
+
+@media(max-width: 476px){
+    .sidebar{
+        display: none;
+    }
+}

@@ -73,3 +73,9 @@
     justify-content: center;
     cursor: pointer;
 }
+
+@media(max-width:476px){
+    .container-ads{
+        width: 300px;
+    }
+}

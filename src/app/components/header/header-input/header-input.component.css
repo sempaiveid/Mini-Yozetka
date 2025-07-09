@@ -53,3 +53,33 @@
 .find:hover {
     background-color: #00bc52;
 }
+
+@media(max-width:476px){
+    .find{
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 14px;
+    }
+    .inner-form-input>input{
+        width: 100%;
+        background-image: none;
+        padding-left: 5px;
+    }
+    /* .inner-form-input{
+        width: 300px;
+    } */
+    .inner-form{
+        width: 100%;
+    }
+    form{
+        width: 100%;
+    }
+    /* form{
+        display: none;
+    } */
+
+    /* Это основной блок */
+    /* .inner-form-input{
+        display: none;
+    } */
+}

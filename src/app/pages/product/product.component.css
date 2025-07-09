@@ -82,3 +82,29 @@ app-description-product{
 app-commit-product{
     width: 80%;
 }
+/* color:var(--color-green-600) */
+
+@media(max-width:476px){
+    app-product-image {
+        height: 60%;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main_container{
+        gap: 10px;
+    }
+    hr{
+        width: 100%;
+        height: 2px;
+    }
+    .boxProductPage{
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+    }
+    .textBox{
+        width: 90%;
+    }
+}

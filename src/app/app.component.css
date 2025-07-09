@@ -20,3 +20,8 @@
 .footer {
   grid-area: footer;
 }
+ @media(max-width:476px){
+   .footer{
+    grid-template-columns: repeat(3, 100px);
+  } 
+} 
