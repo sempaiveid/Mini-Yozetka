@@ -3,39 +3,39 @@
         <h1> Результати пошуку «<span style="color: green;">{{ whatSearch }}</span>»
         </h1>
     </div>
-    <ul class="list" *ngIf="newProduct.length > 0 ; else noSearch">
-        <li *ngFor="let item of newProduct" class="list-container">
-            <div class="container-img">
-                <img src="{{item.picture}}" alt="{{item.name}}">
-            </div>
-            <div class="title"><app-tile [name]="item.name" [id]="item.id"></app-tile>
-                <div class="star">
-                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-                        <svg fill="#ffa900" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 314.335 314.336" xml:space="preserve">
-                            <path d="M302.593,117.321h-80.698c-13.583,0-27.994-10.472-32.191-23.398l-24.944-76.744c-4.197-12.925-10.997-12.925-15.198,0 
+    <div style="display: flex;width: fit-content;">
+        <ul class="list" *ngIf="newProduct.length > 0 ; else noSearch">
+            <li *ngFor="let item of newProduct" class="list-container">
+                <div [routerLink]="['/product',item.id]" class="container-img">
+                    <img src="{{item.picture}}" alt="{{item.name}}">
+                </div>
+                <div class="title"><app-tile [name]="item.name" [id]="item.id"></app-tile>
+                    <div class="star">
+                        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                            <svg fill="#ffa900" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 314.335 314.336" xml:space="preserve">
+                                <path d="M302.593,117.321h-80.698c-13.583,0-27.994-10.472-32.191-23.398l-24.944-76.744c-4.197-12.925-10.997-12.925-15.198,0 
           l-24.941,76.744c-4.2,12.926-18.612,23.398-32.195,23.398H11.74c-13.583,0-15.688,6.473-4.699,14.462l65.284,47.426 
           c10.989,7.986,16.498,24.932,12.298,37.854l-24.941,76.741c-4.2,12.922,1.309,16.922,12.298,8.93l65.291-47.427 
           c10.988-7.986,28.805-7.986,39.794,0l65.29,47.427c10.988,7.992,16.501,3.98,12.298-8.93l-24.938-76.741 
           c-4.197-12.923,1.31-29.868,12.298-37.854l65.284-47.426C318.285,123.794,316.176,117.321,302.593,117.321z">
-                            </path>
-                        </svg>
-                    </ng-container>
+                                </path>
+                            </svg>
+                        </ng-container>
+                    </div>
+                    <div class="true">
+                        <b>Готовий до відправлення</b>
+                    </div>
                 </div>
-                <div class="true">
-                    <b>Готовий до відправлення</b>
+                <div class="tools">
+                    <span class="price">{{ item.price | currency_pipe}}</span>
+                    <button (click)="addToCart(item)" class="btn">
+                        <p style="   text-wrap: nowrap;">{{isItemInCart(item)?"В Корзині":" Купити"}}</p>
+                    </button>
                 </div>
-            </div>
-            <div class="tools">
-                <span class="price">{{ item.price }} ₴</span>
-                <button (click)="addToCart(item)" class="btn">
-                    <p>{{isItemInCart(item)?"В Корзині":" Купити"}}</p>
-
-
-                </button>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
     <ng-template #noSearch>
         <div class="container-search">
             <div class="img">

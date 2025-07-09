@@ -1,5 +1,5 @@
 import { LoginPageComponent } from './pages/admin-page/login-page/login-page.component';
-import { AdminPageComponent } from './pages/admin-page/admin-page.component'; 
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/admin-page/profile/profile.component';
@@ -26,39 +26,39 @@ export const routes: Routes = [
     {
         path: "cart",
         component: CartPageComponent,
-        title: "Інтеренет-магазин Mini-Yozetka™/Cart"
+        title: "Корзина"
     },
     {
         path: "admin",
         component: AdminPageComponent,
-        title: "Admin",
-        canActivate:[authGuard],
+        title: "Панель Адміністратора ",
+        canActivate: [authGuard],
         children: [
             {
-                path: "", redirectTo:"profile", pathMatch:'full',
+                path: "", redirectTo: "profile", pathMatch: 'full',
             },
-            {path:"profile", component:ProfileComponent, title: "Profile"}
+            { path: "profile", component: ProfileComponent, title: "Profile" }
         ]
     },
     {
         path: "login",
         component: LoginPageComponent,
-        title: "Login"
+        title: "Логін"
     },
     {
         path: "product/:id",
-        component:  ProductComponent,
+        component: ProductComponent,
         title: "Product"
     },
     {
         path: "search",
-        component:  SearchReasultComponent,
-        title: "Product"
+        component: SearchReasultComponent,
+        title: "Пошук"
     },
     {
         path: "category/:id",
         component: HomeComponent,
-        title: "Category"
+        title: "Категорія"
     },
     {
         path: 'about',
@@ -103,6 +103,6 @@ export const routes: Routes = [
     {
         path: '**',
         component: NotFoundPageComponent,
-        title: 'Page not found'
+        title: 'Сторінку не знайдено '
     },
 ];

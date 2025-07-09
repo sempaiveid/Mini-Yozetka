@@ -1,20 +1,54 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+<div class="select_mode">
+    <button [class.selected]="mode === 'login'" (click)="switchMode('login')">Увiйти</button>
+    <button [class.selected]="mode === 'register'" (click)="switchMode('register')">Зареєструватися</button>   
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="mode === 'login'">
     <div class="form_header">
         <h3>Вхiд</h3>
-        <img (click)="closeForm()" src="https://www.svgrepo.com/show/513658/cross.svg" alt="X-close">
+        <img (click)="closeForm()" src="/cross.svg" alt="X-close">
     </div>
     <hr>
     <div class="forma_container">
-        <!-- <div class="input_container">
-            <p class="name_forma">Логин</p>
-            <input formControl="login" class="login" type="text">
-        </div> -->
         <div class="input_container">
-            <p>Пароль</p>
-            <input formControlName="password" type="text">
+            <p class="name_forma">Логін</p>
+            <input formControlName="login" class="login" type="text">
+        </div>
+        <div class="input_container">
+            <p class="name_forma">Пароль</p>
+            <input formControlName="password" type="password">
         </div>
         
         <button type="submit" [disabled]="loginForm.invalid">Увiйти</button>
     </div>
-    
+</form>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()" *ngIf="mode === 'register'">
+    <div class="form_header">
+        <h3>Реєстрація</h3>
+        <img (click)="closeForm()" src="/cross.svg" alt="X-close">
+    </div>
+    <hr>
+    <div class="forma_container">
+        <div class="input_container">
+            <p class="name_forma">Ім’я</p>
+            <input formControlName="user_name" type="text">
+        </div>
+        <div class="input_container">
+            <p class="name_forma">Логін</p>
+            <input formControlName="login" type="text">
+        </div>
+        <div class="input_container">
+            <p class="name_forma">Пароль</p>
+            <input formControlName="password" type="password">
+        </div>
+        <div class="input_container">
+            <p class="name_forma">Повторіть пароль</p>
+            <input formControlName="repeat_password" type="password">
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid">Зареєструватися</button>
+    </div>
+
 </form>

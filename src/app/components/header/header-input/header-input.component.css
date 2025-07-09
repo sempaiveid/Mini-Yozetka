@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--grey);
     border-radius: 8px;
 }
 
@@ -20,14 +20,15 @@
     border: none;
     font-size: 14px;
     padding-left: 40px;
-    background-color: #fff;
+    background-color: var(--grey);
     outline: none;
     border-radius: 8px;
     font-size: 14px;
     background-image: url(/find.png);
- background-repeat: no-repeat;
-  background-size: 35px 35px;
-  background-position: 8px center;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    background-position: 8px center;
+    color: var(--text-color);
 }
 
 /* Button */

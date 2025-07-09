@@ -20,6 +20,7 @@
 
 .txt {
     font-family: "DM Serif Text", serif;
+    color: var(--color-white);
 }
 
 .search {
@@ -37,7 +38,8 @@
 .burger {
     cursor: pointer;
     border-radius: 4px;
-    transition: 300ms
+    transition: 300ms;
+    background-color:  var(--color-black);
 }
 
 .burger:hover {

@@ -1,10 +1,10 @@
 
 <div class="profile_container">
     <div class="profile_icon">
-        <img src={{loginService.user.profile_icon}} alt="">
+        <img src={{loginService.getUser()?.profile_icon}} alt="profile_icon">
         <div class="profile_setting">
             <p class="profile_name">
-                {{loginService.user.user_name}}
+                {{loginService.getUser()?.user_name}}
             </p>
             <button (click)="loginService.logOut()">Вийти</button>
         </div>  
@@ -12,9 +12,8 @@
     <div class="added_product">
         <div class="items_for_sale" *ngFor="let product of user_products">
             <div class="item_сontainer">
-                <div class="img_div"><img [src]="product.picture" [alt]="product.name"></div>
-                
-                <p>{{ product.name }}</p>
+                <a [routerLink]="['/product', product.id]" class="img_div"><img [src]="product.picture" [alt]="product.name"></a>
+                <a class="item_naming" [routerLink]="['/product', product.id]">{{ product.name }}</a>
                 <button (click)="confirmDelete(product.id)">Видалити</button>
             </div>
             

@@ -1,9 +1,12 @@
-:host{
-    height: 100%;
+:host {
+    height: 100vh;
+    display: block;
+
     .sidebar_menu {
         width: 300px;
         flex-shrink: 0;
     }
+
     .content_container {
         flex-grow: 1;
     }

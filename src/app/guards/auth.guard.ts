@@ -7,7 +7,7 @@ import { inject } from '@angular/core';
 export const authGuard: CanActivateFn = () => {
   const loginService: LoginService = inject(LoginService);
   const router:Router = inject(Router);
-  if (loginService.getLoginStatus()){
+  if (loginService.getUser()){
     return true;
   } else{
     router.navigate(['/login']);

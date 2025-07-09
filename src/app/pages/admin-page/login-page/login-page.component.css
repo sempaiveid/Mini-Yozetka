@@ -4,17 +4,50 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+    background-color: var(--background-color);
+
+    .select_mode{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+        overflow: hidden;
+        padding:10px 0px 10px 10px;
+        button{
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 1.25rem;
+            border-radius: 40px 0px 0px 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+            
+            &.selected{
+                background-color: var(--color-green-600);
+                color: white;
+                transform: scale(1.05);
+            }
+        }
+        
+    }
    
     form{
+        margin-right: 10%;
         width: 30%;
         max-width: 400px;
         display: flex;
         flex-direction: column;
-        /* border: 1px solid black; */
         border-radius: 15px;
         justify-content: center;
-        padding-bottom:10px;
-        box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
+        padding-bottom:20px;
+        box-shadow: 0 0 20px #7978788f;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        &.ng-valid{
+            box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
+        }
+        &.ng-submitted.ng-invalid {
+            box-shadow: 0 0 20px rgba(160, 0, 0, 0.3);
+        }
         .form_header{
             height: 10%;
             display: flex;
@@ -65,16 +98,17 @@
                     margin-top:1%;
                     border: 1px solid #797878;
                     border-radius: 5px;
-                    background-color: #f8f8f8;
+                    background-color: var(--background-color);
                     font-size: 16px;
                     transition: all 0.3s ease;
+                    color: var(--text-color);
                     &:hover {
-                        background-color: #f0f0f0;
+                        background-color: var(--grey);
                     }
                     &:focus {
                         outline: none;
                         border-color: #0000;
-                        background-color: #fff;
+                        background-color: var(--grey);
                         box-shadow: 0 0 0 3px rgba(1, 14, 7, 0.2);
                     }
                     &.ng-touched.ng-invalid{
@@ -106,5 +140,38 @@
         }
         
     }
+
+    
+}
+
+:host-context(body.dark-theme) .form_header{
+    img{
+        filter: invert(100%);
+    }
+}
+
+:host-context(body.dark-theme) .input_container{
+   input{
+    border: 1px solid #ffffff;
+    background-color: var(--grey) !important;
+    color: white;
+   }
+}
+
+:host-context(body.dark-theme) form{
+    box-shadow: 0 0 20px rgba(210, 204, 203, 0.3);
+    &.ng-valid{
+        box-shadow: 0 0 20px rgba(0, 160, 70, 0.3);
+    }
+}
+
+:host-context(body.dark-theme) .select_mode{
+    button{
+        color: white;
+    }
+
+}
+:host-context(body.dark-theme) .name_forma{
+    color: white !important;
 }
 

@@ -5,10 +5,11 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../services/product.service';
 import { NgFor, NgIf } from '@angular/common';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule , NgFor, NgIf],
+  imports: [ReactiveFormsModule , NgFor, NgIf, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -17,7 +18,7 @@ export class ProfileComponent {
   loginService: LoginService = inject(LoginService);
 
   addProductForm = new FormBuilder().group({
-    name_product : ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁё\s]+$/), Validators.minLength(4)]],
+    name_product : ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁёҐґЄєІіЇї\s]+$/), Validators.minLength(4)]],
     image_product: ['', [Validators.required], [imageExistsValidator()]],
     description_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яІіЇїЄєҐґЁё0-9\s]+$/), Validators.minLength(5)]],
     price_product:[ null , [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
@@ -62,7 +63,7 @@ export class ProfileComponent {
       price: 0 as number,
       category:this.addProductForm.controls.category_product.value as string,
       description: {text: this.addProductForm.controls.description_product.value as string} as object,
-      uploader: this.loginService.user.login as string,
+      uploader: this.loginService.getUser()?.login as string,
     };
     console.log(this.addProductForm.controls.currency_price_product.value);
 
@@ -75,7 +76,7 @@ export class ProfileComponent {
     }
 
     this.productService.addProduct = product;
-    this.loginService.add_user_product(this.productService.find_uploader(product.uploader));
+    this.loginService.addUserProducts(this.productService.find_uploader(product.uploader));
     this.addProductForm.reset();
     this.update_user_products();
     this.addProductForm.get('currency_price_product')?.setValue('hryvnia');

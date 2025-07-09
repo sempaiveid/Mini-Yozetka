@@ -14,12 +14,12 @@
 .titleTxt {
     font-size: 25px;
     font-family: "Gill Sans", sans-serif;
-    color: black;
+    color:var(--text-color);
     margin-top: 20px;
 }
 
 .productCard {
-    background-color: #fff;
+    background-color:var(--grey);
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -51,6 +51,8 @@
     height: 60%;
     justify-content: center;
     padding: 5px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .imgBox img {
@@ -76,7 +78,7 @@
 .price {
     font-size: 21px;
     font-family: "Gill Sans", sans-serif;
-    color: black;
+    color: var(--text-color);
     margin-top: auto;
 }
 
@@ -112,7 +114,7 @@
     border-radius: 50%;
     position: absolute;
     border: 1px solid #ccc;
-    background: white;
+    background: var(--grey);
     cursor: pointer;
     border-radius: 4px;
     font-size: 16px;
