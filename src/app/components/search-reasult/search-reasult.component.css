@@ -21,7 +21,7 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-
+    color: var(--text-color);
 }
 
 .list {
@@ -52,6 +52,7 @@
 .container-img {
     height: 100%;
     width: 20%;
+    min-width: 20%;
     background-color: #ffffff;
     overflow: hidden;
     padding: 10px;

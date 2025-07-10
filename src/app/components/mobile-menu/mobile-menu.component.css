@@ -22,7 +22,7 @@
     left: 0;
     width: 300px;
     height: 100%;
-    background: white;
+    background: var(--background-color);
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -35,6 +35,7 @@
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
+    background:var(--burg-background);
 }
 /* Верхняя панель */
 .top-bar {
@@ -72,11 +73,11 @@
 .user-info p {
     margin: 2px 0;
     font-size: 14px;
-    color: #333;
+    color:var(--burg-333-text);
 }
 .user-info strong {
     font-size: 15px;
-    color: #111;
+    color: var(--burg-111-text);
   }
 /* Каталог */
 .catalog-btn {
@@ -104,12 +105,12 @@
     padding: 12px 16px;
     border-bottom: 1px solid #eee;
     font-size: 15px;
-    color: #222;
+    color: var( --burg-222-text );
     cursor: pointer;
     transition: background 0.2s;
 }
 .menu-list li:hover {
-    background-color: #f8f8f8;
+    background-color: var(--grey);
     color: #00b517;
 }
 .badge {
@@ -135,7 +136,7 @@
     padding: 10px 0;
     font-size: 15px;
     border-bottom: 1px solid #eee;
-    color: #222;
+    color: var( --burg-222-text );
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -145,4 +146,6 @@
 }
 .container{
     padding: 0 0 25px 0;
+    background:var(--background-color);
+
 }
