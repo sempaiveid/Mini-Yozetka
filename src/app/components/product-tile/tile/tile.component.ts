@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, SimpleChange, SimpleChanges } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 
@@ -11,4 +11,7 @@ import { ProductService } from '../../../services/product.service';
 export class TileComponent {
   @Input() name = "";
   @Input() id = ""
+ngOnChanges(changes:SimpleChanges){
+  console.log(changes['id'].currentValue)
+}
 }
