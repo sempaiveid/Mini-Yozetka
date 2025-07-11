@@ -74,8 +74,24 @@
     cursor: pointer;
 }
 
-@media(max-width:476px){
-    .container-ads{
-        width: 300px;
+@media (max-width: 1200px) {
+    .btn-left, .btn-right{
+        width: 36px;
+        height: 36px;
+    }
+    .btn-left svg, .btn-right svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .btn-left, .btn-right{
+        width: 30px;
+        height: 30px;
+    }
+    .btn-left svg, .btn-right svg {
+        width: 18px;
+        height: 18px;
     }
 }
