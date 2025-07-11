@@ -30,7 +30,7 @@
     transform: translateY(-50%);
     width: 48px;
     height: 48px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--grey);
     border-radius: 50%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -72,4 +72,10 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+@media(max-width:476px){
+    .container-ads{
+        width: 300px;
+    }
 }

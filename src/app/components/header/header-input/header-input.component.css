@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--grey);
     border-radius: 8px;
 }
 
@@ -20,14 +20,15 @@
     border: none;
     font-size: 14px;
     padding-left: 40px;
-    background-color: #fff;
+    background-color: var(--grey);
     outline: none;
     border-radius: 8px;
     font-size: 14px;
     background-image: url(/find.png);
- background-repeat: no-repeat;
-  background-size: 35px 35px;
-  background-position: 8px center;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    background-position: 8px center;
+    color: var(--text-color);
 }
 
 /* Button */
@@ -51,4 +52,34 @@
 
 .find:hover {
     background-color: #00bc52;
+}
+
+@media(max-width:476px){
+    .find{
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 14px;
+    }
+    .inner-form-input>input{
+        width: 100%;
+        background-image: none;
+        padding-left: 5px;
+    }
+    /* .inner-form-input{
+        width: 300px;
+    } */
+    .inner-form{
+        width: 100%;
+    }
+    form{
+        width: 100%;
+    }
+    /* form{
+        display: none;
+    } */
+
+    /* Это основной блок */
+    /* .inner-form-input{
+        display: none;
+    } */
 }

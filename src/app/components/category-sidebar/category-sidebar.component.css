@@ -23,7 +23,7 @@
     position: relative;
 } 
 .sidebar li a:hover {
-    background-color: #f0f0f0;
+    background-color: var(--grey);
     color: #00b400;
 }
 .sidebar li a::before {
@@ -34,6 +34,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 10px;
+    filter:var(--invert);
+    border-radius: 5px
 }
 .sidebar li a[data-icon="tools"]::before {
     background-image: url('/machinery.png');
@@ -49,4 +51,10 @@
 }
 .sidebar li a[data-icon="chemicals"]::before {
     background-image: url('/chemicals.svg');
+}
+
+@media(max-width: 476px){
+    .sidebar{
+        display: none;
+    }
 }

@@ -12,8 +12,9 @@
                     src="./logo.svg" alt=""></a>>
             <a href="" routerLink="" title="Mini-YozetkaSan™"
                 class="txt text-3xl font-bold text-white block mr-10">Mini-Yozetka</a>
+                <!-- !!    -->
             <div class="search">
-                <header-input></header-input>
+                <header-input class="header_input_size"></header-input>
             </div>
             <ul class="navigation">
                 <select class="select_currency" (change)="changeCurrency($event)" [value]="selectedCurrency">
@@ -21,7 +22,10 @@
                     <option class="option_currency" value="USD">USD</option>
                     <option class="option_currency" value="EUR">EUR</option>
                 </select>
-
+                
+                <li>
+                    <app-theme-check></app-theme-check>
+                   </li>
                 <li class="header-comparisons">
                     <button routerLink="admin" title="Адмін" class="button-admin">
                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 64 64" fill="none"

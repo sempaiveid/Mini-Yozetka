@@ -3,7 +3,7 @@
       <app-category-sidebar></app-category-sidebar>
     </div>
     <div class="content_container flex-1">
-        <app-ads></app-ads>
-        <app-product-tile [category]="selectedCategory" [categoryName]="selectedCategoryName"></app-product-tile>
+          <app-ads class="hide-on-small"></app-ads>  
+        <app-product-tile class="product_tile" [category]="selectedCategory" [categoryName]="selectedCategoryName"></app-product-tile>
     </div>
 </main>

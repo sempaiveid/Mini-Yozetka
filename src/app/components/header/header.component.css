@@ -20,6 +20,7 @@
 
 .txt {
     font-family: "DM Serif Text", serif;
+    color: var(--color-white);
 }
 
 .search {
@@ -37,7 +38,8 @@
 .burger {
     cursor: pointer;
     border-radius: 4px;
-    transition: 300ms
+    transition: 300ms;
+    background-color:  var(--color-black);
 }
 
 .burger:hover {
@@ -105,4 +107,51 @@
     .option_currency{
         background-color: black;
     }
+}
+
+@media(max-width:476px){
+     .layout{
+        max-width: 476px;
+        
+    }
+    .header>.layout {
+        padding: 0px 10px 0px 10px;
+    }
+    /* .logo_size{
+        width: 25px;
+        height: 25px;
+    } */
+     .picture{
+        width: 25px;
+        height: 25px;
+     }
+    
+    .txt{
+        display: none;
+    }
+
+    .button-admin{
+        width: 25px;
+        height: 25px;
+    }
+    .select_currency{
+        width: 55px;
+        height: 34px;
+        font-size: 12px;
+    }
+    .button-cart{
+        margin: 0px 0px 0px 5px;
+    }
+    .button-comparisons{
+        margin: 0px 0px 0px 5px;
+    }
+    /* .header_input_size{
+        width:10%;
+        display: block;
+    } */
+     .search{
+        /* height: 20px; */
+        flex-grow: 0,5;
+        width: 40%;
+    } 
 }

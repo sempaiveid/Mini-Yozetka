@@ -1,0 +1,42 @@
+<div class="boxImgItem">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/534616559.jpg"
+        alt="rozetka" (click)="openModal('rozetka')">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/437858387.jpg"
+        alt="privatBank" (click)="openModal('privatBank')">
+    <img height="10%" width="10%" src="https://content1.rozetka.com.ua/payments_methods/logo/original/450067950.jpg"
+        alt="monoBank" (click)="openModal('monoBank')">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/290040692.jpg"
+        alt="pumb" (click)="openModal('pumb')">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/565233558.jpg"
+        alt="Sense" (click)="openModal('Sense')">
+    <img height="10%" width="10%" src="https://content.rozetka.com.ua/payments_methods/logo/original/254250966.jpg"
+        alt="A-bank" (click)="openModal('Abank')">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/406455401.jpg"
+        alt="oshad" (click)="openModal('oshad')">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/380528671.jpg"
+        alt="UKRSIBBANK" (click)="openModal('UKRSIBBANK')">
+    <img height="10%" width="10%" src="https://content2.rozetka.com.ua/payments_methods/logo/original/300740056.png"
+        alt="otp" (click)="openModal('otp')">
+
+</div>
+<div class="modal-overlay" *ngIf="showModal">
+    <div class="modal">
+        <button class="close-btn" (click)="closeModal()">✖</button>
+        <h1>Кредит</h1>
+        <hr>
+        <div class="header">
+            <img src={{selectedBank.image}}>
+            <h2>{{ selectedBank.h1 }}</h2>
+        </div>
+        <button class="modal-action" (click)="closeModal()">Оформити</button>
+        
+        <h2 class="txt">Опис продукту:</h2>
+        <div class="discribe">
+            <h3>{{ selectedBank.h2 }}</h3>
+            <h3>{{ selectedBank.h3 }}</h3>
+            <h3>{{ selectedBank.h4 }}</h3>
+            <h3> {{ selectedBank.h5 }}</h3>
+            <h3>Подарунки не надаються при купівлі товару в 0,01% кредит чи оплату частинами.</h3>
+        </div>
+    </div>
+</div>

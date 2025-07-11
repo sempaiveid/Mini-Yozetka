@@ -1,10 +1,10 @@
 
 <div class="profile_container">
     <div class="profile_icon">
-        <img src={{loginService.user.profile_icon}} alt="">
+        <img src={{loginService.getUser()?.profile_icon}} alt="profile_icon">
         <div class="profile_setting">
             <p class="profile_name">
-                {{loginService.user.user_name}}
+                {{loginService.getUser()?.user_name}}
             </p>
             <button (click)="loginService.logOut()">Вийти</button>
         </div>  
