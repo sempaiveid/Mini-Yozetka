@@ -1,21 +1,21 @@
 <div class="name-card">
-    <h2>Кошик</h2>
+  <h2>Кошик</h2>
 </div>
 <ng-container *ngIf="productCard.length > 0; else noProducts">
   <div *ngFor="let item of productCard" class="main-cart">
-    <div id="{{item.id}}" class="item-card">
+    <div id="{{ item.id }}" class="item-card">
       <a href="" class="container-img-card">
         <img [src]="item.picture" alt="Картинка" />
       </a>
-      <div style="width: 40%;" class="conteiner-title">
+      <div style="width: 40%" class="conteiner-title">
         <a class="cart-title" href="">
           <span>{{ item.name }}</span>
         </a>
-        <span style="font-size: 14px;">Продавець: Mini-YozetkaSan</span>
+        <span style="font-size: 14px">Продавець: Mini-YozetkaSan</span>
       </div>
       <app-counter-product [inputCount]="item.quantity"></app-counter-product>
       <div class="container-price">
-        <p class="item-cost">{{ item.total | currency_pipe}}</p>
+        <p class="item-cost">{{ item.total | currency_pipe }}</p>
       </div>
       <app-poput-menu></app-poput-menu>
     </div>
@@ -23,20 +23,25 @@
 </ng-container>
 <ng-template #noProducts>
   <div class="none-product">
-    <img src="./cartNone.svg" alt="">
+    <img src="./cartNone.svg" alt="" />
     <p>У кошику немає товарів</p>
   </div>
 </ng-template>
 <div *ngIf="productCard.length" class="cart-footer">
-    <button class="continue-to-buy" routerLink="">Продовжити покупки</button>
-    <button class="continue-to-buy ml-2" (click)="clearCart()">Очистити корзину </button>
-    <div  class="cart-footer-cost">
-        <div class="cost">
-            <span>{{product.getTotalPrice() | currency_pipe}}</span>
-        </div>
-        <button class="btn-buy" (click)="buy()"><span>Оформити замовлення</span></button>
+  <button class="continue-to-buy" routerLink="">Продовжити покупки</button>
+  <button class="continue-to-buy ml-2" (click)="clearCart()">
+    Очистити корзину
+  </button>
+  <div class="cart-footer-cost">
+    <div class="cost">
+      <span>{{ product.getTotalPrice() | currency_pipe }}</span>
     </div>
+    <button class="btn-buy" (click)="buy()">
+      <span>Оформити замовлення</span>
+    </button>
+  </div>
 </div>
-<div [style.opacity]="isBuy ? 1 : 0 " class="offer">
-    <span>Дякуемо за покупку</span>
-</div>
+<!-- <div [style.opacity]="isBuy ? 1 : 0" class="offer">
+  <span>Дякуемо за покупку</span>
+</div> -->
+<app-buy-menu (evenClose)="buy()" *ngIf="modal" ></app-buy-menu>
