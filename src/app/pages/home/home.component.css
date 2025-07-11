@@ -1,7 +1,4 @@
 :host {
-    height: 100vh;
-    display: block;
-
     .sidebar_menu {
         width: 300px;
         flex-shrink: 0;
@@ -9,5 +6,17 @@
 
     .content_container {
         flex-grow: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar_menu {
+      display: none;
+      width: 0;
+      padding: 0;
+      margin: 0;
+    }
+    .content_container {
+        width: 100% !important;
     }
 }

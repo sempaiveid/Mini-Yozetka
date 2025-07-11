@@ -63,7 +63,7 @@ export class ProfileComponent {
       price: 0 as number,
       category:this.addProductForm.controls.category_product.value as string,
       description: {text: this.addProductForm.controls.description_product.value as string} as object,
-      uploader: this.loginService.user.login as string,
+      uploader: this.loginService.getUser()?.login as string,
     };
     console.log(this.addProductForm.controls.currency_price_product.value);
 
@@ -76,7 +76,7 @@ export class ProfileComponent {
     }
 
     this.productService.addProduct = product;
-    this.loginService.add_user_product(this.productService.find_uploader(product.uploader));
+    this.loginService.addUserProducts(this.productService.find_uploader(product.uploader));
     this.addProductForm.reset();
     this.update_user_products();
     this.addProductForm.get('currency_price_product')?.setValue('hryvnia');

@@ -166,10 +166,32 @@
     .tileBox {
         grid-template-columns: repeat(2, 1fr);
     }
+    .titleTxt{
+        font-size: 20px;
+    }
+    .container-left button, .container-right button{
+        padding: 10px;
+    }
 }
 
 @media (max-width: 900px) {
     .tileBox {
         grid-template-columns: repeat(1, 1fr);
     }
+}
+
+@media (max-width: 768px) {
+    .tileBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .tileBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+/* Адаптиція под мобильное приложение */
+@media(max-width:476px){
+    
 }
