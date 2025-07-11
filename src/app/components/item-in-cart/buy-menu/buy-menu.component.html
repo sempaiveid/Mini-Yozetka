@@ -1,0 +1,22 @@
+<div class="req-data">
+    <button class="btn-close" (click)="close()" ><img src="/cross.svg" alt="" ></button>
+  <form [formGroup]="form"  action="post">
+    <label style="margin-left: 17px;
+    font-size: 14px;
+    color: grey;">Номер телефону :</label>
+     <input type="tel" formControlName="tel"  minlength="9" maxlength="13" value="+380" />
+      <label style="margin-left: 17px;
+    font-size: 14px;
+    color: grey;">Ім'я :</label>
+    <input  type="text" formControlName="firstName" placeholder="Ім'я" />
+     <label style="margin-left: 17px;
+    font-size: 14px;
+    color: grey;">Фамілія :</label>
+    <input formControlName="lastName" type="text" placeholder="Фамілія" />
+     <label style="margin-left: 17px;
+    font-size: 14px;
+    color: grey;">По-Батькові:</label>
+    <input formControlName="surname" type="text" placeholder="По-Батькові" />
+    <button [disabled]="form.invalid"   class="btn-to-buy" (click)=" buy()" type="submit">Оформити замовлення</button>
+  </form>
+</div>

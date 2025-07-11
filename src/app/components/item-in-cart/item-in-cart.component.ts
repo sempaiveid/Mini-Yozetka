@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
 import { HttpClient } from '@angular/common/http';
+import { BuyMenuComponent } from './buy-menu/buy-menu.component';
 
 @Component({
   selector: 'app-item-in-cart',
@@ -17,6 +18,7 @@ import { HttpClient } from '@angular/common/http';
     RouterModule,
     NgIf,
     CurrencyPipe,
+    BuyMenuComponent,
   ],
   templateUrl: './item-in-cart.component.html',
   styleUrl: './item-in-cart.component.css',
@@ -27,8 +29,8 @@ export class ItemInCartComponent {
   productCard: any[] = this.product.productCart;
   productSet: any = this.product.productCart;
   inputCount = 1;
-  isBuy = false;
   http = inject(HttpClient);
+  modal = false;
   // loadCart() {
   //   this.http.get<any[]>('http://localhost:3000/cart').subscribe((data)=>{
   //     this.productCard = data
@@ -37,19 +39,7 @@ export class ItemInCartComponent {
   // }
 
   buy() {
-    if (this.productCard.length !== 0) {
-      this.http
-        .post('http://localhost:3000/send', {
-          order:this.productCard
-        })
-        .subscribe((data) => {
-          console.log(data);
-        });
-    }
-    this.product.resetCart();
-    this.productCard = [];
-    this.isBuy = true;
-    setTimeout(() => (this.isBuy = false), 1500);
+    this.modal = !this.modal;
   }
   clearCart() {
     this.product.resetCart();
