@@ -20,7 +20,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 300px;
+    width: 350px;
     height: 100%;
     background: var(--background-color);
     z-index: 1000;
@@ -147,5 +147,14 @@
 .container{
     padding: 0 0 25px 0;
     background:var(--background-color);
+    height: 100%;
+}
 
+@media (max-width: 768px) {
+    .mobile-menu{
+        width: 50%;
+    }
+    .menu-overlay{
+        width: 100%;
+    }
 }

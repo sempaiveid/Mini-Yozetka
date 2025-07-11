@@ -40,20 +40,19 @@
     text-align: center;
     font-size: 12px;
     color:var(--text-color);
-} 
-:host{
-    position: relative;
-bottom: 0;
 }
 
-@media(max-width:476px){
-    .footer-columns{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+@media (max-width: 768px) {
+    .footer-columns {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+      text-align: center;
     }
-    /* .footer-col{
-        display: flex;
-        align-items: center;
-    } */
+    .footer-col {
+      width: 100%;
+    }
+    .footer-bottom {
+      font-size: 12px;
+    }
 }
