@@ -53,8 +53,20 @@
     background-image: url('/chemicals.svg');
 }
 
-@media(max-width: 476px){
-    .sidebar{
-        display: none;
+@media (max-width: 1200px) {
+    .sidebar li a{
+        font-size: 15px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar li a{
+        font-size: 14px;
+        padding: 6px;
+    }
+    .sidebar li a::before{
+        width: 20px;
+        height: 20px;
     }
 }

@@ -109,10 +109,30 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .txt{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .txt{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .button-comparisons{
+        display: none;
+    }
+    .button-admin{
+        display: none;
+    }
+}
+
 @media(max-width:476px){
-     .layout{
+    .layout{
         max-width: 476px;
-        
     }
     .header>.layout {
         padding: 0px 10px 0px 10px;
