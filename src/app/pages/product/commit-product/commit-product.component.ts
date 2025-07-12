@@ -1,24 +1,32 @@
-import { NgFor} from '@angular/common';
-import { Component, OnInit, Input } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input, inject, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-commit-product',
   standalone: true,
-  imports: [FormsModule,NgFor],
+  imports: [FormsModule, NgFor],
   templateUrl: './commit-product.component.html',
-  styleUrls: ['./commit-product.component.css']
+  styleUrls: ['./commit-product.component.css'],
 })
-export class CommitProductComponent implements OnInit {
+export class CommitProductComponent {
   @Input() productId!: string;
   textCommit: string = '';
   messages: { [productId: string]: string[] } = {};
+  http = inject(HttpClient);
 
-  ngOnInit(): void {
-    const saved = localStorage.getItem('messages');
-    if (saved) {
-      this.messages = JSON.parse(saved);
-    }
+  ngOnChanges(changes: SimpleChanges): void {
+    // const saved = localStorage.getItem('messages');
+    // if (saved) {
+    //   this.messages = JSON.parse(saved);
+    // }
+    this.http
+      .get<string[]>(`http://localhost:3000/comments/${this.productId}`)
+      .subscribe((data) => {
+        console.log(data);
+        this.messages[this.productId] = data || [];
+      });
   }
 
   sanitizeComment(text: string): string {
@@ -46,7 +54,15 @@ export class CommitProductComponent implements OnInit {
     }
 
     this.messages[this.productId].push(sanitized);
-    localStorage.setItem('messages', JSON.stringify(this.messages));
+    // localStorage.setItem('messages', JSON.stringify(this.messages));
+    this.http
+      .post('http://localhost:3000/comments', {
+        productId: this.productId,
+        comments: this.messages[this.productId] || [],
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
     this.textCommit = '';
   }
 

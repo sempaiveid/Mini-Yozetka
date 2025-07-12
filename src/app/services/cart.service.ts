@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,9 +7,6 @@ import { Injectable } from '@angular/core';
 export class CartService {
   cart: any[] = [];
 
-  updateCart() {
-    localStorage.setItem("cart", JSON.stringify(this.cart));
-  }
 
   set productCart(product: any) {
     if (typeof product !== 'object' || product === null) {
@@ -27,7 +25,6 @@ export class CartService {
       this.cart.push(newProduct);
     }
 
-    this.updateCart();
   }
 
   get productCart() {
@@ -36,7 +33,6 @@ export class CartService {
 
   resetCart() {
     this.cart = [];
-    this.updateCart();
   }
 
   setQuantity(product: any, quantity: number) {
@@ -44,8 +40,7 @@ export class CartService {
     if (findProd) {
       console.log("count update")
       findProd.quantity = quantity;
-      findProd.total = findProd.quantity * findProd.price;
-      this.updateCart()
+      findProd.total = findProd.quantity * findProd.price
     } else {
       console.log(`Товар ${product.name} не найден в корзине`);
     }
@@ -57,7 +52,6 @@ export class CartService {
     const item_to_remove: number = this.cart.findIndex((item: any) => item.id === id);
     console.log(item_to_remove)
     this.cart.splice(item_to_remove, 1);
-    this.updateCart();
   }
 
   getTotalPrice() {
@@ -72,10 +66,6 @@ export class CartService {
     return this.cart.reduce((sum: number, item: any) => sum += item.quantity, 0)
   }
 
-  constructor() {
-    const sortedCart = localStorage.getItem("cart");
-    this.cart = sortedCart ? JSON.parse(sortedCart) : [];
-  }
 
 
 }

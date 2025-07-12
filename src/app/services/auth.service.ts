@@ -1,71 +1,56 @@
-import { Injectable } from '@angular/core';
-import {LoginService,  User} from './login.service';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginService, User } from './login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private usersKey = "users";
+  private http = inject(HttpClient);
+  private apiUrl = 'http://localhost:3000';
 
-  private getAllUsers(): User[]{
-    const raw = localStorage.getItem(this.usersKey);
-    return raw ? JSON.parse(raw) : [];
-  }
+  constructor(private loginService: LoginService) {}
 
-  private async hashPassword(password: string): Promise<string> {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  }
-
-
-  async register(
-    login: string,
-    password: string,
-    user_name: string,
-    profile_icon: string = 'https://cdn-icons-png.flaticon.com/512/17003/17003310.png',
-  ): Promise<boolean> {
-    const users = this.getAllUsers();
-    const loginNormalized = login.trim().toLowerCase();
-
-    const exists = users.find(user => user.login === loginNormalized);
-    if(exists){
+  async register(login: string, password: string, user_name: string, profile_icon: string = ''): Promise<boolean> {
+    try {
+      const response: any = await this.http.post(
+        `${this.apiUrl}/register`,
+        { login, password, user_name, profile_icon },
+        { withCredentials: true }
+      ).toPromise();
+      this.loginService.setUser(response.user);
+      return true;
+    } catch (error) {
       return false;
     }
-
-    const hashedPassword = await this.hashPassword(password);
-
-    const newUser: User = {
-      id: crypto.randomUUID(),
-      login: loginNormalized,
-      password: hashedPassword,
-      added_product: [],
-      user_name,
-      profile_icon
-    }
-    users.push(newUser);
-    localStorage.setItem(this.usersKey, JSON.stringify(users));
-    this.loginService.setUser(newUser);
-    return true;
   }
 
-  async login(login: string, password: string): Promise<boolean>{
-    const users = this.getAllUsers();
-    const loginNormalized = login.trim().toLowerCase();
-    const hashedPassword = await this.hashPassword(password);
-
-    const foundUser = users.find((user)=>{return user.login === loginNormalized && user.password === hashedPassword});
-    if(!foundUser) return false;
-    this.loginService.setUser(foundUser);
-    return true;
+  async login(login: string, password: string): Promise<boolean> {
+    try {
+      const response: any = await this.http.post(
+        `${this.apiUrl}/login`,
+        { login, password },
+        { withCredentials: true }
+      ).toPromise();
+      this.loginService.setUser(response.user);
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 
-  constructor(private loginService: LoginService) {
-    const userJson = localStorage.getItem(this.usersKey);
-    if(!userJson){
-      localStorage.setItem(this.usersKey, JSON.stringify([]));
+  async me(): Promise<boolean> {
+    try {
+      const response: any = await this.http.get(`${this.apiUrl}/me`, { withCredentials: true }).toPromise();
+      this.loginService.setUser(response.user);
+      return true;
+    } catch (error) {
+      return false;
     }
+  }
+
+  async logout(): Promise<void> {
+    await this.http.post(`${this.apiUrl}/logout`, {}, { withCredentials: true }).toPromise();
+    this.loginService.logOut();
   }
 }

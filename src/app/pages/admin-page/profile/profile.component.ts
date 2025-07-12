@@ -1,86 +1,78 @@
-import { LoginService } from './../../../services/login.service';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProductService } from '../../../services/product.service';
-import { Product } from '../../../services/product.service';
-import { NgFor, NgIf } from '@angular/common';
-import { imageExistsValidator } from '../../../validators/image-exists.validator';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ProductService, Product } from '../../../services/product.service';
+import { LoginService } from '../../../services/login.service';
+import { AuthService } from '../../../services/auth.service';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { imageExistsValidator } from '../../../validators/image-exists.validator';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule , NgFor, NgIf, RouterModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgFor, NgIf, RouterModule, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-  productService: ProductService = inject(ProductService);
-  loginService: LoginService = inject(LoginService);
+  loginService = inject(LoginService);
+  productService = inject(ProductService);
+  authService = inject(AuthService);
 
   addProductForm = new FormBuilder().group({
-    name_product : ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁёҐґЄєІіЇї\s]+$/), Validators.minLength(4)]],
+    name_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁёҐґЄєІіЇї\s]+$/), Validators.minLength(4)]],
     image_product: ['', [Validators.required], [imageExistsValidator()]],
     description_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яІіЇїЄєҐґЁё0-9\s]+$/), Validators.minLength(5)]],
-    price_product:[ null , [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
-    category_product:['', [Validators.required]],
-    currency_price_product:['', [Validators.required]]
-  })
-  
-  dollar: number = 41.30;
-  euro: number = 47.72;
-  
+    price_product: [null, [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
+    category_product: ['', [Validators.required]],
+    currency_price_product: ['hryvnia', [Validators.required]]
+  });
 
-  user_products:Product[] = [];
-
+  user_products: Product[] = [];
   productToDelete: string | null = null;
 
-  ngOnInit(){
-    this.addProductForm.get('currency_price_product')?.setValue('hryvnia');
-    this.addProductForm.get('category_product')?.setValue('');
+  dollar = 41.30;
+  euro = 47.72;
+
+  ngOnInit() {
+    this.loginService.user$.pipe(take(1)).subscribe(user => {
+      if (user) {
+        this.user_products = this.productService.find_uploader(user.login);
+      }
+    });
   }
 
-  constructor(){
-    this.update_user_products();
-  }
-
-  update_user_products(){
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-    if(user){
-      this.user_products = this.productService.find_uploader(user.login);
-    }
-  }
-  
-  addProduct(){
+  addProduct() {
     if (this.addProductForm.invalid) {
       this.addProductForm.markAllAsTouched();
       return;
     }
 
-    const product:Product = {
-      id: '',
-      name: this.addProductForm.controls.name_product.value as string,
-      picture: this.addProductForm.controls.image_product.value as string,
-      price: 0 as number,
-      category:this.addProductForm.controls.category_product.value as string,
-      description: {text: this.addProductForm.controls.description_product.value as string} as object,
-      uploader: this.loginService.getUser()?.login as string,
-    };
-    console.log(this.addProductForm.controls.currency_price_product.value);
+    const user = this.loginService.getUser();
+    if (!user) return;
 
-    const price = Number(this.addProductForm.controls.price_product.value);
-    switch(this.addProductForm.controls.currency_price_product.value){
-      case "hryvnia": product.price = price as number; break;
-      case "dollar": product.price = price as number *  Math.ceil(this.dollar) as number; break;
-      case "euro": product.price = price *  Math.ceil(this.euro) as number; break;
-      default: throw new Error('Неверная валюта выбрана');
+    const product: Product = {
+      id: '',
+      name: this.addProductForm.value.name_product!,
+      picture: this.addProductForm.value.image_product!,
+      description: { text: this.addProductForm.value.description_product! },
+      category: this.addProductForm.value.category_product!,
+      uploader: user.login,
+      price: 0
+    };
+
+    const price = Number(this.addProductForm.value.price_product);
+    switch (this.addProductForm.value.currency_price_product) {
+      case 'hryvnia': product.price = price; break;
+      case 'dollar': product.price = price * Math.ceil(this.dollar); break;
+      case 'euro': product.price = price * Math.ceil(this.euro); break;
     }
 
     this.productService.addProduct = product;
-    this.loginService.addUserProducts(this.productService.find_uploader(product.uploader));
+    this.user_products = this.productService.find_uploader(user.login);
     this.addProductForm.reset();
-    this.update_user_products();
-    this.addProductForm.get('currency_price_product')?.setValue('hryvnia');
-    this.addProductForm.get('category_product')?.setValue('');
+    this.addProductForm.patchValue({ currency_price_product: 'hryvnia', category_product: '' });
   }
 
   confirmDelete(productId: string) {
@@ -93,8 +85,14 @@ export class ProfileComponent {
 
   deleteProduct(productId: string) {
     this.productService.deleteProduct(productId);
-    this.update_user_products();
+    const user = this.loginService.getUser();
+    if (user) {
+      this.user_products = this.productService.find_uploader(user.login);
+    }
     this.productToDelete = null;
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }
