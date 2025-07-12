@@ -173,3 +173,32 @@
     background-color: #00bc52;
     color: #fff;
 }
+
+
+
+@media (max-width: 1200px) {
+   
+}
+
+@media (max-width: 845px) {
+    h1{
+        font-size: 20px;
+    }
+    /* .textProd{
+        font-size: 13px;
+    } */
+
+}
+
+@media (max-width: 768px) {
+    .button-comparisons{
+        display: none;
+    }
+    .button-admin{
+        display: none;
+    }
+}
+
+@media(max-width:476px){
+
+}
