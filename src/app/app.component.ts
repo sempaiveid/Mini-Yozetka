@@ -9,24 +9,29 @@ import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoadScreenComponent,NgIf],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    LoadScreenComponent,
+    NgIf,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  isActive = true
+  isActive = true;
 
   productService = inject(ProductService);
 
-  private async initProducts(){
-    await this.productService.loadFirstItems();
+  private async initProducts() {
+    // await this.productService.loadFirstItems();
   }
 
   ngOnInit() {
     this.initProducts();
     setTimeout(() => {
-      this.isActive = false
-    }, 1600)
+      this.isActive = false;
+    }, 1600);
   }
-
 }

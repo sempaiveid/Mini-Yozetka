@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrl: './header-input.component.css'
 })
 export class HeaderInputComponent {
-  constructor() {
-    this.liveValue.valueChanges.subscribe(value => {
-      if (value !== "")// подписываемя на изменения значения у инпута и делаем живой поиск 
-        this.router.navigate(['/search'], { queryParams: { nameProduct: value } })
+  // constructor() {
+  //   this.liveValue.valueChanges.subscribe(value => {
+  //     if (value !== "")// подписываемя на изменения значения у инпута и делаем живой поиск 
+  //       this.router.navigate(['/search'], { queryParams: { nameProduct: value } })
 
-    })
-  }
+  //   })
+  // }
   router = inject(Router)
   liveValue = new FormControl("")
   onEnter(event: SubmitEvent) {
