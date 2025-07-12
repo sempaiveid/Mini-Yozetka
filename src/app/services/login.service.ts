@@ -4,13 +4,12 @@ import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 export interface User {
-  id: string;
   login: string;
-  password: string;
-  added_product: Product[];
   user_name: string;
   profile_icon: string;
+  added_product: Product[];
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +19,8 @@ export class LoginService {
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
 
-  constructor(private router: Router) {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      this.userSubject.next(JSON.parse(savedUser));
-    }
-  }
+   constructor(private router: Router){}
+
 
   get users_products(): Product[] {
     return this.getUser()?.added_product || [];
@@ -46,12 +41,12 @@ export class LoginService {
 
   setUser(user: User) {
     this.userSubject.next(user);
-    localStorage.setItem('user', JSON.stringify(user));
   }
 
+
   logOut() {
-    localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
+
 }

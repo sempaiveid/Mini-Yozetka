@@ -35,21 +35,22 @@ export class LoginPageComponent {
     this.mode = mode;
   }
   
-  ngOnInit(){
-    if(this.loginService.getUser()){
-      this.router.navigate(["/admin/profile"]);
-    }
+  ngOnInit() {
+    this.authService.me().then(isLogged => {
+      if (isLogged) {
+        this.router.navigate(["/admin/profile"]);
+      }
+    });
   }
+
 
 
   async login(){
     const login = this.loginForm.get('login')?.value || '';
     const password =  this.loginForm.get('password')?.value || '';
-    console.log(login, password);
     
     const success = await this.authService.login(login, password);
-    console.log(success);
-    
+
     if (success) {
       this.router.navigate(["/admin/profile"]);
     } else {

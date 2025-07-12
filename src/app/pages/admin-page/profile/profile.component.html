@@ -1,12 +1,12 @@
 
 <div class="profile_container">
     <div class="profile_icon">
-        <img src={{loginService.getUser()?.profile_icon}} alt="profile_icon">
+        <img [src]="(loginService.user$ | async)?.profile_icon" alt="profile_icon">
         <div class="profile_setting">
             <p class="profile_name">
-                {{loginService.getUser()?.user_name}}
+                {{ (loginService.user$ | async)?.user_name }}
             </p>
-            <button (click)="loginService.logOut()">Вийти</button>
+            <button (click)="logout()">Вийти</button>
         </div>  
     </div>
     <div class="added_product">
