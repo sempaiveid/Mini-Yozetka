@@ -174,49 +174,42 @@
     color: #fff;
 }
 
-@media (max-width: 845px) {
-    h1{
-        font-size: 20px;
+ @media(max-width:850px){
+
+    .category{
+        font-size: 18px;
     }
     .title{
         width: 100px;
     }
     .tools{
-        padding: 10px 10px 10px 10px;
+        padding: 32px;
     }
     .price{
-        font-size: 17px;
+        font-size: 20px;
     }
     .btn{
-        margin: 0px 0px 0px 20px;
         font-size: 17px;
     }
 }
-
-@media (max-width: 768px) {
-    .button-comparisons{
-        display: none;
-    }
-    .button-admin{
-        display: none;
-    }
-}
-
-@media (max-width: 640px) {
+@media(max-width:720px){
     .list-container{
-        height: 400px;
         flex-direction: column;
+        height: 400px;
     }
     .container-img{
         width: 100%;
+        align-items: center;
+
     }
     .title{
         width: 100%;
     }
-    }
 
-    @media (max-width: 476px) {
-        .list-container{
-            height: 350px;
-        }
-        }
+}
+
+@media(max-width:476px){
+    .list-container{
+        height: 360px;
+    }
+}

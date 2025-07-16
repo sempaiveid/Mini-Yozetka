@@ -68,8 +68,10 @@
     text-decoration: underline;
 }
 
-@media(max-width:845px){
-    .textProd a{
-        font-size: 13px ;
+@media(max-width:850px){
+
+    
+    .textProd{
+        font-size: 13px;
     }
 }
