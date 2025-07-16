@@ -173,3 +173,43 @@
     background-color: #00bc52;
     color: #fff;
 }
+
+ @media(max-width:850px){
+
+    .category{
+        font-size: 18px;
+    }
+    .title{
+        width: 100px;
+    }
+    .tools{
+        padding: 32px;
+    }
+    .price{
+        font-size: 20px;
+    }
+    .btn{
+        font-size: 17px;
+    }
+}
+@media(max-width:720px){
+    .list-container{
+        flex-direction: column;
+        height: 400px;
+    }
+    .container-img{
+        width: 100%;
+        align-items: center;
+
+    }
+    .title{
+        width: 100%;
+    }
+
+}
+
+@media(max-width:476px){
+    .list-container{
+        height: 360px;
+    }
+}

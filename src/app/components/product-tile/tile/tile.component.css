@@ -67,3 +67,11 @@
     color: #f84147;
     text-decoration: underline;
 }
+
+@media(max-width:850px){
+
+    
+    .textProd{
+        font-size: 13px;
+    }
+}
