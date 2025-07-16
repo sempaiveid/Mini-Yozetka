@@ -24,19 +24,28 @@ import { HttpClient } from '@angular/common/http';
 export class ItemInCartComponent {
   cartTemplate: HTMLElement;
   product: CartService = inject(CartService);
-  productCard : any =[];
+  productCard: any[] = this.product.productCart;
   productSet: any = this.product.productCart;
   inputCount = 1;
   isBuy = false;
   http = inject(HttpClient);
-  loadCart() {
-    this.http.get<any[]>('http://localhost:3000/cart').subscribe((data)=>{
-      this.productCard = data
-      console.log(data)
-    });
-  }
+  // loadCart() {
+  //   this.http.get<any[]>('http://localhost:3000/cart').subscribe((data)=>{
+  //     this.productCard = data
+  //     console.log(data)
+  //   });
+  // }
 
   buy() {
+    if (this.productCard.length !== 0) {
+      this.http
+        .post('http://localhost:3000/send', {
+          order:this.productCard
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+    }
     this.product.resetCart();
     this.productCard = [];
     this.isBuy = true;
@@ -50,6 +59,6 @@ export class ItemInCartComponent {
     this.cartTemplate = document.querySelector('.main-cart') as HTMLElement;
   }
   ngOnInit() {
-    this.loadCart();
+    // this.loadCart();
   }
 }
