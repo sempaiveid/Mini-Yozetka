@@ -6,18 +6,20 @@
   overflow: hidden;
   overflow-x: scroll;
   z-index: 1;
-  padding:7px;
+  padding: 7px;
 }
 
 
 .boxImgItem::-webkit-scrollbar {
- height: 7px;
+  height: 7px;
 }
+
 .boxImgItem::-webkit-scrollbar-track {
-  background: rgba(101, 255, 62, 0.278);
+  background: rgba(68, 173, 42, 0.518);
 }
+
 .boxImgItem::-webkit-scrollbar-thumb {
-  background: rgba(139, 255, 110, 0.302);
+  background: rgb(101, 184, 80);
   border-radius: 20px;
 }
 
@@ -46,7 +48,7 @@
   color: var(--text-color);
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 3px 3px  rgb(195, 195, 195);
+  box-shadow: 0px 0px 3px 3px rgb(195, 195, 195);
 }
 
 .close-btn {
@@ -59,21 +61,22 @@
   cursor: pointer;
 }
 
-.modal-action {
+.buy {
   margin-top: 16px;
   padding: 10px 24px;
   background-color: var(--color-green-600);
   color: white;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
+  cursor:no-drop;
+  filter: opacity(0.7);
 }
 
-.modal-action:hover{
+.buy:hover {
   background-color: #00bc52;
 }
 
-.close-btn:hover{
+.close-btn:hover {
   filter: invert(1);
 }
 
@@ -94,7 +97,7 @@ h1 {
   padding: 5px;
 }
 
-h2{
+h2 {
   color: var(--color-green-600);
   text-align: start
 }
