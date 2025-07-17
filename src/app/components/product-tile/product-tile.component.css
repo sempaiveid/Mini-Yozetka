@@ -183,6 +183,9 @@
     .tileBox {
         grid-template-columns: repeat(2, 1fr);
     }
+    .titleTxt{
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 600px) {
