@@ -15,6 +15,7 @@ export class CommitProductComponent {
   textCommit: string = '';
   messages: { [productId: string]: string[] } = {};
   http = inject(HttpClient);
+  lengthArr = 15;
 
   ngOnChanges(changes: SimpleChanges): void {
     // const saved = localStorage.getItem('messages');
@@ -26,6 +27,7 @@ export class CommitProductComponent {
       .subscribe((data) => {
         console.log(data);
         this.messages[this.productId] = data || [];
+        this.lengthArr = this.messages[this.productId].length
       });
   }
 
@@ -69,4 +71,12 @@ export class CommitProductComponent {
   get comments(): string[] {
     return this.messages[this.productId] || [];
   }
+ 
+  arr = ["user-img/user.png", "user-img/user1.png", "user-img/user2.png", "user-img/user3.png", "user-img/user4.png"]
+
+  randomAvatars = Array.from({ length: this.lengthArr }, () => {
+    return this.arr[Math.floor(Math.random() * this.arr.length)];
+  });
+
+
 }

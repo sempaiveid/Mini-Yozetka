@@ -1,6 +1,6 @@
 .deskBox {
   padding: 20px;
-  background-color: var(--grey);
+  /* background-color: var(--grey); */
   width: 100%;
   border: 1px solid gray;
   border-radius: 20px;

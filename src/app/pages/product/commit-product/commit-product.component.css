@@ -1,5 +1,6 @@
 .box-commit {
-    background-color: var(--grey);
+    /* background-color: var(--grey); */
+    border: 1px solid var(--grey);
     color: var(--text-color);
 }
 
@@ -28,6 +29,9 @@
 
 .gray {
     color: gray;
+}
+.bg-gray:focus{
+    background-color: var(--grey);
 }
 
 .txtHeader {

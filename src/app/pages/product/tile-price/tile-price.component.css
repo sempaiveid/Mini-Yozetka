@@ -1,13 +1,18 @@
-div {
+/* div {
     background-color: var(--grey);
-    ;
-}
+} */
 
 .itemProdBox {
     padding: 20px;
     width: 100%;
     border-radius: 10px;
     gap: 15px;
+    border: 1px solid var(--grey);
+}
+
+.sellerTxt{
+    background-color: #ffffff93;
+    border-radius: 5px;
 }
 
 .buy {

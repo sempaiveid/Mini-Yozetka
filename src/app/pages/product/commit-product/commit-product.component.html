@@ -18,7 +18,7 @@
 
   <!-- Комментарий от пользователя -->
   <div class="flex items-start gap-4 mb-6">
-    <img src="https://i.pravatar.cc/40?u=name" alt="avatar" class="w-10 h-10 rounded-full" />
+    <img [src]="randomAvatars[1]" alt="avatar" class="w-10 h-10 rounded-full" />
 
     <div>
       <p class="font-semibold txt">Name</p>
@@ -32,7 +32,7 @@
   <!-- Текстовое поле с кнопкой внутри -->
   <div class="relative">
     <textarea [(ngModel)]="textCommit" rows="4" placeholder="Напишіть свій коментар"
-      class="w-full px-4 py-3 pr-20 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-sm resize-none"></textarea>
+      class=" bg-gray w-full px-4 py-3 pr-20 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-sm resize-none"></textarea>
 
     <!-- Кнопка внутри textarea -->
     <button type="submit" (click)="saveToLocalStorage()" [disabled]="textCommit.trim() === ''"
@@ -44,9 +44,9 @@
 
 
 <ul class="space-y-4 mt-5 ">
-  <li *ngFor="let comment of comments.slice().reverse()" class="box-commit p-4 rounded-xl shadow-md">
+  <li *ngFor="let comment of comments.slice().reverse(); let i = index" class="box-commit p-4 rounded-xl shadow-md">
     <div class="flex items-start gap-3">
-      <img src="https://i.pravatar.cc/40?u={{ comment }}" alt="Avatar" class="w-10 h-10 rounded-full object-cover" />
+      <img [src]="randomAvatars[i]" alt="Avatar" class="w-10 h-10 rounded-full object-cover" />
 
       <div>
         <h4 class="font-semibold ">Ім'я користувача</h4>
