@@ -11,8 +11,14 @@
 
 
 .boxImgItem::-webkit-scrollbar {
-  background: rgba(0, 163, 0, 0.352);
-  height: 7px;
+ height: 7px;
+}
+.boxImgItem::-webkit-scrollbar-track {
+  background: rgba(101, 255, 62, 0.278);
+}
+.boxImgItem::-webkit-scrollbar-thumb {
+  background: rgba(139, 255, 110, 0.302);
+  border-radius: 20px;
 }
 
 .modal-overlay {
