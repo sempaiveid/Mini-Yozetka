@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    background-color: var(--grey);
+    /* background-color: var(--grey); */
     border-radius: 8px;
 }
 

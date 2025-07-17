@@ -5,7 +5,8 @@
     border: 1px solid black;
     width: 100%;
     border-radius: 10px;
-    background-color: var(--grey);
+    border: 1px solid var(--grey);
+    /* background-color: var(--grey); */
 }
 
 .txtPay {
@@ -38,4 +39,7 @@
 
 .column {
     flex-direction: column;
+}
+svg{
+filter: var(--invert);
 }
