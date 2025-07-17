@@ -54,16 +54,30 @@
     background-color: #00bc52;
 }
 
+@media (max-width: 768px) {
+    .find{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .inner-form-input>input{
+        width: 100%;
+        background-image: none;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    .find{
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 13px;
+    }
+}
+
 @media(max-width:476px){
     .find{
         padding-left: 5px;
         padding-right: 5px;
-        font-size: 14px;
-    }
-    .inner-form-input>input{
-        width: 100%;
-        background-image: none;
-        padding-left: 5px;
     }
     /* .inner-form-input{
         width: 300px;
