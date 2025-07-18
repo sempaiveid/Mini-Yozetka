@@ -27,6 +27,7 @@ export class LoginService {
   }
 
   addUserProducts(products: Product[]) {
+    console.log(products)
     const user = this.getUser();
     if (user) {
       user.added_product.push(...products);

@@ -12,6 +12,6 @@ export class TileComponent {
   @Input() name = "";
   @Input() id = ""
 ngOnChanges(changes:SimpleChanges){
-  console.log(changes['id'].currentValue)
+changes['id'].currentValue
 }
 }
