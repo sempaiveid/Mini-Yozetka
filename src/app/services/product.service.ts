@@ -67,31 +67,6 @@ export class ProductService {
     return arr;
   }
 
-  // async loadFirstItems(){
-  //   try{
-  //     const localData = localStorage.getItem('items');
-  //     this.items = localData ? JSON.parse(localData):[];
-  //     if(this.items.length === 0){
-
-  //       await new Promise<void>((resolve, reject)=>{
-  //         this.http.get<Product[]>('/data/default-products.json').subscribe({
-  //           next: (data)=>{
-  //             this.items = data.map(product => ({...product, id: crypto.randomUUID()}));
-  //             this.localUpdate();
-  //             resolve();
-  //           },
-  //           error: (err)=>{
-  //             console.error(`Ошибка загрузки данных из JSON: ${err.message}, ${err.status}, ${err.error}`);
-  //             reject(err);
-  //           }
-  //       });
-  //     });
-  //     }
-  //   } catch(e){
-  //     console.error(`JSON не обработан, ошибка: ${e}`);
-  //     this.items = [];
-  //   }
-  // }
 
   async deleteProduct(id: string, user: any) {
    return await firstValueFrom(

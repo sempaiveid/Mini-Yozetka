@@ -21,7 +21,7 @@
     <img [src]="randomAvatars[1]" alt="avatar" class="w-10 h-10 rounded-full" />
 
     <div>
-      <p class="font-semibold txt">Name</p>
+      <p class="font-semibold txt">{{user}}</p>
       <p class="text-sm text-gray-500">
         Відгук від покупця. Продавець:
         <span class="text-green-600 font-medium">Rozetka</span>
@@ -49,9 +49,9 @@
       <img [src]="randomAvatars[i]" alt="Avatar" class="w-10 h-10 rounded-full object-cover" />
 
       <div>
-        <h4 class="font-semibold ">Ім'я користувача</h4>
+        <h4 class="font-semibold ">{{comment.user}}</h4>
         <p class=" text-sm mt-1">
-          {{ comment }}
+          {{ comment.com }}
         </p>
       </div>
     </div>
