@@ -1,104 +1,216 @@
-
 <div class="profile_container">
-    <div class="profile_icon">
-        <img [src]="(loginService.user$ | async)?.profile_icon" alt="profile_icon">
-        <div class="profile_setting">
-            <p class="profile_name">
-                {{ (loginService.user$ | async)?.user_name }}
-            </p>
-            <button (click)="logout()">Вийти</button>
-        </div>  
+  <div class="profile_icon">
+    <img
+      [src]="(loginService.user$ | async)?.profile_icon"
+      alt="profile_icon"
+    />
+    <div class="profile_setting">
+      <p class="profile_name">
+        {{ (loginService.user$ | async)?.user_name }}
+      </p>
+      <button (click)="logout()">Вийти</button>
     </div>
-    <div class="added_product">
-        <div class="items_for_sale" *ngFor="let product of user_products">
-            <div class="item_сontainer">
-                <a [routerLink]="['/product', product.id]" class="img_div"><img [src]="product.picture" [alt]="product.name"></a>
-                <a class="item_naming" [routerLink]="['/product', product.id]">{{ product.name }}</a>
-                <button (click)="confirmDelete(product.id)">Видалити</button>
-            </div>
-            
-            <div class="modal_confirm" *ngIf="productToDelete === product.id">
-                <div class="window">
-                    <p>Видалити товар?</p>
-                    <div class="btn_container">
-                        <button (click)="deleteProduct(product.id)">Так</button>
-                        <button (click)="cancelDelete()">Нi</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+  </div>
+  <div class="added_product">
+    <div class="items_for_sale" *ngFor="let product of user_products">
+      <div class="item_сontainer">
+        <a [routerLink]="['/product', product.id]" class="img_div"
+          ><img [src]="product.picture" [alt]="product.name"
+        /></a>
+        <a class="item_naming" [routerLink]="['/product', product.id]">{{
+          product.name
+        }}</a>
+        <button (click)="confirmDelete(product.id)">
+          <svg
+            width="34px"
+            height="34px"
+            viewBox="0 0 15 15"
+            version="1.1"
+            id="waste-basket"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#ffffff"
+            stroke="#ffffff"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M12.41,5.58l-1.34,8c-0.0433,0.2368-0.2493,0.4091-0.49,0.41H4.42c-0.2407-0.0009-0.4467-0.1732-0.49-0.41l-1.34-8
+	C2.5458,5.3074,2.731,5.0506,3.0035,5.0064C3.0288,5.0023,3.0544,5.0002,3.08,5h8.83c0.2761-0.0036,0.5028,0.2174,0.5064,0.4935
+	C12.4168,5.5225,12.4146,5.5514,12.41,5.58z M13,3.5C13,3.7761,12.7761,4,12.5,4h-10C2.2239,4,2,3.7761,2,3.5S2.2239,3,2.5,3H5V1.5
+	C5,1.2239,5.2239,1,5.5,1h4C9.7761,1,10,1.2239,10,1.5V3h2.5C12.7761,3,13,3.2239,13,3.5z M9,3V2H6v1H9z"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
 
+      <div class="modal_confirm" *ngIf="productToDelete === product.id">
+        <div class="window">
+          <p>Видалити товар?</p>
+          <div class="btn_container">
+            <button (click)="deleteProduct(product.id)">Так</button>
+            <button (click)="cancelDelete()">Нi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
 <div class="form_container">
-    <div class="form_name">
-        <img src="https://mmr.ua/uploaded/materials/a2a89af751.png" alt="">
-        <p>Додати товар</p>
+  <div class="form_name">
+    <img src="https://mmr.ua/uploaded/materials/a2a89af751.png" alt="" />
+    <p>Додати товар</p>
+  </div>
+  <form [formGroup]="addProductForm" (submit)="addProduct()">
+    <div class="input_container">
+      <p>Назва товару</p>
+      <input
+        formControlName="name_product"
+        type="text"
+        placeholder="Введiть назву"
+      />
+      <ul
+        class="errors"
+        *ngIf="
+          addProductForm.get('name_product')?.touched &&
+          addProductForm.get('name_product')?.invalid
+        "
+      >
+        <li *ngIf="addProductForm.get('name_product')?.errors?.['required']">
+          Поле обов'язкове
+        </li>
+        <li *ngIf="addProductForm.get('name_product')?.errors?.['minlength']">
+          Назва має бути довше 4-х символiв
+        </li>
+        <li *ngIf="addProductForm.get('name_product')?.errors?.['pattern']">
+          Назва має мiстити тiльки букви та пробiли
+        </li>
+      </ul>
     </div>
-    <form [formGroup]="addProductForm" (submit)="addProduct()">
-        <div class="input_container">
-            <p>Назва товару</p>
-            <input formControlName="name_product" type="text" placeholder="Введiть назву">
-            <ul class="errors" *ngIf="addProductForm.get('name_product')?.touched && addProductForm.get('name_product')?.invalid">
-                <li *ngIf="addProductForm.get('name_product')?.errors?.['required']">Поле обов'язкове</li>
-                <li *ngIf="addProductForm.get('name_product')?.errors?.['minlength']">Назва має бути довше 4-х символiв</li>
-                <li *ngIf="addProductForm.get('name_product')?.errors?.['pattern']">Назва має мiстити тiльки букви та пробiли</li>
-            </ul>
-        </div>
-        
-        <div class="input_container">
-            <p>Опис</p>
-            <textarea name="area" formControlName="description_product" rows="4" placeholder="Опис товару"></textarea>
-            <ul class="errors" *ngIf="addProductForm.get('description_product')?.touched && addProductForm.get('description_product')?.invalid">
-                <li *ngIf="addProductForm.get('description_product')?.errors?.['required']">Поле обов'язкове</li>
-                <li *ngIf="addProductForm.get('description_product')?.errors?.['pattern']">Опис не має мiстити спецсимволи</li>
-                <li *ngIf="addProductForm.get('description_product')?.errors?.['minlength']">Мiнiмальна довжина опису 5-ть символiв</li>
-            </ul>
-        </div>
 
-        <div class="input_container">
-            <p>Зображення</p>
-            <input formControlName="image_product" type="text" placeholder="Посилання на зображення">
-            <ul class="errors" *ngIf="addProductForm.get('image_product')?.touched && addProductForm.get('image_product')?.invalid">
-                <li *ngIf="addProductForm.get('image_product')?.errors?.['required']">Поле обов'язкове</li>
-                <li *ngIf="addProductForm.get('image_product')?.errors?.['pattern']">Шлях до зображення не вiрний</li>
-                <li *ngIf="addProductForm.get('image_product')?.errors?.['imageNotFound']">Не iснуюче зображення</li>
-            </ul>
+    <div class="input_container">
+      <p>Опис</p>
+      <textarea
+        name="area"
+        formControlName="description_product"
+        rows="4"
+        placeholder="Опис товару"
+      ></textarea>
+      <ul
+        class="errors"
+        *ngIf="
+          addProductForm.get('description_product')?.touched &&
+          addProductForm.get('description_product')?.invalid
+        "
+      >
+        <li
+          *ngIf="addProductForm.get('description_product')?.errors?.['required']"
+        >
+          Поле обов'язкове
+        </li>
+        <li
+          *ngIf="addProductForm.get('description_product')?.errors?.['pattern']"
+        >
+          Опис не має мiстити спецсимволи
+        </li>
+        <li
+          *ngIf="addProductForm.get('description_product')?.errors?.['minlength']"
+        >
+          Мiнiмальна довжина опису 5-ть символiв
+        </li>
+      </ul>
+    </div>
+
+    <div class="input_container">
+      <p>Зображення</p>
+      <input
+        formControlName="image_product"
+        type="text"
+        placeholder="Посилання на зображення"
+      />
+      <ul
+        class="errors"
+        *ngIf="
+          addProductForm.get('image_product')?.touched &&
+          addProductForm.get('image_product')?.invalid
+        "
+      >
+        <li *ngIf="addProductForm.get('image_product')?.errors?.['required']">
+          Поле обов'язкове
+        </li>
+        <li *ngIf="addProductForm.get('image_product')?.errors?.['pattern']">
+          Шлях до зображення не вiрний
+        </li>
+        <li
+          *ngIf="addProductForm.get('image_product')?.errors?.['imageNotFound']"
+        >
+          Не iснуюче зображення
+        </li>
+      </ul>
+    </div>
+
+    <div class="submit_price">
+      <div class="price_container">
+        <div class="input_price">
+          <p>Цiна</p>
+          <input
+            formControlName="price_product"
+            type="number"
+            min="0"
+            class="no-spinners"
+            placeholder="Введiть цiну"
+          />
         </div>
-        
-        <div class="submit_price">
-            <div class="price_container">
-                <div class="input_price">
-                    <p>Цiна</p>
-                    <input formControlName="price_product" type="number" min="0" class="no-spinners" placeholder="Введiть цiну" >
-                </div>
-                <ul class="errors_price" *ngIf="addProductForm.get('price_product')?.touched && addProductForm.get('price_product')?.invalid">
-                    <li *ngIf="addProductForm.get('price_product')?.errors?.['required']">Поле обов'язкове</li>
-                    <li class="long_err" *ngIf="addProductForm.get('price_product')?.errors?.['pattern']">Поле не має містити стороннi символи</li>
-                </ul>
-                <select name="currency" formControlName="currency_price_product">
-                    <option value="hryvnia">₴ - UAH</option>
-                    <option value="dollar">$ - USD</option>
-                    <option value="euro">€ - Euro</option>
-                </select>
-            </div>
-            
-           
-            <div class="select_container">
-                    <select formControlName="category_product" class="category_select" name="выбор ктегории">
-                        <option value="" disabled>Вкажiть категорiю</option>
-                        <option value="device">Девайси</option>
-                        <option value="eat">Їжа</option>
-                        <option value="chemic">Хiмiя</option>
-                        <option value="cloth">Одежа</option>
-                        <option value="food_pets">Їжа для улюбленцiв</option>
-                    </select>
-                </div>
-            <button [disabled]="addProductForm.invalid|| addProductForm.pending" type="submit">Додати</button>
-        </div>
-        
-    </form>
+        <ul
+          class="errors_price"
+          *ngIf="
+            addProductForm.get('price_product')?.touched &&
+            addProductForm.get('price_product')?.invalid
+          "
+        >
+          <li *ngIf="addProductForm.get('price_product')?.errors?.['required']">
+            Поле обов'язкове
+          </li>
+          <li
+            class="long_err"
+            *ngIf="addProductForm.get('price_product')?.errors?.['pattern']"
+          >
+            Поле не має містити стороннi символи
+          </li>
+        </ul>
+        <select name="currency" formControlName="currency_price_product">
+          <option value="hryvnia">₴ - UAH</option>
+          <option value="dollar">$ - USD</option>
+          <option value="euro">€ - Euro</option>
+        </select>
+      </div>
+
+      <div class="select_container">
+        <select
+          formControlName="category_product"
+          class="category_select"
+          name="выбор ктегории"
+        >
+          <option value="" disabled>Вкажiть категорiю</option>
+          <option value="device">Девайси</option>
+          <option value="eat">Їжа</option>
+          <option value="chemic">Хiмiя</option>
+          <option value="cloth">Одежа</option>
+          <option value="food_pets">Їжа для улюбленцiв</option>
+        </select>
+      </div>
+      <button
+        [disabled]="addProductForm.invalid || addProductForm.pending"
+        type="submit"
+      >
+        Додати
+      </button>
+    </div>
+  </form>
 </div>

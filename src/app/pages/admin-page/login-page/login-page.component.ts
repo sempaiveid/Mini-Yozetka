@@ -17,13 +17,13 @@ export class LoginPageComponent {
   loginService = inject(LoginService);
   authService = inject(AuthService);
   loginForm = new FormBuilder().group({
-    login:['', [Validators.required, Validators.minLength(4)]],
+    login:['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]]
   });
 
   registerForm = new FormBuilder().group({
     user_name: ['', [Validators.required,  Validators.minLength(4)]],
-    login: ['', [Validators.required, Validators.minLength(4)]],
+    login: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]],
     repeat_password: ['', [Validators.required]]
   });

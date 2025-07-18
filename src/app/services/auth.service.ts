@@ -21,6 +21,7 @@ export class AuthService {
       this.loginService.setUser(response.user);
       return true;
     } catch (error) {
+       console.log(error)
       return false;
     }
   }
@@ -35,6 +36,7 @@ export class AuthService {
       this.loginService.setUser(response.user);
       return true;
     } catch (error) {
+      console.log(error)
       return false;
     }
   }
@@ -45,6 +47,7 @@ export class AuthService {
       this.loginService.setUser(response.user);
       return true;
     } catch (error) {
+      console.log(error)
       return false;
     }
   }
