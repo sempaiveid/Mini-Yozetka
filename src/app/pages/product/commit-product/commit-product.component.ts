@@ -2,6 +2,7 @@ import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input, inject, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-commit-product',
@@ -13,8 +14,20 @@ import { FormsModule } from '@angular/forms';
 export class CommitProductComponent {
   @Input() productId!: string;
   textCommit: string = '';
-  messages: { [productId: string]: string[] } = {};
+  messages: any = [];
   http = inject(HttpClient);
+  login = inject(LoginService);
+  lengthArr = 15;
+  commentsObj: { user: string; com: string[] } = {
+    user: '',
+    com: [],
+  };
+  user: string = 'Користувач';
+  ngOnInit() {
+    this.login.user$.subscribe((data) => {
+      this.user = data?.user_name || 'Користувач';
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     // const saved = localStorage.getItem('messages');
@@ -22,10 +35,14 @@ export class CommitProductComponent {
     //   this.messages = JSON.parse(saved);
     // }
     this.http
-      .get<string[]>(`http://localhost:3000/comments/${this.productId}`)
+      .get<{ user: string; com: string[] }[]>(
+        `http://localhost:3000/comments/${this.productId}`
+      )
       .subscribe((data) => {
         console.log(data);
         this.messages[this.productId] = data || [];
+        this.lengthArr = this.messages[this.productId].length;
+        console.log(this.messages);
       });
   }
 
@@ -46,15 +63,15 @@ export class CommitProductComponent {
   saveToLocalStorage(): void {
     const trimmed = this.textCommit.trim();
     if (trimmed === '') return;
-
     const sanitized = this.sanitizeComment(trimmed);
-
     if (!this.messages[this.productId]) {
       this.messages[this.productId] = [];
     }
-
-    this.messages[this.productId].push(sanitized);
-    // localStorage.setItem('messages', JSON.stringify(this.messages));
+    this.commentsObj = {
+      user: this.user,
+      com: [sanitized],
+    };
+    this.messages[this.productId].push(this.commentsObj);
     this.http
       .post('http://localhost:3000/comments', {
         productId: this.productId,
@@ -66,7 +83,19 @@ export class CommitProductComponent {
     this.textCommit = '';
   }
 
-  get comments(): string[] {
+  get comments(): any {
     return this.messages[this.productId] || [];
   }
+
+  arr = [
+    'user-img/user.png',
+    'user-img/user1.png',
+    'user-img/user2.png',
+    'user-img/user3.png',
+    'user-img/user4.png',
+  ];
+
+  randomAvatars = Array.from({ length: this.lengthArr }, () => {
+    return this.arr[Math.floor(Math.random() * this.arr.length)];
+  });
 }

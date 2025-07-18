@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../../services/product.service';
 import { LoginService } from '../../../services/login.service';
@@ -6,44 +6,70 @@ import { AuthService } from '../../../services/auth.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
-import { take } from 'rxjs';
+import { firstValueFrom, take } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [ReactiveFormsModule, NgFor, NgIf, RouterModule, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
   loginService = inject(LoginService);
   productService = inject(ProductService);
   authService = inject(AuthService);
+  http = inject(HttpClient);
 
   addProductForm = new FormBuilder().group({
-    name_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яЁёҐґЄєІіЇї\s]+$/), Validators.minLength(4)]],
+    name_product: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^[A-Za-zА-Яа-яЁёҐґЄєІіЇї\s]+$/),
+        Validators.minLength(4),
+      ],
+    ],
     image_product: ['', [Validators.required], [imageExistsValidator()]],
-    description_product: ['', [Validators.required, Validators.pattern(/^[A-Za-zА-Яа-яІіЇїЄєҐґЁё0-9\s]+$/), Validators.minLength(5)]],
-    price_product: [null, [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
+    description_product: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^[A-Za-zА-Яа-яІіЇїЄєҐґЁё0-9\s]+$/),
+        Validators.minLength(5),
+      ],
+    ],
+    price_product: [
+      null,
+      [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)],
+    ],
     category_product: ['', [Validators.required]],
-    currency_price_product: ['hryvnia', [Validators.required]]
+    currency_price_product: ['hryvnia', [Validators.required]],
   });
 
   user_products: Product[] = [];
   productToDelete: string | null = null;
 
-  dollar = 41.30;
+  dollar = 41.3;
   euro = 47.72;
 
   ngOnInit() {
-    this.loginService.user$.pipe(take(1)).subscribe(user => {
+    this.loginService.user$.pipe(take(1)).subscribe(async (user) => {
       if (user) {
-        this.user_products = this.productService.find_uploader(user.login);
+        await this.http
+          .get<any>('http://localhost:3000/adminProduct', {
+            withCredentials: true,
+          })
+          .subscribe((data) => {
+            this.user_products = data;
+            console.log(data);
+          });
       }
     });
   }
 
-  addProduct() {
+  async addProduct() {
     if (this.addProductForm.invalid) {
       this.addProductForm.markAllAsTouched();
       return;
@@ -59,20 +85,40 @@ export class ProfileComponent {
       description: { text: this.addProductForm.value.description_product! },
       category: this.addProductForm.value.category_product!,
       uploader: user.login,
-      price: 0
+      price: 0,
     };
-
     const price = Number(this.addProductForm.value.price_product);
     switch (this.addProductForm.value.currency_price_product) {
-      case 'hryvnia': product.price = price; break;
-      case 'dollar': product.price = price * Math.ceil(this.dollar); break;
-      case 'euro': product.price = price * Math.ceil(this.euro); break;
+      case 'hryvnia':
+        product.price = price;
+        break;
+      case 'dollar':
+        product.price = price * Math.ceil(this.dollar);
+        break;
+      case 'euro':
+        product.price = price * Math.ceil(this.euro);
+        break;
     }
 
     this.productService.addProduct = product;
-    this.user_products = this.productService.find_uploader(user.login);
-    this.addProductForm.reset();
-    this.addProductForm.patchValue({ currency_price_product: 'hryvnia', category_product: '' });
+await firstValueFrom(
+  this.http.patch(
+    'http://localhost:3000/addProduct',
+    {
+      product: product,
+      user: user,
+    },
+    { withCredentials: true }
+  )
+);
+
+const data = await firstValueFrom(
+  this.http.get<any>('http://localhost:3000/adminProduct', {
+    withCredentials: true,
+  })
+);
+
+this.user_products = Array.isArray(data) ? data : [];
   }
 
   confirmDelete(productId: string) {
@@ -83,13 +129,18 @@ export class ProfileComponent {
     this.productToDelete = null;
   }
 
-  deleteProduct(productId: string) {
-    this.productService.deleteProduct(productId);
+  async deleteProduct(productId: string) {
     const user = this.loginService.getUser();
     if (user) {
-      this.user_products = this.productService.find_uploader(user.login);
+      await this.productService.deleteProduct(productId, user);
+      const data = await firstValueFrom(
+        this.http.get<any>('http://localhost:3000/adminProduct', {
+          withCredentials: true,
+        })
+      );
+      this.user_products = Array.isArray(data) ? data : [];
+      this.productToDelete = null;
     }
-    this.productToDelete = null;
   }
 
   logout() {
