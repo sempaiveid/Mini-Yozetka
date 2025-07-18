@@ -6,7 +6,7 @@ import { AuthService } from '../../../services/auth.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
-import { take } from 'rxjs';
+import { firstValueFrom, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -133,16 +133,16 @@ export class ProfileComponent {
     const user = this.loginService.getUser();
 
     if (user) {
-      const data = await this.productService.deleteProduct(productId, user);
-      await this.http
-        .get<any>('http://localhost:3000/adminProduct', {
+      await this.productService.deleteProduct(productId, user);
+      const data = await firstValueFrom(
+        this.http.get<any>('http://localhost:3000/adminProduct', {
           withCredentials: true,
         })
-        .subscribe(
-          (data) => (this.user_products = Array.isArray(data) ? data : [])
-        );
+      );
+
+      this.user_products = Array.isArray(data) ? data : [];
+      this.productToDelete = null;
     }
-    this.productToDelete = null;
   }
 
   logout() {
