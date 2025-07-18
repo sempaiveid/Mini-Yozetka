@@ -7,7 +7,7 @@
     border: 1px solid #e9e9e9;
     padding: 16px;
     justify-content: space-around;
-    background-color: var(--grey);
+    
     color: var(--text-color);
 }
 
@@ -51,7 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    margin-top: 10px;
 }
 
 .name-card>h2 {
@@ -88,7 +88,6 @@
     padding-top: 24px;
     padding-bottom: 24px;
     padding-left: 30px;
-    background-color: var(--grey);
     border-radius: 10px;
     margin-top: 20px;
 }
@@ -204,4 +203,34 @@
 .none-product p {
     font-size: 24px;
     font-weight: 500 ;
+}
+
+@media (max-width: 768px) {
+    .name-card>h2 {
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .none-product img{
+        width: 250px;
+        height: 250px;
+    }
+    .none-product p {
+        font-size: 20px;
+        font-weight: 500 ;
+    }
+}
+
+@media (max-width: 600px) {
+    .name-card>h2 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .none-product img{
+        width: 220px;
+        height: 220px;
+    }
+    .none-product p {
+        font-size: 18px;
+        font-weight: 500 ;
+    }
 }
