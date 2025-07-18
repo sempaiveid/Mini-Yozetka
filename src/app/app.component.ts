@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoadScreenComponent } from './load-screen/load-screen.component';
 import { NgIf } from '@angular/common';
 import { ProductService } from './services/product.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ import { ProductService } from './services/product.service';
 })
 export class AppComponent {
   isActive = true;
-
+session = inject(AuthService)
   productService = inject(ProductService);
 
   private async initProducts() {
@@ -33,5 +34,7 @@ export class AppComponent {
     setTimeout(() => {
       this.isActive = false;
     }, 1600);
+    this.session.me()
   }
+  
 }
