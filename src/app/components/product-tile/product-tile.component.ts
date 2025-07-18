@@ -29,10 +29,14 @@ export class ProductTileComponent {
       this.productItems = data;
       console.log(data);
       this.products = this.fiveProduct(0, this.count);
+      this.initProducts();
     });
   }
   ngOnInit() {
     this.loadCart();
+    if(this.category){
+      this.initProducts();
+    }
   }
 
   btnRight(btnR: HTMLButtonElement) {
