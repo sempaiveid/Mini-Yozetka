@@ -101,24 +101,24 @@ export class ProfileComponent {
     }
 
     this.productService.addProduct = product;
-    this.http
-      .patch(
-        'http://localhost:3000/addProduct',
-        {
-          product: product,
-          user: user,
-        },
-        { withCredentials: true }
-      )
-      .subscribe((data) => {
-        console.log(data);
-      });
-    this.user_products = await this.productService.find_uploader(user.login);
-    this.addProductForm.reset();
-    this.addProductForm.patchValue({
-      currency_price_product: 'hryvnia',
-      category_product: '',
-    });
+await firstValueFrom(
+  this.http.patch(
+    'http://localhost:3000/addProduct',
+    {
+      product: product,
+      user: user,
+    },
+    { withCredentials: true }
+  )
+);
+
+const data = await firstValueFrom(
+  this.http.get<any>('http://localhost:3000/adminProduct', {
+    withCredentials: true,
+  })
+);
+
+this.user_products = Array.isArray(data) ? data : [];
   }
 
   confirmDelete(productId: string) {
@@ -131,7 +131,6 @@ export class ProfileComponent {
 
   async deleteProduct(productId: string) {
     const user = this.loginService.getUser();
-
     if (user) {
       await this.productService.deleteProduct(productId, user);
       const data = await firstValueFrom(
@@ -139,7 +138,6 @@ export class ProfileComponent {
           withCredentials: true,
         })
       );
-
       this.user_products = Array.isArray(data) ? data : [];
       this.productToDelete = null;
     }
