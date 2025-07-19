@@ -156,8 +156,9 @@
                         display: flex;
                         justify-content:center;
                         align-items: center;
-                        width: 450px;
+                        width: 60%;
                         .edit{
+                            filter: var(--invert);
                             opacity: 0.4;
                             cursor: no-drop;
                             max-width: 70px;
@@ -701,7 +702,7 @@ input {
         .profile_container{
             margin: unset;
             align-items: center;
-            width: 80%;
+            
             max-height: unset;
             padding: 10px;
             
@@ -756,7 +757,7 @@ input {
             max-height: unset;
             
             .profile_icon{
-                max-width: 300px;
+                max-width: 400px;
             }
             .search_added_product{
                 width: 100%;
@@ -770,6 +771,15 @@ input {
                 .items_for_sale{
                     .item_сontainer{
                         margin-top: 2%;
+                        .edit_delete_container{
+                            margin-right: 2%;
+                            img{
+                                max-width: 40px;
+                            }
+                            button{
+                                padding: 10px;
+                            }
+                        }
                     }
                 }
             }
