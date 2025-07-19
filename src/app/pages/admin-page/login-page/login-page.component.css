@@ -175,3 +175,26 @@
     color: white !important;
 }
 
+@media (max-width: 837px) {
+    :host{
+        flex-direction: column;
+        .select_mode{
+            justify-content: center;
+            align-items:center;
+            button{
+                border-radius: 40px 40px 40px 40px;
+            }
+            
+        }
+        form{
+            margin: 0px;
+            .form_header{
+                h3{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    
+    
+}

@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../../services/product.service';
 import { LoginService } from '../../../services/login.service';
 import { AuthService } from '../../../services/auth.service';
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, NgFor, NgIf, RouterModule, CommonModule, FormsModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
@@ -21,6 +21,15 @@ export class ProfileComponent {
   productService = inject(ProductService);
   authService = inject(AuthService);
   http = inject(HttpClient);
+
+  // editedProduct: Product | null = null;
+
+  avatar_icon?: string;
+  change:boolean = false;
+
+  searchQuery: string = '';
+  filteredProducts: Product[] = [];
+
 
   addProductForm = new FormBuilder().group({
     name_product: [
@@ -63,11 +72,20 @@ export class ProfileComponent {
           })
           .subscribe((data) => {
             this.user_products = data;
-            console.log(data);
+            this.filteredProducts = [...this.user_products];
           });
       }
     });
   }
+
+  filterProducts() {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredProducts = this.user_products.filter((product) =>
+      product.name.toLowerCase().includes(query)
+    );
+  }
+
+
 
   async addProduct() {
     if (this.addProductForm.invalid) {
@@ -121,6 +139,43 @@ const data = await firstValueFrom(
 this.user_products = Array.isArray(data) ? data : [];
   }
 
+  // editing_mode(product: Product) {
+  //   this.editedProduct = { ...product };
+  // }
+
+//   get editedDescriptionText(): string {
+//   if (!this.editedProduct || !this.editedProduct.description) return '';
+//   return (this.editedProduct.description as any).text || '';
+// }
+
+// set editedDescriptionText(value: string) {
+//   if (this.editedProduct && this.editedProduct.description) {
+//     (this.editedProduct.description as any).text = value;
+//   }
+// }
+
+
+  // async saveEditedProduct() {
+  // if (!this.editedProduct) return;
+  // const user = this.loginService.getUser();
+  // if (!user) return;
+
+  // await firstValueFrom(this.http.patch(
+  //   'http://localhost:3000/updateProduct',
+  //   { product: this.editedProduct, user },
+  //   { withCredentials: true }
+  // ));
+
+//   const data = await firstValueFrom(
+//     this.http.get<any>('http://localhost:3000/adminProduct', { withCredentials: true })
+//   );
+
+//   this.user_products = Array.isArray(data) ? data : [];
+//   this.filteredProducts = [...this.user_products];
+//   this.editedProduct = null;
+// }
+
+
   confirmDelete(productId: string) {
     this.productToDelete = productId;
   }
@@ -142,6 +197,22 @@ this.user_products = Array.isArray(data) ? data : [];
       this.productToDelete = null;
     }
   }
+
+  changeAvatar() {
+  if (!this.avatar_icon) return;
+
+  this.http.post<any>(
+    "http://localhost:3000/changeAva",
+    {
+      avatar: this.avatar_icon
+    },
+    { withCredentials: true }
+  ).subscribe(() => {
+    window.location.reload();
+  });
+}
+
+
 
   logout() {
     this.authService.logout();
