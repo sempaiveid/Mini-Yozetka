@@ -18,7 +18,7 @@
 
   <!-- Комментарий от пользователя -->
   <div class="flex items-start gap-4 mb-6">
-    <img [src]="randomAvatars[1]" alt="avatar" class="w-10 h-10 rounded-full" />
+    <img [src]="userPhoto" alt="avatar" class="w-10 h-10 rounded-full" />
 
     <div>
       <p class="font-semibold txt">{{user}}</p>
@@ -46,7 +46,7 @@
 <ul class="space-y-4 mt-5 ">
   <li *ngFor="let comment of comments.slice().reverse(); let i = index" class="box-commit p-4 rounded-xl shadow-md">
     <div class="flex items-start gap-3">
-      <img [src]="randomAvatars[i]" alt="Avatar" class="w-10 h-10 rounded-full object-cover" />
+      <img [src]=" comment.img || randomAvatars[i] " alt="Avatar" class="w-10 h-10 rounded-full object-cover" />
 
       <div>
         <h4 class="font-semibold ">{{comment.user}}</h4>
