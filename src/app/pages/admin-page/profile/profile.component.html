@@ -38,7 +38,7 @@
           product.name
         }}</a>
         <div class="edit_delete_container">
-          <img class="edit" src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit">
+          <img class="edit" src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit" (click)="startEdit(product)">
           <button (click)="confirmDelete(product.id)">
             <svg
               width="34px"
@@ -86,7 +86,7 @@
 <div class="form_container">
   <div class="form_name">
     <img src="https://mmr.ua/uploaded/materials/a2a89af751.png" alt="" />
-    <p>Додати товар</p>
+    <p>{{ isEditMode ? 'Редагування товару' : 'Додати товар' }}</p>
   </div>
   <form [formGroup]="addProductForm" (submit)="addProduct()">
     <div class="input_container">
@@ -226,36 +226,17 @@
           <option value="food_pets">Їжа для улюбленцiв</option>
         </select>
       </div>
+      <button class="cancel_btn" *ngIf="isEditMode" type="button" (click)="cancelEdit()">Скасувати</button>
       <button
         [disabled]="addProductForm.invalid || addProductForm.pending"
-        type="submit"
+        type="submit" 
       >
-        Додати
+        {{ isEditMode ? 'Изменить' : 'Добавить' }}
       </button>
+      
     </div>
   </form>
 </div>
 
 
-<!-- <div class="modal_overlay" *ngIf="editedProduct">
-  <div class="modal_window">
-    <h3>Редагувати товар</h3>
-    <input [(ngModel)]="editedProduct.name" placeholder="Назва товару" />
-    <input [(ngModel)]="editedProduct.picture" placeholder="Зображення" />
-    <textarea [(ngModel)]="editedDescriptionText" placeholder="Опис"></textarea>
-    <input [(ngModel)]="editedProduct.price" type="number" placeholder="Ціна" />
 
-    <select [(ngModel)]="editedProduct.category">
-      <option value="device">Девайси</option>
-      <option value="eat">Їжа</option>
-      <option value="chemic">Хiмiя</option>
-      <option value="cloth">Одежа</option>
-      <option value="food_pets">Їжа для улюбленцiв</option>
-    </select>
-
-    <div class="modal_btns">
-      <button (click)="saveEditedProduct()">Зберегти</button>
-      <button (click)="editedProduct = null">Скасувати</button>
-    </div>
-  </div>
-</div> -->

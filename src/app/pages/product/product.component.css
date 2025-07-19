@@ -33,6 +33,7 @@ app-product-image {
     justify-content: center;
     align-items: center;
     width: 50%;
+    background-color: white
 }
 
 app-header-catergory {

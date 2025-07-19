@@ -2,10 +2,11 @@ import { Component, inject, Input } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { NgFor, NgIf } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TileComponent } from './tile/tile.component';
 import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
 import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-product-tile',
@@ -24,6 +25,9 @@ export class ProductTileComponent {
   products: any = [];
   productArr = this.productSet.getCountOfCart();
   http = inject(HttpClient);
+  login = inject(LoginService);
+  router = inject(Router);
+  user = false;
   loadCart() {
     this.http.get<any[]>('http://localhost:3000/home').subscribe((data) => {
       this.productItems = data;
@@ -34,6 +38,12 @@ export class ProductTileComponent {
   }
   ngOnInit() {
     this.loadCart();
+    this.login.user$.subscribe((data) => {
+      let user = data?.user_name || 'Користувач';
+      if (user !== 'Користувач') {
+        this.user = true;
+      }
+    });
     if(this.category){
       this.initProducts();
     }
@@ -62,15 +72,14 @@ export class ProductTileComponent {
   ngOnChanges(): void {
     this.initProducts();
   }
-  addToCart(product: any) {
-    let isCart: any = this.productSet.productCart.some(
-      (el: any) => el.id === product.id
-    );
-    if (!isCart) {
+  async addToCart(product: any) {
+    if (this.user) {
       this.productSet.productCart = product;
-    } else {
-      this.productSet.deleteItem(product.id);
+      await this.productSet.newCout();
+      return;
     }
+    this.router.navigate(['/login']);
+    alert('Увійдіть в свій аккаунт щоб  роботи покупки');
   }
   isItemInCart(item: any): boolean {
     return this.productSet.productCart.some((el: any) => el.id === item.id);

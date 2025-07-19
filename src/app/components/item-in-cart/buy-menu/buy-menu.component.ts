@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -17,11 +17,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BuyMenuComponent {
   form: FormGroup = new FormGroup({
-    tel: new FormControl("+380", Validators.pattern(/\d/)),
-    firstName: new FormControl('',Validators.required),
-    lastName: new FormControl('',Validators.required),
-    surname: new FormControl('',Validators.required),
+    tel: new FormControl('+380', Validators.pattern(/\d/)),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
   });
+  @Input() productArr:any = [];
   @Output() evenClose = new EventEmitter();
   close() {
     this.evenClose.emit();
@@ -31,7 +32,7 @@ export class BuyMenuComponent {
   http: HttpClient = inject(HttpClient);
   isBuy = false;
   buy() {
-    if (this.productCard.length !== 0) {
+    if (this.productArr.length !== 0) {
       this.http
         .post('http://localhost:3000/send', {
           order: this.productCard,
@@ -44,7 +45,7 @@ export class BuyMenuComponent {
           console.log(data);
         });
     }
-    this.evenClose.emit()
+    this.evenClose.emit();
     this.product.resetCart();
     this.productCard = [];
     this.isBuy = true;

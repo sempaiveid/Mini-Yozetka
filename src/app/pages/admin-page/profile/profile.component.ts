@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
 import { firstValueFrom, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,8 +22,9 @@ export class ProfileComponent {
   productService = inject(ProductService);
   authService = inject(AuthService);
   http = inject(HttpClient);
+  cart = inject(CartService);
 
-  // editedProduct: Product | null = null;
+  isEditMode:boolean = false;
 
   avatar_icon?: string;
   change:boolean = false;
@@ -50,7 +52,7 @@ export class ProfileComponent {
       ],
     ],
     price_product: [
-      null,
+      null as number | null,
       [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)],
     ],
     category_product: ['', [Validators.required]],
@@ -59,21 +61,16 @@ export class ProfileComponent {
 
   user_products: Product[] = [];
   productToDelete: string | null = null;
+  editedProduct: Product | null = null;
 
   dollar = 41.3;
   euro = 47.72;
 
   ngOnInit() {
-    this.loginService.user$.pipe(take(1)).subscribe(async (user) => {
+    this.loginService.user$.pipe(take(1)).subscribe((user) => {
       if (user) {
-        await this.http
-          .get<any>('http://localhost:3000/adminProduct', {
-            withCredentials: true,
-          })
-          .subscribe((data) => {
-            this.user_products = data;
-            this.filteredProducts = [...this.user_products];
-          });
+        this.loadUserProducts();
+        this.cart.newCout?.();
       }
     });
   }
@@ -90,6 +87,11 @@ export class ProfileComponent {
   async addProduct() {
     if (this.addProductForm.invalid) {
       this.addProductForm.markAllAsTouched();
+      return;
+    }
+
+    if (this.isEditMode) {
+      await this.updateProduct();
       return;
     }
 
@@ -119,61 +121,116 @@ export class ProfileComponent {
     }
 
     this.productService.addProduct = product;
-await firstValueFrom(
-  this.http.patch(
-    'http://localhost:3000/addProduct',
-    {
-      product: product,
-      user: user,
-    },
-    { withCredentials: true }
-  )
-);
+    await firstValueFrom(
+      this.http.patch(
+        'http://localhost:3000/addProduct',
+        {
+          product: product,
+          user: user,
+        },
+        { withCredentials: true }
+      )
+  );
 
-const data = await firstValueFrom(
-  this.http.get<any>('http://localhost:3000/adminProduct', {
-    withCredentials: true,
-  })
-);
 
+  const data = await firstValueFrom(
+    this.http.get<any>('http://localhost:3000/adminProduct', {
+      withCredentials: true,
+    })
+  );
 this.user_products = Array.isArray(data) ? data : [];
+    this.filteredProducts = [...this.user_products];
+    this.addProductForm.reset({
+      name_product: '',
+      image_product: '',
+      description_product: '',
+      price_product: null,
+      category_product: '',
+      currency_price_product: 'hryvnia'
+    });
   }
 
-  // editing_mode(product: Product) {
-  //   this.editedProduct = { ...product };
-  // }
 
-//   get editedDescriptionText(): string {
-//   if (!this.editedProduct || !this.editedProduct.description) return '';
-//   return (this.editedProduct.description as any).text || '';
-// }
+  async updateProduct() {
+  if (!this.editedProduct) return;
 
-// set editedDescriptionText(value: string) {
-//   if (this.editedProduct && this.editedProduct.description) {
-//     (this.editedProduct.description as any).text = value;
-//   }
-// }
+  const user = this.loginService.getUser();
+  if (!user) return;
+
+  const updatedProduct: Product = {
+    ...this.editedProduct,
+    name: this.addProductForm.value.name_product!,
+    picture: this.addProductForm.value.image_product!,
+    description: { text: this.addProductForm.value.description_product! },
+    category: this.addProductForm.value.category_product!,
+    uploader: this.editedProduct.uploader,
+    price: 0
+  };
+
+  const price = Number(this.addProductForm.value.price_product);
+  switch (this.addProductForm.value.currency_price_product) {
+    case 'hryvnia':
+      updatedProduct.price = price;
+      break;
+    case 'dollar':
+      updatedProduct.price = price * Math.ceil(this.dollar);
+      break;
+    case 'euro':
+      updatedProduct.price = price * Math.ceil(this.euro);
+      break;
+  }
+
+  await firstValueFrom(
+    this.http.patch(
+      'http://localhost:3000/updateProduct',
+      { product: updatedProduct, user },
+      { withCredentials: true }
+    )
+  );
+
+  await this.loadUserProducts();
+  this.cancelEdit();
+}
 
 
-  // async saveEditedProduct() {
-  // if (!this.editedProduct) return;
-  // const user = this.loginService.getUser();
-  // if (!user) return;
+  startEdit(product: Product) {
+    this.editedProduct = { ...product };
+    this.isEditMode = true;
 
-  // await firstValueFrom(this.http.patch(
-  //   'http://localhost:3000/updateProduct',
-  //   { product: this.editedProduct, user },
-  //   { withCredentials: true }
-  // ));
+    this.addProductForm.patchValue({
+      name_product: product.name,
+      image_product: product.picture,
+      description_product: (product.description as any).text || '',
+      price_product: product.price,
+      category_product: product.category,
+      currency_price_product: 'hryvnia'
+    });
+  }
 
-//   const data = await firstValueFrom(
-//     this.http.get<any>('http://localhost:3000/adminProduct', { withCredentials: true })
-//   );
+  cancelEdit() {
+    this.isEditMode = false;
+    this.editedProduct = null;
+    this.addProductForm.reset({
+      name_product: '',
+      image_product: '',
+      description_product: '',
+      price_product: null,
+      category_product: '',
+      currency_price_product: 'hryvnia'
+    });
+  }
 
-//   this.user_products = Array.isArray(data) ? data : [];
-//   this.filteredProducts = [...this.user_products];
-//   this.editedProduct = null;
-// }
+
+
+  loadUserProducts() {
+  this.http.get<any>('http://localhost:3000/adminProduct', {
+    withCredentials: true,
+  }).subscribe((data) => {
+    this.user_products = Array.isArray(data) ? data : [];
+    this.filteredProducts = [...this.user_products];
+  });
+}
+
 
 
   confirmDelete(productId: string) {
@@ -188,12 +245,7 @@ this.user_products = Array.isArray(data) ? data : [];
     const user = this.loginService.getUser();
     if (user) {
       await this.productService.deleteProduct(productId, user);
-      const data = await firstValueFrom(
-        this.http.get<any>('http://localhost:3000/adminProduct', {
-          withCredentials: true,
-        })
-      );
-      this.user_products = Array.isArray(data) ? data : [];
+      this.loadUserProducts();
       this.productToDelete = null;
     }
   }
