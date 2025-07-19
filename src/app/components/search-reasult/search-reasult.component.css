@@ -1,10 +1,8 @@
 :host {
-    display: flex;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0px 32px;
-    justify-content: center;
-
+  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0px 32px;
 }
 
 .category {
@@ -140,16 +138,13 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
-
 
 .search-dont {
     font-size: 28px;
 }
 
 .btn-main {
-
     background-color: #00a046;
     color: #fff;
     border: none;
@@ -158,13 +153,10 @@
     display: inline-block;
     margin: 0;
     outline: none;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 10px 15px;
     position: relative;
     text-align: center;
     font-size: 18px;
-    height: 48px;
-    line-height: 48px;
     cursor: pointer;
     transition: 0.3;
 }
@@ -174,8 +166,19 @@
     color: #fff;
 }
 
- @media(max-width:850px){
+@media(max-width: 1200px) {
+    .category h1{
+        font-size: 24px;
+    }
+    .search-dont{
+        font-size: 24px;
+    }
+    .conteiner-content p{
+        font-size: 15px;
+    }
+}
 
+ @media(max-width:850px){
     .category{
         font-size: 18px;
     }
@@ -191,7 +194,20 @@
     .btn{
         font-size: 17px;
     }
+    .category h1{
+        font-size: 20px;
+    }
+    .search-dont{
+        font-size: 20px;
+    }
+    .conteiner-content p{
+        font-size: 16px;
+    }
+    .btn-main{
+        padding: 6px 14px;
+    }
 }
+
 @media(max-width:720px){
     .list-container{
         flex-direction: column;

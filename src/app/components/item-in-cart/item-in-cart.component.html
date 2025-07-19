@@ -4,20 +4,21 @@
 <ng-container *ngIf="productCard.length > 0; else noProducts">
   <div *ngFor="let item of productCard" class="main-cart">
     <div id="{{ item.id }}" class="item-card">
-      <a href="" class="container-img-card">
-        <img [src]="item.picture" alt="Картинка" />
-      </a>
-      <div style="width: 40%" class="conteiner-title">
-        <a class="cart-title" href="">
-          <span>{{ item.name }}</span>
-        </a>
-        <span style="font-size: 14px">Продавець: Mini-YozetkaSan</span>
+      <div class="left-block">
+        <img [src]="item.picture" alt="Фото" />
+        <div class="counter">
+          <app-counter-product [inputCount]="item.quantity"(quantityChanged)="updateCartDelayed()"></app-counter-product>
+        </div>
       </div>
-      <app-counter-product [inputCount]="item.quantity" (quantityChanged)="updateCartDelayed()"></app-counter-product>
-      <div class="container-price">
-        <p class="item-cost">{{ (item.price * item.quantity) | currency_pipe }}</p>
+      <div class="middle-block">
+        <a class="cart-title" href="">{{ item.name }}</a>
+        <div class="seller">Продавець: Mini-YozetkaSan</div>
+    
+        <div class="bottom-block">
+          <div class="item-cost">{{ (item.price * item.quantity) | currency_pipe }}</div>
+          <app-poput-menu></app-poput-menu>
+        </div>
       </div>
-      <app-poput-menu></app-poput-menu>
     </div>
   </div>
 </ng-container>
@@ -28,10 +29,12 @@
   </div>
 </ng-template>
 <div *ngIf="productCard.length" class="cart-footer">
-  <button class="continue-to-buy" routerLink="">Продовжити покупки</button>
-  <button class="continue-to-buy ml-2" (click)="clearCart()">
-    Очистити корзину
-  </button>
+  <div class="boxButton">
+    <button class="continue-to-buy" routerLink="">Продовжити покупки</button>
+    <button class="continue-to-buy ml-2" (click)="clearCart()">
+      Очистити корзину
+    </button>
+  </div>
   <div class="cart-footer-cost">
     <div class="cost">
       <span>{{total| currency_pipe }}</span>

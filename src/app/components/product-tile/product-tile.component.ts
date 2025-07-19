@@ -33,16 +33,23 @@ export class ProductTileComponent {
       this.productItems = data;
       console.log(data);
       this.products = this.fiveProduct(0, this.count);
+      this.initProducts();
     });
   }
   ngOnInit() {
     this.loadCart();
+<<<<<<< HEAD
     this.login.user$.subscribe((data) => {
       let user = data?.user_name || 'Користувач';
       if (user !== 'Користувач') {
         this.user = true;
       }
     });
+=======
+    if(this.category){
+      this.initProducts();
+    }
+>>>>>>> main
   }
 
   btnRight(btnR: HTMLButtonElement) {

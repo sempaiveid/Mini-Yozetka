@@ -62,7 +62,7 @@
 
 .readyBox {
     margin-top: 20px;
-    margin-bottom: 10px;
+    padding: 0px 10px;
 }
 
 .txtPay {
@@ -95,23 +95,74 @@ app-header-catergory {
     align-self: flex-start;
 }
 
+@media (max-width: 1200px) {
+    .textProd{
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .itemProdBox{
+        gap: 0;
+    }
+    .readyTxt{
+        font-size: 16px;
+    }
+    .price{
+        font-size: 26px;
+    }
+    .buy{
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .itemProdBox{
+        font-size: 16px;
+    }
+    .sellerTxt{
+        height: 20%;
+        width: 20%;
+    }
+    .readyBox{
+        margin-top: 10px;
+    }
+    .price{
+        font-size: 24px;
+    }
+    .grey img{
+        width: 20%;
+        height: 20%;
+    }
+}
+
+@media (max-width: 568px) {
+    .grey img{
+        width: 25%;
+        height: 25%;
+    }
+}
+
 @media(max-width:476px){
     .textProd {
-        font-size: 15px;
+        font-size: 14px;
         margin-bottom: 10px;
-        /* margin-bottom: 25px;
-        font-weight: 500; */
     }
     .textdeliv{
         text-align: center;
-
-    } 
+    }
     hr{
         width: 100%;
         height: 2px;
     }
     .grey {
         justify-content: center;
+        padding: 0;
+    }
+    .grey img{
+        width: 40%;
+        height: 40%;
     }
     .itemProdBox{
         align-items: center;
@@ -119,30 +170,25 @@ app-header-catergory {
     }
 
     .buy{
-        font-size: 15px;
-        height: 50px;
-        width: 70%;
-        margin-top: 10px;
-    margin-bottom: 10px;
+        font-size: 14px;
+        height: 40px;
+        width: 90%;
+        margin: 5px 0;
     }
     .readyBox{
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0;
+        padding: 0;
     }
     .price{
-        font-size: 25px;
+        font-size: 24px;
     }
      .size_span_adaptation{
         align-items: center;
     } 
-    .boxImgItem {
-       
-        gap: 10px;
-        
+    .boxImgItem { 
+        gap: 10px;   
     }
-     /* .boxImgItem img{
-         width: 15%; 
-        height: 30px;
-    }  */
 }
