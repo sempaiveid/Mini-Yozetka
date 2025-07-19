@@ -17,7 +17,7 @@ export interface Product {
 })
 export class ProductService {
   items: Product[] = [];
-
+  
 
   async get() {
     return await firstValueFrom(

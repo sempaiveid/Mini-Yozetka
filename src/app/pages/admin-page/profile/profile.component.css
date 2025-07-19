@@ -152,19 +152,31 @@
                         white-space: nowrap;
                         text-overflow: ellipsis;
                     }
-                    button{
-                        color: white;
-                        cursor: pointer;
-                        background-color: #e63946;
-                        border-radius: 10px;
-                        padding: 15px 25px;
-                        margin-right: 2%;
-                        margin-left: 2%;
-                        transition: background-color 0.3s ease;
-                        &:hover{
-                            background-color: #d4002a;
+                    .edit_delete_container{
+                        display: flex;
+                        justify-content:center;
+                        align-items: center;
+                        width: 450px;
+                        .edit{
+                            opacity: 0.4;
+                            cursor: no-drop;
+                            max-width: 70px;
+                        }
+                        button{
+                            color: white;
+                            cursor: pointer;
+                            background-color: #e63946;
+                            border-radius: 10px;
+                            padding: 10px 15px;
+                            margin-right: 2%;
+                            margin-left: 2%;
+                            transition: background-color 0.3s ease;
+                            &:hover{
+                                background-color: #d4002a;
+                            }
                         }
                     }
+                    
                 }
             }
         }
@@ -615,6 +627,34 @@ input {
   border-left: 6px solid transparent; 
   background-clip: content-box;
 }
+
+
+.modal_overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_window {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal_btns {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 
 @media (max-width: 1200px) {

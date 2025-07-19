@@ -22,6 +22,8 @@ export class ProfileComponent {
   authService = inject(AuthService);
   http = inject(HttpClient);
 
+  // editedProduct: Product | null = null;
+
   avatar_icon?: string;
   change:boolean = false;
 
@@ -136,6 +138,43 @@ const data = await firstValueFrom(
 
 this.user_products = Array.isArray(data) ? data : [];
   }
+
+  // editing_mode(product: Product) {
+  //   this.editedProduct = { ...product };
+  // }
+
+//   get editedDescriptionText(): string {
+//   if (!this.editedProduct || !this.editedProduct.description) return '';
+//   return (this.editedProduct.description as any).text || '';
+// }
+
+// set editedDescriptionText(value: string) {
+//   if (this.editedProduct && this.editedProduct.description) {
+//     (this.editedProduct.description as any).text = value;
+//   }
+// }
+
+
+  // async saveEditedProduct() {
+  // if (!this.editedProduct) return;
+  // const user = this.loginService.getUser();
+  // if (!user) return;
+
+  // await firstValueFrom(this.http.patch(
+  //   'http://localhost:3000/updateProduct',
+  //   { product: this.editedProduct, user },
+  //   { withCredentials: true }
+  // ));
+
+//   const data = await firstValueFrom(
+//     this.http.get<any>('http://localhost:3000/adminProduct', { withCredentials: true })
+//   );
+
+//   this.user_products = Array.isArray(data) ? data : [];
+//   this.filteredProducts = [...this.user_products];
+//   this.editedProduct = null;
+// }
+
 
   confirmDelete(productId: string) {
     this.productToDelete = productId;
