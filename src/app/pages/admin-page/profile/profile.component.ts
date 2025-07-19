@@ -22,7 +22,7 @@ export class ProfileComponent {
   productService = inject(ProductService);
   authService = inject(AuthService);
   http = inject(HttpClient);
-  cart = inject(CartService)
+  cart = inject(CartService);
 
   isEditMode:boolean = false;
 
@@ -69,19 +69,8 @@ export class ProfileComponent {
   ngOnInit() {
     this.loginService.user$.pipe(take(1)).subscribe((user) => {
       if (user) {
-<<<<<<< HEAD
-        await this.http
-          .get<any>('http://localhost:3000/adminProduct', {
-            withCredentials: true,
-          })
-          .subscribe(async (data) => {
-            this.user_products = data;
-            console.log(data);
-            await this.cart.newCout()
-          });
-=======
         this.loadUserProducts();
->>>>>>> main
+        this.cart.newCout?.();
       }
     });
   }
@@ -132,18 +121,6 @@ export class ProfileComponent {
     }
 
     this.productService.addProduct = product;
-<<<<<<< HEAD
-   await firstValueFrom(
-  this.http.patch(
-    'http://localhost:3000/addProduct',
-    {
-      product: product,
-      user: user,
-    },
-    { withCredentials: true }
-  )
-);
-=======
     await firstValueFrom(
       this.http.patch(
         'http://localhost:3000/addProduct',
@@ -154,7 +131,6 @@ export class ProfileComponent {
         { withCredentials: true }
       )
   );
->>>>>>> main
 
 
   const data = await firstValueFrom(
@@ -162,8 +138,7 @@ export class ProfileComponent {
       withCredentials: true,
     })
   );
-
-    this.user_products = Array.isArray(data) ? data : [];
+this.user_products = Array.isArray(data) ? data : [];
     this.filteredProducts = [...this.user_products];
     this.addProductForm.reset({
       name_product: '',
@@ -257,16 +232,6 @@ export class ProfileComponent {
 }
 
 
-<<<<<<< HEAD
-this.user_products = Array.isArray(data) ? data : [];
-    this.addProductForm.reset();
-    this.addProductForm.patchValue({
-      currency_price_product: 'hryvnia',
-      category_product: '',
-    });
-  }
-=======
->>>>>>> main
 
   confirmDelete(productId: string) {
     this.productToDelete = productId;
@@ -280,17 +245,7 @@ this.user_products = Array.isArray(data) ? data : [];
     const user = this.loginService.getUser();
     if (user) {
       await this.productService.deleteProduct(productId, user);
-<<<<<<< HEAD
-      const data = await firstValueFrom(
-        this.http.get<any>('http://localhost:3000/adminProduct', {
-          withCredentials: true,
-        })
-      );
-
-      this.user_products = Array.isArray(data) ? data : [];
-=======
       this.loadUserProducts();
->>>>>>> main
       this.productToDelete = null;
     }
   }

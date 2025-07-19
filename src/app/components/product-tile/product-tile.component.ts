@@ -38,18 +38,15 @@ export class ProductTileComponent {
   }
   ngOnInit() {
     this.loadCart();
-<<<<<<< HEAD
     this.login.user$.subscribe((data) => {
       let user = data?.user_name || 'Користувач';
       if (user !== 'Користувач') {
         this.user = true;
       }
     });
-=======
     if(this.category){
       this.initProducts();
     }
->>>>>>> main
   }
 
   btnRight(btnR: HTMLButtonElement) {
