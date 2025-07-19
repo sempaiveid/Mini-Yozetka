@@ -18,14 +18,21 @@ export class CommitProductComponent {
   http = inject(HttpClient);
   login = inject(LoginService);
   lengthArr = 15;
-  commentsObj: { user: string; com: string[] } = {
+  commentsObj: { user: string; com: string[];img:string } = {
     user: '',
     com: [],
+    img:''
   };
   user: string = 'Користувач';
+  userPhoto:string=""
   ngOnInit() {
     this.login.user$.subscribe((data) => {
       this.user = data?.user_name || 'Користувач';
+      if(data?.profile_icon){
+        this.userPhoto = String(data?.profile_icon)
+      }else{
+        this.userPhoto = this.arr[1]
+      }
     });
   }
 
@@ -70,12 +77,14 @@ export class CommitProductComponent {
     this.commentsObj = {
       user: this.user,
       com: [sanitized],
+      img:this.userPhoto
     };
     this.messages[this.productId].push(this.commentsObj);
     this.http
       .post('http://localhost:3000/comments', {
         productId: this.productId,
         comments: this.messages[this.productId] || [],
+
       })
       .subscribe((data) => {
         console.log(data);
