@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
 import { firstValueFrom, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfileComponent {
   productService = inject(ProductService);
   authService = inject(AuthService);
   http = inject(HttpClient);
+  cart = inject(CartService);
 
   isEditMode:boolean = false;
 
@@ -68,6 +70,7 @@ export class ProfileComponent {
     this.loginService.user$.pipe(take(1)).subscribe((user) => {
       if (user) {
         this.loadUserProducts();
+        this.cart.newCout?.();
       }
     });
   }
@@ -135,8 +138,7 @@ export class ProfileComponent {
       withCredentials: true,
     })
   );
-
-    this.user_products = Array.isArray(data) ? data : [];
+this.user_products = Array.isArray(data) ? data : [];
     this.filteredProducts = [...this.user_products];
     this.addProductForm.reset({
       name_product: '',

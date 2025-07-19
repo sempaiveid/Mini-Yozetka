@@ -7,16 +7,15 @@
       <div class="left-block">
         <img [src]="item.picture" alt="Фото" />
         <div class="counter">
-          <app-counter-product [inputCount]="item.quantity"></app-counter-product>
+          <app-counter-product [inputCount]="item.quantity"(quantityChanged)="updateCartDelayed()"></app-counter-product>
         </div>
       </div>
-    
       <div class="middle-block">
         <a class="cart-title" href="">{{ item.name }}</a>
         <div class="seller">Продавець: Mini-YozetkaSan</div>
     
         <div class="bottom-block">
-          <div class="item-cost">{{ item.total | currency_pipe }}</div>
+          <div class="item-cost">{{ (item.price * item.quantity) | currency_pipe }}</div>
           <app-poput-menu></app-poput-menu>
         </div>
       </div>
@@ -26,7 +25,7 @@
 <ng-template #noProducts>
   <div class="none-product">
     <img src="./cartNone.svg" alt="" />
-    <p>У кошику немає товарів</p>
+    <p>У кошику немає товарів</p> 
   </div>
 </ng-template>
 <div *ngIf="productCard.length" class="cart-footer">
@@ -38,7 +37,7 @@
   </div>
   <div class="cart-footer-cost">
     <div class="cost">
-      <span>{{ product.getTotalPrice() | currency_pipe }}</span>
+      <span>{{total| currency_pipe }}</span>
     </div>
     <button class="btn-buy" (click)="buy()">
       <span>Оформити замовлення</span>
@@ -48,4 +47,4 @@
 <!-- <div [style.opacity]="isBuy ? 1 : 0" class="offer">
   <span>Дякуемо за покупку</span>
 </div> -->
-<app-buy-menu (evenClose)="buy()" *ngIf="modal" ></app-buy-menu>
+<app-buy-menu [productArr]="productCard" (evenClose)="buy()" *ngIf="modal" ></app-buy-menu>
