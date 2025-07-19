@@ -44,4 +44,4 @@
 <!-- <div [style.opacity]="isBuy ? 1 : 0" class="offer">
   <span>Дякуемо за покупку</span>
 </div> -->
-<app-buy-menu (evenClose)="buy()" *ngIf="modal" ></app-buy-menu>
+<app-buy-menu [productArr]="productCard" (evenClose)="buy()" *ngIf="modal" ></app-buy-menu>
