@@ -183,18 +183,12 @@
             align-items:center;
            
             margin-bottom: 3%;
-            button{
-             
-            }
+            
             
         }
         form{
             width: 50%;
-            .form_header{
-                h3{
-                    
-                }
-            }
+            
         }
     }
 }
