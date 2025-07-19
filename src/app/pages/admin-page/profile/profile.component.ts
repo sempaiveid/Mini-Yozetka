@@ -101,7 +101,7 @@ export class ProfileComponent {
     }
 
     this.productService.addProduct = product;
-await firstValueFrom(
+   await firstValueFrom(
   this.http.patch(
     'http://localhost:3000/addProduct',
     {
@@ -119,6 +119,11 @@ const data = await firstValueFrom(
 );
 
 this.user_products = Array.isArray(data) ? data : [];
+    this.addProductForm.reset();
+    this.addProductForm.patchValue({
+      currency_price_product: 'hryvnia',
+      category_product: '',
+    });
   }
 
   confirmDelete(productId: string) {
@@ -138,6 +143,7 @@ this.user_products = Array.isArray(data) ? data : [];
           withCredentials: true,
         })
       );
+
       this.user_products = Array.isArray(data) ? data : [];
       this.productToDelete = null;
     }

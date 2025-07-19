@@ -15,7 +15,7 @@
       </div>
       <app-counter-product [inputCount]="item.quantity"></app-counter-product>
       <div class="container-price">
-        <p class="item-cost">{{ item.total | currency_pipe }}</p>
+        <p class="item-cost">{{ (item.price * item.quantity) | currency_pipe }}</p>
       </div>
       <app-poput-menu></app-poput-menu>
     </div>
@@ -34,7 +34,7 @@
   </button>
   <div class="cart-footer-cost">
     <div class="cost">
-      <span>{{ product.getTotalPrice() | currency_pipe }}</span>
+      <span>{{total| currency_pipe }}</span>
     </div>
     <button class="btn-buy" (click)="buy()">
       <span>Оформити замовлення</span>
