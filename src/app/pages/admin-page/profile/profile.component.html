@@ -1,16 +1,33 @@
-<div class="profile_container">
-  <div class="profile_icon">
-    <img
+<div class="profile_container" >
+  <div class="change_ava_input_container" *ngIf="change">
+      <input  type="text" [(ngModel)]="avatar_icon" placeholder="Вставь URL картинки">
+      <button (click)="this.change = !this.change" (click)="changeAvatar()">Змiнити</button> 
+    </div>
+
+    
+
+  <div class="profile_icon" [class.blurred]="change">
+    <img 
       [src]="(loginService.user$ | async)?.profile_icon"
       alt="profile_icon"
     />
+    
+    
     <div class="profile_setting">
       <p class="profile_name">
         {{ (loginService.user$ | async)?.user_name }}
       </p>
-      <button (click)="logout()">Вийти</button>
+      
+      <div class="edit_container">
+        <img  (click)="this.change = !this.change" class="change_ava" src="https://cdn-icons-png.flaticon.com/512/80/80796.png" alt="change_ava">
+        <button (click)="logout()">Вийти</button>
+      </div>
+      
     </div>
   </div>
+
+  <input class="search_added_product" placeholder="Пошук доданих товарiв..." type="text">
+ 
   <div class="added_product">
     <div class="items_for_sale" *ngFor="let product of user_products">
       <div class="item_сontainer">

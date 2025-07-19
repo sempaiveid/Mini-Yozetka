@@ -7,6 +7,7 @@
     margin: 0 auto;
 
      .profile_container{
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: start;
@@ -16,12 +17,39 @@
         max-height: 800px;
         width: 35%;
         color: var(--text-color);
+
+        .change_ava_input_container{
+                position: absolute;
+                top: 43%;
+                right: 35%;
+                z-index: 100;
+                border-radius: 10px;
+                display: flex;
+                
+                input{
+                    background-color: var(--grey);
+                    margin-right: 10px;
+                    outline: none;
+                    padding: 5px;
+                    border-radius: 10px;
+                    box-shadow: 0px 0px 0px 2px var(--text-color);
+                }
+                button{
+                    border-radius: 10px;
+                    padding: 10px;
+                    background-color: #00a63e;
+                    cursor: pointer;
+                }
+            }
         .profile_icon{
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             height: 50%;
+            
             .profile_setting{
+                position: relative;
                 margin-top: 5%;
                 width: 100%;
                 display: flex;
@@ -32,7 +60,18 @@
                     font-size: 35px;
                     margin-right: 5%;
                 }
-                button{
+                
+                .edit_container{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+                    .change_ava{
+                        filter: var(--invert);
+                        max-width: 50px;
+                        cursor: pointer;
+                    }
+                    button{
                     color: white;
                     font-family: "Gill Sans", sans-serif;
                     font-size: 25px;
@@ -45,6 +84,8 @@
                         background-color: #d4002a;
                     }
                 }
+                }
+                
             }
             img{
                 border-radius: 10px;
@@ -53,13 +94,25 @@
                 object-fit: contain;
                 object-position:left center;
             }
+            
+        }
+        .search_added_product{
+            margin-top: 5%;
+            padding: 10px;
+            width: 100%;
+            border-radius: 10px;
+            outline: none;
+            &::placeholder{
+                color: #9ca3af;
+            }
+           
         }
         .added_product{
             width: 100%;
             min-height: 300px;
             max-height: 50%;
             overflow-y: auto;
-            margin-top: 5%;
+            margin-top: 3%;
             
             .items_for_sale:first-child .item_сontainer {
                 margin-top: 0;
@@ -523,10 +576,9 @@ input {
     }
 }
 
-
-/* :host-context(body.dark-theme) .form_container{
-     background-color: #7272726f; 
-} */
+.blurred{
+    filter: blur(15px);
+}
 
 :host-context(body.dark-theme) .price_container{
     select{
@@ -539,8 +591,163 @@ input {
         color: var(--text-color) !important;
     }
 }
-/* :host-context(body.dark-theme) .input_container{
-    input,textarea{
-        background-color: #7272726f !important;
+
+:host-context(body.dark-theme) .form_container{
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+
+.added_product::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+.added_product::-webkit-scrollbar-track {
+  background: rgba(68, 173, 42, 0.518);
+  margin-right: 6px;
+  border-left: 6px solid transparent; 
+  background-clip: content-box;        
+}
+
+.added_product::-webkit-scrollbar-thumb {
+  background: rgb(101, 184, 80);
+  border-radius: 20px;
+  border-left: 6px solid transparent; 
+  background-clip: content-box;
+}
+
+
+@media (max-width: 1200px) {
+    :host{
+        height: unset;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        .profile_container{
+            align-items: center;
+            width: 100%;
+            max-height: unset;
+            .search_added_product{
+                width: 80%;
+            }
+            .added_product{
+                margin-top: 2%;
+                margin-bottom: 2%;
+                width: 80%;
+                min-height: 300px;
+                max-height: 340px;
+                .items_for_sale{
+                    .item_сontainer{
+                        margin-top: 2%;
+                    }
+                }
+            }
+            
+        }
+        .form_container{
+            width: 80%;
+        }
     }
-} */
+    
+}
+
+
+@media (max-width: 837px) {
+    :host{
+        height: unset;
+        flex-direction: column;
+        align-items: center;
+        padding: unset;
+        .profile_container{
+            margin: unset;
+            align-items: center;
+            width: 80%;
+            max-height: unset;
+            padding: 10px;
+            
+            .profile_icon{
+               width: 100%;
+            }
+            .search_added_product{
+                width: 100%;
+            }
+            .added_product{
+                margin-top: 2%;
+                margin-bottom: 2%;
+                width: 100%;
+                min-height: 200px;
+                max-height: 210px;
+                .items_for_sale{
+                    .item_сontainer{
+                        margin-top: 2%;
+                    }
+                }
+            }
+            
+        }
+        .form_container{
+            width: 80%;
+            form{
+                .input_container{
+                    width: 100%;
+                }
+                .submit_price{
+                    width: 100%;
+                }
+            }
+           
+        }
+    }
+    
+}
+
+@media (max-width: 500px) {
+    :host{
+        height: unset;
+        max-width: 580px;
+        flex-direction: column;
+        align-items: center;
+        padding: unset;
+        .profile_container{
+            padding: 10px;
+            margin: unset;
+            align-items: center;
+            width: 400px;
+            max-height: unset;
+            
+            .profile_icon{
+                max-width: 300px;
+            }
+            .search_added_product{
+                width: 100%;
+            }
+            .added_product{
+                margin-top: 2%;
+                margin-bottom: 2%;
+                width: 100%;
+                min-height: 200px;
+                max-height: 210px;
+                .items_for_sale{
+                    .item_сontainer{
+                        margin-top: 2%;
+                    }
+                }
+            }
+            
+        }
+        .form_container{
+            width: 100%;
+            padding: 10px;
+            form{
+                .input_container{
+                    width: 100%;
+                }
+                .submit_price{
+                    width: 100%;
+                }
+            }
+           
+        }
+    }
+    
+}

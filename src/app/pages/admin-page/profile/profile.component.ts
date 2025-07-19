@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../../services/product.service';
 import { LoginService } from '../../../services/login.service';
 import { AuthService } from '../../../services/auth.service';
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, NgFor, NgIf, RouterModule, CommonModule, FormsModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
@@ -21,6 +21,10 @@ export class ProfileComponent {
   productService = inject(ProductService);
   authService = inject(AuthService);
   http = inject(HttpClient);
+
+  avatar_icon?: string;
+  change:boolean = false;
+
 
   addProductForm = new FormBuilder().group({
     name_product: [
@@ -142,6 +146,22 @@ this.user_products = Array.isArray(data) ? data : [];
       this.productToDelete = null;
     }
   }
+
+  changeAvatar() {
+  if (!this.avatar_icon) return;
+
+  this.http.post<any>(
+    "http://localhost:3000/changeAva",
+    {
+      avatar: this.avatar_icon
+    },
+    { withCredentials: true }
+  ).subscribe(() => {
+    window.location.reload();
+  });
+}
+
+
 
   logout() {
     this.authService.logout();
