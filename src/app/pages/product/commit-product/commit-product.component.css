@@ -58,5 +58,23 @@
 }
 
 ul {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1200px) {
+    .txt{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .txt{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 478px) {
+    .txt{
+        font-size: 14px;
+    }
 }

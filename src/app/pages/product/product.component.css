@@ -8,16 +8,12 @@
 
 .boxProductPage {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
     gap: 30px;
+    width: 100%;
 }
 
 .textBox {
-    width: 40%;
-    height: 900px;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -33,11 +29,10 @@
 }
 
 app-product-image {
-    height: 900px;
-    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 50%;
 }
 
 app-header-catergory {
@@ -49,7 +44,10 @@ app-tile-price,app-commit-product,app-product-tile-data{
     width: 100%;
 }
 app-description-product{
-    width: 80%;
+    width: 99%;
+}
+app-commit-product{
+    width: 99%;
 }
 
 .grey {
@@ -79,10 +77,35 @@ app-description-product{
 .column {
     flex-direction: column;
 }
-app-commit-product{
-    width: 80%;
-}
 /* color:var(--color-green-600) */
+
+@media (max-width: 768px) {
+    .boxProductPage {
+      flex-direction: column; /* блоки становятся вертикально */
+      align-items: center;
+    }
+
+    .textBox {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .boxImg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      aspect-ratio: auto;
+    }
+  
+    .img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .boxProductPage{
+        gap: 15px;
+    }
+}
 
 @media(max-width:476px){
     app-product-image {
@@ -103,8 +126,5 @@ app-commit-product{
         flex-direction: column;
         align-items: center;
         gap:10px;
-    }
-    .textBox{
-        width: 90%;
     }
 }
