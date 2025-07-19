@@ -26,10 +26,10 @@
     </div>
   </div>
 
-  <input class="search_added_product" placeholder="Пошук доданих товарiв..." type="text">
+  <input [(ngModel)]="searchQuery" (input)="filterProducts()" class="search_added_product" placeholder="Пошук доданих товарiв..." type="text">
  
   <div class="added_product">
-    <div class="items_for_sale" *ngFor="let product of user_products">
+    <div class="items_for_sale" *ngFor="let product of filteredProducts">
       <div class="item_сontainer">
         <a [routerLink]="['/product', product.id]" class="img_div"
           ><img [src]="product.picture" [alt]="product.name"

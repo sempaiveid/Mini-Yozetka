@@ -25,6 +25,9 @@ export class ProfileComponent {
   avatar_icon?: string;
   change:boolean = false;
 
+  searchQuery: string = '';
+  filteredProducts: Product[] = [];
+
 
   addProductForm = new FormBuilder().group({
     name_product: [
@@ -67,11 +70,20 @@ export class ProfileComponent {
           })
           .subscribe((data) => {
             this.user_products = data;
-            console.log(data);
+            this.filteredProducts = [...this.user_products];
           });
       }
     });
   }
+
+  filterProducts() {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredProducts = this.user_products.filter((product) =>
+      product.name.toLowerCase().includes(query)
+    );
+  }
+
+
 
   async addProduct() {
     if (this.addProductForm.invalid) {
