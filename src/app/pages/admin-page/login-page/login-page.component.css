@@ -175,19 +175,46 @@
     color: white !important;
 }
 
-@media (max-width: 837px) {
-    :host{
-        flex-direction: column;
+@media (max-width: 1200px){
+     :host{
+        
         .select_mode{
             justify-content: center;
             align-items:center;
+           
+            margin-bottom: 3%;
             button{
-                border-radius: 40px 40px 40px 40px;
+             
+            }
+            
+        }
+        form{
+            width: 50%;
+            .form_header{
+                h3{
+                    
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 837px) {
+    :host{
+        
+        .select_mode{
+            justify-content: center;
+            align-items:center;
+           
+            margin-bottom: 3%;
+            button{
+                font-size: 20px;
             }
             
         }
         form{
             margin: 0px;
+            width: 100%;
             .form_header{
                 h3{
                     font-size: 20px;
@@ -195,6 +222,63 @@
             }
         }
     }
-    
-    
+}
+
+@media (max-width: 690px) {
+    :host{
+        flex-direction: column;
+        .select_mode{
+            justify-content: center;
+            align-items:center;
+            padding: 10px;
+           
+            margin-bottom: 3%;
+            button{
+                border-radius: 20px;
+                font-size: 20px;
+                padding: 10px 10px 10px 10px;
+            }
+            
+        }
+        form{
+            margin: 0px;
+            width: 100%;
+            margin-bottom: 10%;
+            .form_header{
+                h3{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 420px) {
+    :host{
+        flex-direction: column;
+        .select_mode{
+            justify-content: center;
+            align-items:center;
+            padding: 10px;
+           
+            margin-bottom: 4%;
+            button{
+                border-radius: 20px;
+                font-size: 20px;
+                padding: 10px 10px 10px 10px;
+            }
+            
+        }
+        form{
+            margin: 0px;
+            width: 97%;
+            margin-bottom: 10%;
+            .form_header{
+                h3{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
 }

@@ -20,25 +20,35 @@
 
         .change_ava_input_container{
                 position: absolute;
-                top: 43%;
-                right: 35%;
+                top: 44%;
+                left: 0;
                 z-index: 100;
                 border-radius: 10px;
                 display: flex;
+                width: 85%;
                 
                 input{
                     background-color: var(--grey);
-                    margin-right: 10px;
+                    width: 100%;
+                    margin-right:2%;
                     outline: none;
                     padding: 5px;
                     border-radius: 10px;
                     box-shadow: 0px 0px 0px 2px var(--text-color);
                 }
                 button{
+                    font-size: 20px;
                     border-radius: 10px;
                     padding: 10px;
                     background-color: #00a63e;
                     cursor: pointer;
+                    box-shadow: 0px 0px 0px 2px #00a63e;
+                    transition: background-color 0.3s ease;
+                    transition: box-shadow 0.3s ease;
+                    &:hover{
+                       background-color: #008c34;
+                       box-shadow: 0px 0px 0px 2px #008c34;
+                    }
                 }
             }
         .profile_icon{
@@ -658,6 +668,19 @@ input {
 
 
 
+@media (max-width: 1600px){
+    :host{
+        .profile_container{
+            .change_ava_input_container{
+                width: 100%;
+            }
+        }
+    }   
+    
+    
+}
+
+
 @media (max-width: 1200px) {
     :host{
         height: unset;
@@ -668,13 +691,23 @@ input {
             align-items: center;
             width: 100%;
             max-height: unset;
+            margin: unset;
+
+            .change_ava_input_container{
+                top: 56%;
+                left: 6%;
+                width: 50%;
+            }
+            .profile_icon{
+                width: 85%;
+            }
             .search_added_product{
-                width: 80%;
+                width: 85%;
             }
             .added_product{
                 margin-top: 2%;
                 margin-bottom: 2%;
-                width: 80%;
+                width: 85%;
                 min-height: 300px;
                 max-height: 340px;
                 .items_for_sale{
@@ -686,7 +719,52 @@ input {
             
         }
         .form_container{
-            width: 80%;
+            width: 85%;
+        }
+    }
+    
+}
+
+
+@media (max-width: 1025px) {
+    :host{
+        height: unset;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        .profile_container{
+            align-items: center;
+            width: 100%;
+            max-height: unset;
+            margin: unset;
+
+            .change_ava_input_container{
+                top: 53%;
+                left: 6%;
+                width: 50%;
+            }
+            .profile_icon{
+                width: 85%;
+            }
+            .search_added_product{
+                width: 85%;
+            }
+            .added_product{
+                margin-top: 2%;
+                margin-bottom: 2%;
+                width: 85%;
+                min-height: 300px;
+                max-height: 340px;
+                .items_for_sale{
+                    .item_сontainer{
+                        margin-top: 2%;
+                    }
+                }
+            }
+            
+        }
+        .form_container{
+            width: 85%;
         }
     }
     
@@ -702,20 +780,24 @@ input {
         .profile_container{
             margin: unset;
             align-items: center;
-            
             max-height: unset;
-            padding: 10px;
+            padding: 20px 4px 10px 4px;
+            .change_ava_input_container{
+                top: 60%;
+                left: 3%;
+                width: 50%;
+            }
             
             .profile_icon{
-               width: 100%;
+               width: 97%;
             }
             .search_added_product{
-                width: 100%;
+                width: 97%;
             }
             .added_product{
                 margin-top: 2%;
                 margin-bottom: 2%;
-                width: 100%;
+                width: 97%;
                 min-height: 200px;
                 max-height: 210px;
                 .items_for_sale{
@@ -727,7 +809,7 @@ input {
             
         }
         .form_container{
-            width: 80%;
+            width: 100%;
             form{
                 .input_container{
                     width: 100%;
@@ -755,6 +837,12 @@ input {
             align-items: center;
             width: 400px;
             max-height: unset;
+
+             .change_ava_input_container{
+                top: 44%;
+                left: 3%;
+                width: 90%;
+            }
             
             .profile_icon{
                 max-width: 400px;
@@ -787,7 +875,72 @@ input {
         }
         .form_container{
             width: 100%;
-            padding: 10px;
+            
+            form{
+                .input_container{
+                    width: 100%;
+                }
+                .submit_price{
+                    width: 100%;
+                }
+            }
+           
+        }
+    }
+    
+}
+
+@media (max-width: 400px) {
+    :host{
+        height: unset;
+        max-width: 580px;
+        flex-direction: column;
+        align-items: center;
+        padding: unset;
+        .profile_container{
+            margin: unset;
+            align-items: center;
+            width: 360px;
+            max-height: unset;
+
+             .change_ava_input_container{
+                top: 44%;
+                left: 3%;
+                width: 90%;
+            }
+            
+            .profile_icon{
+                max-width: 400px;
+            }
+            .search_added_product{
+                width: 100%;
+            }
+            .added_product{
+                margin-top: 2%;
+                margin-bottom: 2%;
+                width: 100%;
+                min-height: 200px;
+                max-height: 210px;
+                .items_for_sale{
+                    .item_сontainer{
+                        margin-top: 2%;
+                        .edit_delete_container{
+                            margin-right: 2%;
+                            img{
+                                max-width: 40px;
+                            }
+                            button{
+                                padding: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        .form_container{
+            width: 100%;
+            
             form{
                 .input_container{
                     width: 100%;
