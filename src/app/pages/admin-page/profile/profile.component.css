@@ -885,13 +885,18 @@ input {
         }
         .form_container{
             width: 100%;
-            
+            padding: 10px;
             form{
                 .input_container{
                     width: 100%;
                 }
                 .submit_price{
                     width: 100%;
+                    .cancel_btn{
+                        margin: unset;
+                        margin-right: 1%;
+                        margin-left: 1%;
+                    }
                 }
             }
            
