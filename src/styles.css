@@ -59,3 +59,46 @@ app-root {
   margin: 0 auto;
   padding: 0px 32px;
 }
+
+.stylish_container p{
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .stylish_container h1{
+    font-size: 26px !important;
+  }
+  .about-page h1{
+    margin-bottom: 0px !important;
+  }
+  .bonus-page h1{
+    margin-bottom: 0px !important;
+  }
+  .terms-page h1{
+    margin-bottom: 0px !important;
+  }
+  .contacts-page h1 {
+    margin-bottom: 0px !important;
+  }
+  .delivery-page h1{
+    margin-bottom: 0px !important;
+  }
+  .gift-page h1 {
+    margin-bottom: 0px !important;
+  }
+  .returns-page h1{
+    margin-bottom: 0px !important;
+  }
+  .warranty-page h1{
+    margin-bottom: 0px !important;
+  }
+}
+
+@media (max-width: 478px) {
+  .stylish_container h1{
+    font-size: 24px !important;
+  }
+  .footer{
+    grid-template-columns: repeat(3, 100px);
+  }
+}
