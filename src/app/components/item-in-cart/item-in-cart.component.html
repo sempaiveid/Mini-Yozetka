@@ -13,7 +13,7 @@
         </a>
         <span style="font-size: 14px">Продавець: Mini-YozetkaSan</span>
       </div>
-      <app-counter-product [inputCount]="item.quantity"></app-counter-product>
+      <app-counter-product [inputCount]="item.quantity" (quantityChanged)="updateCartDelayed()"></app-counter-product>
       <div class="container-price">
         <p class="item-cost">{{ (item.price * item.quantity) | currency_pipe }}</p>
       </div>
@@ -24,7 +24,7 @@
 <ng-template #noProducts>
   <div class="none-product">
     <img src="./cartNone.svg" alt="" />
-    <p>У кошику немає товарів</p>
+    <p>У кошику немає товарів</p> 
   </div>
 </ng-template>
 <div *ngIf="productCard.length" class="cart-footer">

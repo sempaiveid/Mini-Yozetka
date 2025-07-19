@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { imageExistsValidator } from '../../../validators/image-exists.validator';
 import { firstValueFrom, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfileComponent {
   productService = inject(ProductService);
   authService = inject(AuthService);
   http = inject(HttpClient);
+  cart = inject(CartService)
 
   addProductForm = new FormBuilder().group({
     name_product: [
@@ -61,9 +63,10 @@ export class ProfileComponent {
           .get<any>('http://localhost:3000/adminProduct', {
             withCredentials: true,
           })
-          .subscribe((data) => {
+          .subscribe(async (data) => {
             this.user_products = data;
             console.log(data);
+            await this.cart.newCout()
           });
       }
     });

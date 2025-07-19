@@ -33,6 +33,7 @@ export class ItemInCartComponent {
   http = inject(HttpClient);
   modal = false;
   total = 0;
+  totalTovar = 0;
   async loadCart() {
     let data = await firstValueFrom(
       this.http.get<any[]>('http://localhost:3000/getCart', {
@@ -41,6 +42,11 @@ export class ItemInCartComponent {
     );
     this.productCard = data;
   }
+  updateCartDelayed() {
+  setTimeout(() => {
+    this.loadCart();
+  }, 200); // 200–300 мс — обычно достаточно для обновления сервера
+}
 
   buy() {
     this.modal = !this.modal;
@@ -54,7 +60,7 @@ export class ItemInCartComponent {
     this.cartTemplate = document.querySelector('.main-cart') as HTMLElement;
   }
   async ngOnInit() {
-    this.loadCart();
+    await this.loadCart();
     this.product.getTotalPriceObservable().subscribe((value) => {
       this.total = value;
     });

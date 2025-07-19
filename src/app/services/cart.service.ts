@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -67,7 +67,36 @@ export class CartService {
       console.log(`Товар ${product.name} не найден в корзине`);
     }
   }
-  
+
+  setPlusCount(id: number | string) {
+    this.http
+      .patch(
+        'http://localhost:3000/cartPlus',
+        {
+          id: id,
+        },
+        { withCredentials: true }
+      )
+      .subscribe(async (data) => {
+        console.log(data);
+        await this.newCout();
+      });
+  }
+  setMinuseCount(id: number | string) {
+    this.http
+      .patch(
+        'http://localhost:3000/cartMinuse',
+        {
+          id: id,
+        },
+        { withCredentials: true }
+      )
+      .subscribe(async (data) => {
+        console.log(data);
+        await this.newCout();
+      });
+  }
+
   private totalPrice$ = new BehaviorSubject<number>(0);
 
   getTotalPriceObservable() {
@@ -112,4 +141,5 @@ export class CartService {
     );
     return count;
   }
+
 }
