@@ -37,10 +37,3 @@ font-size: 1.5rem;
 .about-page a:hover {
   text-decoration: none;
 }
- /* @media(max-width: 476px){
-  .about-page{
-    display: flex;
-    flex-direction: column;
-
-  }
- } */
