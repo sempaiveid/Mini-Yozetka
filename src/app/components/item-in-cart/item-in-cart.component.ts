@@ -8,6 +8,7 @@ import { CartService } from '../../services/cart.service';
 import { CurrencyPipe } from '../../pipes/currency-convert.pipe';
 import { HttpClient } from '@angular/common/http';
 import { BuyMenuComponent } from './buy-menu/buy-menu.component';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-item-in-cart',
@@ -26,29 +27,42 @@ import { BuyMenuComponent } from './buy-menu/buy-menu.component';
 export class ItemInCartComponent {
   cartTemplate: HTMLElement;
   product: CartService = inject(CartService);
-  productCard: any[] = this.product.productCart;
+  productCard: any[] = [];
   productSet: any = this.product.productCart;
   inputCount = 1;
   http = inject(HttpClient);
   modal = false;
-  // loadCart() {
-  //   this.http.get<any[]>('http://localhost:3000/cart').subscribe((data)=>{
-  //     this.productCard = data
-  //     console.log(data)
-  //   });
-  // }
+  total = 0;
+  totalTovar = 0;
+  async loadCart() {
+    let data = await firstValueFrom(
+      this.http.get<any[]>('http://localhost:3000/getCart', {
+        withCredentials: true,
+      })
+    );
+    this.productCard = data;
+  }
+  updateCartDelayed() {
+  setTimeout(() => {
+    this.loadCart();
+  }, 200); // 200–300 мс — обычно достаточно для обновления сервера
+}
 
   buy() {
     this.modal = !this.modal;
   }
   clearCart() {
     this.product.resetCart();
+    this.product.newCout();
     this.productCard = [];
   }
   constructor() {
     this.cartTemplate = document.querySelector('.main-cart') as HTMLElement;
   }
-  ngOnInit() {
-    // this.loadCart();
+  async ngOnInit() {
+    await this.loadCart();
+    this.product.getTotalPriceObservable().subscribe((value) => {
+      this.total = value;
+    });
   }
 }

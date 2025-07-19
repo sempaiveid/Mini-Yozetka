@@ -5,6 +5,8 @@ import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 import { CartService } from '../../services/cart.service';
 import { PipeService } from '../../services/pipe.service';
 import { ThemeCheckComponent } from './theme-check/theme-check.component';
+import { firstValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +18,9 @@ export class HeaderComponent {
   pipe_service = inject(PipeService)
   showMenu = false;
   cartService = inject(CartService);
+  count: number = 0 
+  http :HttpClient = inject(HttpClient)
+
 
   selectedCurrency = this.pipe_service.currency;
 
@@ -23,4 +28,5 @@ export class HeaderComponent {
     const selectElement = event.target as HTMLSelectElement;
     this.pipe_service.set_currency(selectElement.value);
   }
+
 }
